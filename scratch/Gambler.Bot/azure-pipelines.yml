@@ -1,0 +1,242 @@
+resources:
+  repositories:
+  - repository: Gambler.Bot.Core # The name used to reference this repository in the checkout step
+    type: github
+    endpoint: Seuntjie900
+    name: Seuntjie900/Gambler.Bot.Core
+  - repository: Gambler.Bot.Strategies # The name used to reference this repository in the checkout step
+    type: github
+    endpoint: Seuntjie900
+    name: Seuntjie900/Gambler.Bot.Strategies
+
+trigger:
+- master
+
+name: 1.0.$(Build.BuildId)
+
+variables:
+  solution: 'Gambler.Bot/Gambler.Bot.sln'
+  buildPlatform: 'Any CPU'
+  buildConfiguration: 'Release'
+  selfContained: 'true'
+  version: '$(Build.BuildId)'
+
+stages:
+- stage: BuildWindows
+  jobs:
+  - job: BuildWindowsJob
+    pool:
+      vmImage: 'windows-latest'
+    steps:
+    - checkout: Gambler.Bot.Core
+    - checkout: Gambler.Bot.Strategies
+    - checkout: Self
+
+    - task: PowerShell@2   
+      inputs:
+        targetType: 'inline'
+        script: |
+          $csprojPath = Get-ChildItem -Path "$(Build.SourcesDirectory)" -Filter "Gambler.Bot.Desktop.csproj" -Recurse | Select-Object -First 1 -ExpandProperty FullName
+          [xml]$csproj = Get-Content -Path $csprojPath
+          $versionNode = $csproj.SelectNodes("//Project/PropertyGroup/Version") | Select-Object -First 1
+          if ($versionNode -eq $null) {
+            $propertyGroup = $csproj.CreateElement("PropertyGroup")
+            $versionNode = $csproj.CreateElement("Version")
+            $versionNode.InnerText = "$(Build.BuildNumber)"
+            $propertyGroup.AppendChild($versionNode)
+            $csproj.DocumentElement.AppendChild($propertyGroup)
+          } else {
+            $versionNode.InnerText = "$(Build.BuildNumber)"
+          }
+          $csproj.Save($csprojPath)
+
+    - task: PowerShell@2   
+      env:
+        ActiproLicensee: $(ActiproLicensee)
+        ActiproLicenseKey: $(ActiproLicenseKey)
+      inputs:
+        targetType: 'inline'
+        script: |
+          (Get-Content Gambler.Bot/Platforms/Gambler.Bot.Desktop/Program.cs).Replace('config.GetValue<string>("ActiproLicense:Licensee")', '"'+${env:ActiproLicensee}+'"') | Set-Content Gambler.Bot/Platforms/Gambler.Bot.Desktop/Program.cs
+          (Get-Content Gambler.Bot/Platforms/Gambler.Bot.Desktop/Program.cs).Replace('config.GetValue<string>("ActiproLicense:LisenceKey")', '"'+${env:ActiproLicenseKey}+'"') | Set-Content Gambler.Bot/Platforms/Gambler.Bot.Desktop/Program.cs
+
+    - task: DotNetCoreCLI@2
+      inputs:
+        command: 'restore'
+        projects: '$(solution)'
+        feedsToUse: 'config'
+        nugetConfigPath: 'Gambler.Bot/nuget.config'
+        externalFeedCredentials: 'avalonia-accelerate'
+        
+    - script: |
+        dotnet publish Gambler.Bot/Platforms/Gambler.Bot.Desktop/Gambler.Bot.Desktop.csproj -c $(buildConfiguration) -r win-x64 --self-contained=$(selfContained) -o "$(Build.ArtifactStagingDirectory)/Artifacts/win-x64"
+      displayName: 'Publish for win-x64'
+
+    - task: PublishBuildArtifacts@1
+      inputs:
+        PathtoPublish: '$(Build.ArtifactStagingDirectory)/Artifacts/win-x64'
+        ArtifactName: 'BuildArtifacts-win-x64'
+        publishLocation: 'container'
+
+- stage: BuildLinux
+  jobs:
+  - job: BuildLinuxJob
+    pool:
+      vmImage: 'ubuntu-latest'
+    steps:
+    - checkout: Gambler.Bot.Core
+    - checkout: Gambler.Bot.Strategies
+    - checkout: Self
+
+    - script: |
+        echo "Listing directory contents to verify solution file presence"
+        ls $(Build.SourcesDirectory)
+      displayName: 'List directory contents'
+
+    - task: PowerShell@2   
+      inputs:
+        targetType: 'inline'
+        script: |
+          $csprojPath = Get-ChildItem -Path "$(Build.SourcesDirectory)" -Filter "Gambler.Bot.Desktop.csproj" -Recurse | Select-Object -First 1 -ExpandProperty FullName
+          [xml]$csproj = Get-Content -Path $csprojPath
+          $versionNode = $csproj.SelectNodes("//Project/PropertyGroup/Version") | Select-Object -First 1
+          if ($versionNode -eq $null) {
+            $propertyGroup = $csproj.CreateElement("PropertyGroup")
+            $versionNode = $csproj.CreateElement("Version")
+            $versionNode.InnerText = "$(Build.BuildNumber)"
+            $propertyGroup.AppendChild($versionNode)
+            $csproj.DocumentElement.AppendChild($propertyGroup)
+          } else {
+            $versionNode.InnerText = "$(Build.BuildNumber)"
+          }
+          $csproj.Save($csprojPath)
+
+    - task: PowerShell@2   
+      env:
+        ActiproLicensee: $(ActiproLicensee)
+        ActiproLicenseKey: $(ActiproLicenseKey)
+      inputs:
+        targetType: 'inline'
+        script: |
+          (Get-Content Gambler.Bot/Platforms/Gambler.Bot.Desktop/Program.cs).Replace('config.GetValue<string>("ActiproLicense:Licensee")', '"'+${env:ActiproLicensee}+'"') | Set-Content Gambler.Bot/Platforms/Gambler.Bot.Desktop/Program.cs
+          (Get-Content Gambler.Bot/Platforms/Gambler.Bot.Desktop/Program.cs).Replace('config.GetValue<string>("ActiproLicense:LisenceKey")', '"'+${env:ActiproLicenseKey}+'"') | Set-Content Gambler.Bot/Platforms/Gambler.Bot.Desktop/Program.cs
+
+    - task: DotNetCoreCLI@2
+      inputs:        
+        command: 'restore'
+        projects: 'Gambler.Bot/Platforms/Gambler.Bot.Desktop/Gambler.Bot.Desktop.csproj'
+        feedsToUse: 'config'
+        nugetConfigPath: 'Gambler.Bot/nuget.config'
+        externalFeedCredentials: 'avalonia-accelerate'
+
+    - script: |
+        dotnet publish Gambler.Bot/Platforms/Gambler.Bot.Desktop/Gambler.Bot.Desktop.csproj -c $(buildConfiguration) -r linux-x64 --self-contained=$(selfContained) -o "$(Build.ArtifactStagingDirectory)/Artifacts/linux-x64"
+      displayName: 'Publish for linux-x64'
+
+    - task: PublishBuildArtifacts@1
+      inputs:
+        PathtoPublish: '$(Build.ArtifactStagingDirectory)/Artifacts/linux-x64'
+        ArtifactName: 'BuildArtifacts-linux-x64'
+        publishLocation: 'container'
+
+- stage: BuildMac
+  jobs:
+  - job: BuildMacJob
+    pool:
+      vmImage: 'macos-latest'
+    steps:
+    - checkout: Gambler.Bot.Core
+    - checkout: Gambler.Bot.Strategies
+    - checkout: Self
+
+    - script: |
+        echo "Listing directory contents to verify solution file presence"
+        ls $(Build.SourcesDirectory)
+      displayName: 'List directory contents'
+    - script: |
+        brew install xmlstarlet
+      displayName: 'Install xmlstarlet'
+      
+    - script: |
+        csprojPath=$(find $(Build.SourcesDirectory) -name "Gambler.Bot.Desktop.csproj" | head -n 1)
+        xmlstarlet ed -L -u "//Project/PropertyGroup/Version" -v "$(Build.BuildNumber)" $csprojPath || xmlstarlet ed -L -s "//Project" -t elem -n "PropertyGroup" -v "" -s "//Project/PropertyGroup[last()]" -t elem -n "Version" -v "$(Build.BuildNumber)" $csprojPath
+      displayName: 'Update version in csproj'
+
+    - script: |
+        sed -i '' 's/config.GetValue<string>("ActiproLicense:Licensee")/"'${ActiproLicensee}'"/' Gambler.Bot/Platforms/Gambler.Bot.Desktop/Program.cs
+        sed -i '' 's/config.GetValue<string>("ActiproLicense:LisenceKey")/"'${ActiproLicenseKey}'"/' Gambler.Bot/Platforms/Gambler.Bot.Desktop/Program.cs
+      displayName: 'Inject Actipro license keys'
+      env:
+        ActiproLicensee: $(ActiproLicensee)
+        ActiproLicenseKey: $(ActiproLicenseKey)
+
+    - task: NuGetToolInstaller@1
+    - task: DotNetCoreCLI@2
+      inputs:
+        command: 'restore'
+        projects: 'Gambler.Bot/Platforms/Gambler.Bot.Desktop/Gambler.Bot.Desktop.csproj'
+        feedsToUse: 'config'
+        nugetConfigPath: 'Gambler.Bot/nuget.config'
+        externalFeedCredentials: 'avalonia-accelerate'
+    
+
+    - script: |
+        dotnet publish Gambler.Bot/Platforms/Gambler.Bot.Desktop/Gambler.Bot.Desktop.csproj -c $(buildConfiguration) -r osx-x64 --self-contained=$(selfContained) -o "$(Build.ArtifactStagingDirectory)/Artifacts/osx-x64"
+      displayName: 'Publish for osx-x64'
+
+    - task: PublishBuildArtifacts@1
+      inputs:
+        PathtoPublish: '$(Build.ArtifactStagingDirectory)/Artifacts/osx-x64'
+        ArtifactName: 'BuildArtifacts-osx-x64'
+        publishLocation: 'container'
+
+
+- stage: BuildMacArm
+  jobs:
+  - job: BuildMacArmJob
+    pool:
+      vmImage: 'macos-latest'
+    steps:
+    - checkout: Gambler.Bot.Core
+    - checkout: Gambler.Bot.Strategies
+    - checkout: Self
+
+    - script: |
+        echo "Listing directory contents to verify solution file presence"
+        ls $(Build.SourcesDirectory)
+      displayName: 'List directory contents'
+    - script: |
+        brew install xmlstarlet
+      displayName: 'Install xmlstarlet'
+      
+    - script: |
+        csprojPath=$(find $(Build.SourcesDirectory) -name "Gambler.Bot.Desktop.csproj" | head -n 1)
+        xmlstarlet ed -L -u "//Project/PropertyGroup/Version" -v "$(Build.BuildNumber)" $csprojPath || xmlstarlet ed -L -s "//Project" -t elem -n "PropertyGroup" -v "" -s "//Project/PropertyGroup[last()]" -t elem -n "Version" -v "$(Build.BuildNumber)" $csprojPath
+      displayName: 'Update version in csproj'
+
+    - script: |
+        sed -i '' 's/config.GetValue<string>("ActiproLicense:Licensee")/"'${ActiproLicensee}'"/' Gambler.Bot/Platforms/Gambler.Bot.Desktop/Program.cs
+        sed -i '' 's/config.GetValue<string>("ActiproLicense:LisenceKey")/"'${ActiproLicenseKey}'"/' Gambler.Bot/Platforms/Gambler.Bot.Desktop/Program.cs
+      displayName: 'Inject Actipro license keys'
+      env:
+        ActiproLicensee: $(ActiproLicensee)
+        ActiproLicenseKey: $(ActiproLicenseKey)
+
+    - task: NuGetToolInstaller@1
+    - task: DotNetCoreCLI@2
+      inputs:
+        command: 'restore'
+        projects: 'Gambler.Bot/Platforms/Gambler.Bot.Desktop/Gambler.Bot.Desktop.csproj'
+        feedsToUse: 'config'
+        nugetConfigPath: 'Gambler.Bot/nuget.config'
+        externalFeedCredentials: 'avalonia-accelerate'
+    
+    - script: |
+        dotnet publish Gambler.Bot/Platforms/Gambler.Bot.Desktop/Gambler.Bot.Desktop.csproj -c $(buildConfiguration) -r osx-arm64 --self-contained=$(selfContained) -o "$(Build.ArtifactStagingDirectory)/Artifacts/osx-arm64"
+      displayName: 'Publish for osx-arm64'
+
+    - task: PublishBuildArtifacts@1
+      inputs:
+        PathtoPublish: '$(Build.ArtifactStagingDirectory)/Artifacts/osx-arm64'
+        ArtifactName: 'BuildArtifacts-osx-arm64'
+        publishLocation: 'container'

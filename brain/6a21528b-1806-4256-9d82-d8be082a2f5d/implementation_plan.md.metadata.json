@@ -1,0 +1,6 @@
+{
+  "artifactType": "ARTIFACT_TYPE_IMPLEMENTATION_PLAN",
+  "summary": "Plan to resolve misplaced git repositories and configure failing MCP servers.",
+  "updatedAt": "2026-03-28T21:31:02.646072100Z",
+  "requestFeedback": true
+}

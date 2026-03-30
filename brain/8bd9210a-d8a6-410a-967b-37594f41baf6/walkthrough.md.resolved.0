@@ -1,0 +1,28 @@
+# Gambler.Bot Stake Setup Walkthrough
+
+We have successfully configured **Gambler.Bot** for automated betting on **Stake.com**.
+
+## Steps Accomplished
+
+### 1. Account Configuration
+- Identified that the user's initial hex string was a session token, but the bot requires an **API Key**.
+- Provided detailed instructions for the user to retrieve their official API key from the Stake.com settings.
+- Successfully logged into the bot using the API key and BNB currency.
+
+### 2. Strategy Implementation
+- Provided a custom **Martingale Strategy** in both Lua and JavaScript.
+- Configured the logic to:
+    - Double the bet amount on every loss.
+    - Reset to a base bet (0.00000001) on every win.
+    - Switch between "High" and "Low" bets after a win (in the JS version).
+
+### 3. Verification
+- Analyzed screenshots of the bot interface and bet history.
+- Confirmed the bot is recording bets (Nonce values 62168 - 62190).
+- Noted that the bot was currently in "Manual" mode in the screenshot and the balance (0.00000007 BNB) was too low for the intended strategy.
+
+## Final Status
+> [!NOTE]
+> The bot is fully functional. To run the automated strategy, the user needs to switch to the **Strategy** tab and select **Programmer JS**.
+
+![Bot History Screenshot](C:\Users\shoaib\.gemini\antigravity\brain\8bd9210a-d8a6-410a-967b-37594f41baf6\uploaded_media_1773573323566.img)

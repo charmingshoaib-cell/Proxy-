@@ -1,0 +1,103 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:common="using:Gambler.Bot.Views.Common"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="Gambler.Bot.Views.Common.SimulationView"
+             xmlns:vm="using:Gambler.Bot.ViewModels.Common"
+             x:DataType="vm:SimulationViewModel"
+             xmlns:i="clr-namespace:Avalonia.Xaml.Interactivity;assembly=Avalonia.Xaml.Interactivity"
+             xmlns:behaviours="using:Gambler.Bot.Behaviours"
+             xmlns:sg="clr-namespace:SpacedGridControl.Avalonia;assembly=SpacedGridControl.Avalonia"
+             >
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <sg:SpacedGrid Margin="5" VerticalAlignment="Top" RowSpacing="3" ColumnSpacing="6" Grid.Column="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition />
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+              <RowDefinition/>
+
+            </Grid.RowDefinitions>
+            <TextBlock Grid.Column="0" Grid.Row="0" Text="{DynamicResource Localization.Common.Simulation.StartingBalance}"/>
+            <NumericUpDown Grid.Column="1" Grid.Row="0" FormatString="n8" Value="{Binding StartingBalance}" />
+            <TextBlock Grid.Column="0" Grid.Row="1" Text="{DynamicResource Localization.Common.RollVerify.NoBets}"/>
+            <NumericUpDown Grid.Column="1" Grid.Row="1" FormatString="n0" Maximum="10000000000" Minimum="10" Value="{Binding NumberOfBets}" />
+          <TextBlock Grid.Column="0" Grid.Row="2" Text="{DynamicResource Localization.Common.RollVerify.Game}"/>
+          <ComboBox Grid.Column="1" Grid.Row="2" ItemsSource="{Binding Bot.SiteGames}" SelectedItem="{Binding Game}" />
+            <!--
+            <TextBlock Grid.Column="0" Grid.Row="2"  Text="{Binding CurrentSite.SiteName}"/>
+            <TextBlock Grid.Column="0" Grid.Row="3"  Text="{Binding Strategy.StrategyName}"/>-->
+            <StackPanel Orientation="Horizontal" Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="3" HorizontalAlignment="Right">
+                <Button HorizontalAlignment="Right" VerticalAlignment="Top"  Content="{DynamicResource Localization.Common.Simulation.StartSimulation}" Command="{Binding StartCommand}" IsEnabled="{Binding NotRunning}"/>
+                <Button HorizontalAlignment="Right" VerticalAlignment="Top" Grid.Column="1" Grid.Row="2" Content="{DynamicResource Localization.Common.Simulation.StopSimulation}" Command="{Binding StopCommand}" IsEnabled="{Binding Running}"/>
+            </StackPanel>
+            <TextBlock Grid.Column="0" Grid.Row="4"  Text="{DynamicResource Localization.Common.Simulation.EnableBetLog}"/>
+            <ToggleSwitch IsChecked="{Binding Log}" Grid.Column="1" Grid.Row="4" HorizontalAlignment="Left" IsEnabled="{Binding NotRunning}" />
+            <TextBlock Grid.Column="0" Grid.Row="5"  Text="{DynamicResource Localization.Common.Simulation.ShowChart}"/>
+
+            <ToggleSwitch IsChecked="{Binding Chart.Enabled}"  ToolTip.Tip="{DynamicResource Localization.Common.Simulation.ChartSlow}"  Grid.Column="1" Grid.Row="5" HorizontalAlignment="Left"  />
+            <Button HorizontalAlignment="Right" IsEnabled="{Binding CanSave}" VerticalAlignment="Top" Grid.Column="1" Grid.Row="4"  Content="{DynamicResource Localization.Common.Simulation.SaveBets}" Command="{Binding SaveCommand}"/>
+            <TextBlock Grid.Column="0" Grid.Row="6"  Text="{DynamicResource Localization.Common.Simulation.ChartBets}"/>
+            <NumericUpDown Value="{Binding Chart.MaxItems}" Grid.Column="1" Grid.Row="6" HorizontalAlignment="Left"  />
+            <SelectableTextBlock Grid.Column="2" Grid.Row="7" Text="{DynamicResource Localization.Common.Balance}" />
+            <SelectableTextBlock Grid.Column="3" Grid.Row="7"  >
+                <i:Interaction.Behaviors>
+                    <behaviours:NumberFormatBehaviour Mask="n8" Text="{Binding Balance, Mode=OneWay}" />
+                </i:Interaction.Behaviors>
+            </SelectableTextBlock>
+            <SelectableTextBlock Grid.Column="2" Grid.Row="6" Text="{DynamicResource Localization.Common.Simulation.Progress}"/>
+            <SelectableTextBlock Grid.Column="3" Grid.Row="6"   >
+                <i:Interaction.Behaviors>
+                    <behaviours:NumberFormatBehaviour Mask="p5" Text="{Binding Progress, Mode=OneWay}" />
+                </i:Interaction.Behaviors>
+            </SelectableTextBlock>
+
+            <TextBlock Grid.Column="2" Grid.Row="0" Text="{DynamicResource Localization.Common.RollVerify.ServerSeed}"/>
+            <SelectableTextBlock Grid.Column="3" Grid.Row="0"  Text="{Binding CurrentSimulation.serverseed}"  />
+            <TextBlock Grid.Column="2" Grid.Row="1" Text="{DynamicResource Localization.Common.RollVerify.ServerSeedHash}"/>
+            <SelectableTextBlock Grid.Column="3" Grid.Row="1"   Text="{Binding CurrentSimulation.serverseedhash}" />
+            <TextBlock Grid.Column="2" Grid.Row="2" Text="{DynamicResource Localization.Common.RollVerify.ClientSeed}"/>
+            <SelectableTextBlock Grid.Column="3" Grid.Row="2"   Text="{Binding CurrentSimulation.clientseed}"  />
+
+            <TextBlock Grid.Column="2" Grid.Row="3" Text="{DynamicResource Localization.Common.Simulation.TimeRunning}"/>
+            <SelectableTextBlock Grid.Column="3" Grid.Row="3"    >
+                <i:Interaction.Behaviors>
+                    <behaviours:NumberFormatBehaviour Mask="d\,hh\:mm\:ss"  Text="{Binding TimeRunning , Mode=OneWay}" />
+                </i:Interaction.Behaviors>
+            </SelectableTextBlock>
+            <TextBlock Grid.Column="2" Grid.Row="4" Text="{DynamicResource Localization.Common.Simulation.ProjectedTime}"/>
+            <SelectableTextBlock Grid.Column="3" Grid.Row="4"     >
+                <i:Interaction.Behaviors>
+                    <behaviours:NumberFormatBehaviour Mask="d\,hh\:mm\:ss"  Text="{Binding ProjectedTime , Mode=OneWay}" />
+                </i:Interaction.Behaviors>
+            </SelectableTextBlock>
+            <TextBlock Grid.Column="2" Grid.Row="5" Text="{DynamicResource Localization.Common.Simulation.ProjectedRemaining}"/>
+            <SelectableTextBlock Grid.Column="3" Grid.Row="5"    >
+                <i:Interaction.Behaviors>
+                    <behaviours:NumberFormatBehaviour Mask="d\,hh\:mm\:ss"  Text="{Binding ProjectedRemaining , Mode=OneWay}" />
+                </i:Interaction.Behaviors>
+            </SelectableTextBlock>
+
+
+        </sg:SpacedGrid>
+        <common:SessionStatsView Grid.Row="1" DataContext="{Binding Stats}"  />
+        <common:ProfitChartView ShowAnimations="false" MinHeight="300" Grid.Row="2" DataContext="{Binding Chart}" IsVisible="{Binding Enabled}" />
+    </Grid>
+</UserControl>

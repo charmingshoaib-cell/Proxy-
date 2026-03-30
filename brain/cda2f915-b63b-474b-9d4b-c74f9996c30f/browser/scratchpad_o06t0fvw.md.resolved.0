@@ -1,0 +1,14 @@
+# Task: Inject Stake Dice Bot
+
+## Plan
+- [/] Open Stake Dice game URL.
+- [ ] Wait for page load.
+- [ ] Read local script content.
+- [ ] Inject script into the browser page.
+- [ ] Verify UI with screenshot.
+- [ ] Check console logs for errors.
+- [ ] Report results.
+
+## Notes
+- URL: https://stake.com/casino/games/dice
+- Script Path: c:\Users\shoaib\OneDrive\Desktop\stake_injection.js

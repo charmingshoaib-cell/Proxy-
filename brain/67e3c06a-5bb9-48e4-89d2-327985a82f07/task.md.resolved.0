@@ -1,0 +1,8 @@
+# Stake Bot Enhancement Task
+
+- [ ] Research existing bot files (Dice vs Crash) <!-- id: 0 -->
+- [ ] Investigate [stake_token.txt](file:///C:/Users/shoaib/.gemini/antigravity/scratch/stake_token.txt) origin <!-- id: 1 -->
+- [ ] Create Implementation Plan for requested features <!-- id: 2 -->
+- [ ] Implement Martingale Engine for Crash Analyzer <!-- id: 3 -->
+- [ ] Polish UI with Glassmorphism <!-- id: 4 -->
+- [ ] Verify functionality on Stake.com <!-- id: 5 -->

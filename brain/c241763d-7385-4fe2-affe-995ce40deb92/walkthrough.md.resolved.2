@@ -1,0 +1,51 @@
+# Changes Overview
+
+I have enhanced the **Gemini DevTool Suite** and the **AI Video Models Directory** with persistent storage and the latest Gemini models.
+
+## 1. Gemini DevTool Suite (Persistent History & New Models)
+
+### Backend Enhancements
+- **Modified** [server.js](file:///c:/Users/shoaib/.gemini/antigravity/scratch/gemini-devtool-suite/server.js): Added `/api/history` GET and POST endpoints.
+- **New File**: [chat_history.json](file:///c:/Users/shoaib/.gemini/antigravity/scratch/chat_history.json) created in the root to store your chat data.
+
+### Frontend Enhancements
+- **Modified** [ChatInterface.tsx](file:///c:/Users/shoaib/.gemini/antigravity/scratch/gemini-devtool-suite/components/ChatInterface.tsx):
+    - integrated server-side fetching on load.
+    - Added auto-save to server on every message.
+- **Modified** [types.ts](file:///c:/Users/shoaib/.gemini/antigravity/scratch/gemini-devtool-suite/types.ts): Added Gemini 1.5 Pro/Flash and 2.0 Flash Lite/Pro/Thinking.
+- **Modified** [services/geminiService.ts](file:///c:/Users/shoaib/.gemini/antigravity/scratch/gemini-devtool-suite/services/geminiService.ts): Updated default model.
+- **Fixed**: Moved [vite-env.d.ts](file:///c:/Users/shoaib/.gemini/antigravity/scratch/gemini-devtool-suite/vite-env.d.ts) to the root for correct TypeScript support.
+
+---
+
+## 3. Agentic Power Boost (Agentic IDE Features)
+
+I have transformed the suite into an **Agentic IDE**:
+
+### New Backend Capabilities (server.js)
+- **Terminal Execution**: Run shell commands directly via `/api/terminal`.
+- **Advanced File Management**: Create, read, and list files via `/api/files/*`.
+
+### New UI Features
+- **Agent Terminal**: A dedicated tab in the sidebar to run commands like `npm install` or `git status`.
+- **Workspace Explorer**: Browse your local files directly in the tool.
+- **Agentic Actions in Chat**:
+    - **"Apply" Button**: When I generate code, you can now enter a filename and click "Apply" to save it directly to your workspace.
+    - **"Run Command" Button**: For shell scripts, you can execute them instantly.
+
+---
+
+## Verification
+
+### 1. Persistent History
+1. Ensure `node server.js` is running.
+2. Send a message, refresh, and verify it stays.
+
+### 2. Agentic Terminal
+1. Switch to the **Terminal** tab in the sidebar.
+2. Run a command like `dir` or `echo "Power Active"`.
+
+### 3. File Automation
+1. Ask the Chat: "Create a test.txt file with some content."
+2. When the code block appears, enter `test.txt` and click **Apply**.
+3. Check your folder or the **Workspace** tab to see the new file!

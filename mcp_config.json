@@ -1,0 +1,59 @@
+{
+	"mcpServers": {
+		"cloudrun": {
+			"command": "npx",
+			"args": [
+				"-y",
+				"@google-cloud/cloud-run-mcp"
+			]
+		},
+		"firebase-mcp-server": {
+			"command": "npx",
+			"args": [
+				"-y",
+				"firebase-tools@latest",
+				"mcp"
+			]
+		},
+		"genkit-mcp-server": {
+			"command": "npx",
+			"args": [
+				"-y",
+				"genkit-cli@^1.28.0",
+				"mcp",
+				"--explicitProjectRoot",
+				"--no-update-notification",
+				"--non-interactive"
+			]
+		},
+		"cloud-sql-sqlserver-admin": {
+			"command": "npx",
+			"args": [
+				"-y",
+				"@toolbox-sdk/server@>=0.26.0",
+				"--prebuilt",
+				"cloud-sql-mssql-admin",
+				"--stdio",
+				"--user-agent-metadata",
+				"antigravity"
+			]
+		},
+		"figma-dev-mode-mcp-server": {
+			"command": "npx",
+			"args": [
+				"mcp-remote",
+				"http://127.0.0.1:3845/sse"
+			]
+		},
+		"GitKraken": {
+			"args": [
+				"mcp",
+				"--host=antigravity",
+				"--source=gitlens",
+				"--scheme=antigravity"
+			],
+			"command": "c:\\Users\\shoaib\\AppData\\Roaming\\Antigravity\\User\\globalStorage\\eamodio.gitlens\\gk.exe",
+			"type":    "stdio"
+		}
+	}
+}

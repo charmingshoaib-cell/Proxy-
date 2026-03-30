@@ -1,0 +1,8 @@
+- [x] Cleanup Misplaced Git Repository (C:\Users\shoaib\.git) (Solved: CMD rmdir success)
+- [/] Stabilize MCP Servers
+    - [ ] Add instructions for GitKraken Token
+    - [x] Run authentication for Cloud SQL Server Admin (Note: gcloud missing, providing instructions)
+    - [x] Diagnose Figma Dev Mode connection issues (Confirmed: Not running, providing instructions)
+- [ ] Success Verification
+    - [ ] Confirm git status is normal (not tracking 10k files)
+    - [ ] Verify MCP server status

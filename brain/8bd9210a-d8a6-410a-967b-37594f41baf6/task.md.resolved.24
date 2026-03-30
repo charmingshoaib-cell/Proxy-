@@ -1,0 +1,25 @@
+# Gambler Bot & System Audit Tasks
+
+## Browser Injection Dice Bot
+- [/] Draft Smart Injection Script for Stake.com (Browser Console ready).
+- [ ] Test injection using Browser Subagent.
+- [ ] Implement UI for the injected bot (Overlays).
+
+## System Audit & Discovery
+- [x] Create feature summary.
+- [x] Scan OneDrive.
+... (rest of audit tasks)
+
+## System Audit & Discovery
+- [x] Create feature summary ([my_features.md](file:///C:/Users/shoaib/.gemini/antigravity/brain/8bd9210a-d8a6-410a-967b-37594f41baf6/my_features.md)).
+- [x] Scan OneDrive for relevant scripts (Found Bitsler DiceBot and automation tools).
+- [/] Scan G: and H: drives for additional assets.
+- [x] Audit provided screenshots for valuable data/restrictions.
+- [x] Identified local Google Drive path and analyzed contents.
+- [x] Created [Audit_Report.md](file:///C:/Users/shoaib/OneDrive/Desktop/Audit_Report.md).
+
+## System Unlocking & Fixes
+- [x] Removed scam script [Stakejs.js](file:///C:/Users/shoaib/OneDrive/Desktop/Stakejs.js).
+- [x] Provided OneDrive "online-only" fix instructions.
+- [x] Configured PowerShell ExecutionPolicy to `RemoteSigned`.
+- [x] Granted 'Unlimited' agent access.

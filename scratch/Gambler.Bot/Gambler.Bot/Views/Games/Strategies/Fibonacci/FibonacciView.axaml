@@ -1,0 +1,77 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d" d:DesignWidth="400" d:DesignHeight="450"
+             x:Class="Gambler.Bot.Views.Games.Strategies.Fibonacci.FibonacciView"
+             xmlns:vm="using:Gambler.Bot.ViewModels.Strategies"
+             x:DataType="vm:FibonacciViewModel"
+             xmlns:dice="using:Gambler.Bot.Views.Games.Dice"
+             xmlns:system="using:System">
+    <StackPanel Orientation="Vertical">
+        <ContentControl Content="{Binding PlaceBetVM}">
+            <ContentControl.DataTemplates>
+                <DataTemplate DataType="dice:DicePlaceBetView">
+                    <dice:DicePlaceBetView/>
+                </DataTemplate>
+            </ContentControl.DataTemplates>
+        </ContentControl>
+        <Expander Margin="2"  Header="{DynamicResource Localization.Common.Reset.OnLoss}" IsExpanded="True" >
+            <Expander.HeaderTemplate>
+                <DataTemplate x:DataType="system:String" >
+                    <Grid>
+                        <TextBlock Text="{Binding}" HorizontalAlignment="Center"/>
+                    </Grid>
+                </DataTemplate>
+            </Expander.HeaderTemplate>
+            <StackPanel>
+
+                <StackPanel Orientation="Horizontal">
+                    <RadioButton GroupName="rdbOnLoss" IsChecked="{Binding Strategy.EnableFiboLossIncrement}" Content="{DynamicResource Localization.Strategy.Fibonacci.Increment}"></RadioButton>
+                    <NumericUpDown Value="{Binding Strategy.FiboLossIncrement}" Margin="5,0" MinWidth="200" />
+                    <TextBlock VerticalAlignment="Center">steps</TextBlock>
+                </StackPanel>
+                <RadioButton GroupName="rdbOnLoss" IsChecked="{Binding Strategy.EnableFiboLossReset}" Content="{DynamicResource Localization.Common.Reset}"></RadioButton>
+                <RadioButton GroupName="rdbOnLoss" IsChecked="{Binding Strategy.EnableFiboLossStop}" Content="{DynamicResource Localization.Common.Stop}"></RadioButton>
+
+            </StackPanel>
+        </Expander>
+        <Expander Margin="2"  Header="{DynamicResource Localization.Common.Reset.OnWin}" IsExpanded="True" >
+            <Expander.HeaderTemplate>
+                <DataTemplate x:DataType="system:String" >
+                    <Grid>
+                        <TextBlock Text="{Binding}" HorizontalAlignment="Center"/>
+                    </Grid>
+                </DataTemplate>
+            </Expander.HeaderTemplate>
+            <StackPanel>
+
+                <StackPanel Orientation="Horizontal">
+                    <RadioButton GroupName="rdbOnWin" IsChecked="{Binding Strategy.EnableFiboWinIncrement}" Content="{DynamicResource Localization.Strategy.Fibonacci.Increment}"></RadioButton>
+                    <NumericUpDown Value="{Binding Strategy.FiboWinIncrement}" Margin="5,0" MinWidth="200" />
+                    <TextBlock VerticalAlignment="Center">steps</TextBlock>
+                </StackPanel>
+                <RadioButton GroupName="rdbOnWin" IsChecked="{Binding Strategy.EnableFiboWinReset}" Content="{DynamicResource Localization.Common.Reset}"></RadioButton>
+                <RadioButton GroupName="rdbOnWin" IsChecked="{Binding Strategy.EnableFiboWinStop}" Content="{DynamicResource Localization.Common.Stop}"></RadioButton>
+
+            </StackPanel>
+
+        </Expander>
+        <Expander Margin="2"  Header="{DynamicResource Localization.Strategy.Fibonacci.MaxLevel}" IsExpanded="True" >
+            <Expander.HeaderTemplate>
+                <DataTemplate x:DataType="system:String" >
+                    <Grid>
+                        <TextBlock Text="{Binding}" HorizontalAlignment="Center"/>
+                    </Grid>
+                </DataTemplate>
+            </Expander.HeaderTemplate>
+            <StackPanel>
+                <NumericUpDown Value="{Binding Strategy.FiboLeve}" Margin="5,0" MinWidth="200" />
+                <RadioButton IsChecked="{Binding Strategy.EnableFiboLevelReset}" Content="{DynamicResource Localization.Common.Reset}"></RadioButton>
+                <RadioButton IsChecked="{Binding Strategy.EnableFiboLevelStop}" Content="{DynamicResource Localization.Common.Stop}"></RadioButton>
+
+            </StackPanel>
+
+        </Expander>
+    </StackPanel>
+</UserControl>

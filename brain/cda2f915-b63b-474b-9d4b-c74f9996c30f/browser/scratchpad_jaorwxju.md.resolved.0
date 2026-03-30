@@ -1,0 +1,7 @@
+# Task Plan: Find the "stable" betting file in Microsoft 365
+
+- [ ] Open Microsoft 365 URL: `https://m365.cloud.microsoft/apps?ocid=cmm22l8r231&auth=1`
+- [ ] Wait for page load and take screenshot
+- [ ] Identify visible apps and files
+- [ ] Search for the specific betting script mentioned by the user
+- [ ] Report findings to the user

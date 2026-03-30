@@ -1,0 +1,544 @@
+<current_dom_explanation>
+This is a temporary snapshot of the current page's DOM structure. The DOM will change if you navigate to or interact with another page. Use a tool like browser_get_dom to capture and preserve the DOM in your trajectory if needed for later reference.
+</current_dom_explanation>
+<current_dom>
+// ==================================================================
+// ANTIGRAVITY STAKE.COM DICE BOT - PLATINUM EDITION v4.0
+// ==================================================================
+// Features:
+//   ✅ STEALTH TIMING - Human-like randomized reaction delays
+//   ✅ COOLDOWN PHASE - Auto-pause after loss streaks to avoid detection
+//   ✅ POSITION SIZING - Hard-coded risk caps and stop-loss guards
+//   ✅ UNLIMITED RUNS - No session cap whatsoever
+//   ✅ 5 Strategies: Martingale, Fibonacci, D'Alembert, Paroli, Flat
+//   ✅ Glassmorphic premium UI (draggable & minimized mode)
+//   ✅ Emergency kill switch (press Esc key)
+//   ✅ Sound alerts on win/loss streaks
+// ==================================================================
+
+(function () {
+    'use strict';
+
+    // --- KILL previous instance if running ---
+    if (window.__AG_BOT__) {
+        window.__AG_BOT__.stop();
+        window.__AG_BOT__ = null;
+    }
+
+    // ==================================================================
+    // CONFIGURATION — EDIT THESE VALUES
+    // ==================================================================
+    const CONFIG = {
+        strategy: 'martingale',   // 'martingale' | 'fibonacci' | 'dalembert' | 'paroli' | 'flat'
+        baseBet: 0.000032,        // Starting bet amount
+        multiplier: 2.0,          // Martingale/Paroli multiplier
+        fibStep: 1,               // Fibonacci increment step
+        dalembertStep: 0.000001,  // D'Alembert step
+        targetProfit: 0.5,        // Target profit to stop at
+        stopLoss: 0.2,            // Stop loss to exit at
+        maxBet: 0.01,             // Hard cap per bet
+        speedMin: 1500,           // Min delay between rounds (ms)
+        speedMax: 3500,           // Max delay between rounds (ms)
+        reactionMin: 200,         // Min human reaction delay (ms)
+        reactionMax: 800,         // Max human reaction delay (ms)
+        soundAlerts: true,        // Play sound on big wins/losses
+        autoFlipSide: true,       // Randomly flip High/Low every N bets
+        flipEvery: 12,            // Flip side every N bets
+        cooldownOnStreak: 6,      // Enter cooldown after N consecutive losses
+        cooldownTime: 180000,     // Cooldown duration (3 mins)
+        retryOnError: true,       // Auto-retry if UI elements are not found
+        unlimitedMode: true       // Ignore profit/loss limits if true
+    };
+
+    // ==================================================================
+    // STATE ENGINE
+    // ==================================================================
+    const STATE = {
+        running: false,
+        isCooldown: false,
+        currentBet: CONFIG.baseBet,
+        initialBalance: 0,
+        lastBalance: 0,
+        totalProfit: 0,
+        sessionBets: 0,
+        wins: 0,
+        losses: 0,
+        streak: 0,            // current loss streak
+        winStreak: 0,
+        maxLossStreak: 0,
+        maxWinStreak: 0,
+        startTime: null,
+        fibSequence: [1, 1],  // for fibonacci strategy
+        fibIndex: 0,
+        errorCount: 0,
+        side: 'over'          // current side: 'over' | 'under'
+    };
+
+    // ==================================================================
+    // SOUND ENGINE
+    // ==================================================================
+    const Sound = {
+        ctx: null,
+        init() {
+            try { this.ctx = new (window.AudioContext || window.webkitAudioContext)(); } catch (e) { }
+        },
+        beep(freq = 440, dur = 0.1, vol = 0.1, type = 'sine') {
+            if (!this.ctx || !CONFIG.soundAlerts) return;
+            try {
+                const o = this.ctx.createOscillator();
+                const g = this.ctx.createGain();
+                o.connect(g); g.connect(this.ctx.destination);
+                o.frequency.value = freq; o.type = type;
+                g.gain.setValueAtTime(vol, this.ctx.currentTime);
+                o.start(this.ctx.currentTime);
+                o.stop(this.ctx.currentTime + dur);
+            } catch (e) { }
+        },
+        win() { this.beep(880, 0.15, 0.08); },
+        loss() { this.beep(220, 0.2, 0.08, 'sawtooth'); },
+        bigWin() { [500, 700, 900].forEach((f, i) => setTimeout(() => this.beep(f, 0.2, 0.1), i * 120)); },
+        bigLoss() { [300, 200, 150].forEach((f, i) => setTimeout(() => this.beep(f, 0.2, 0.1, 'sawtooth'), i * 120)); }
+    };
+
+    // ==================================================================
+    // STRATEGY ENGINE
+    // ==================================================================
+    const Strategy = {
+        onWin() {
+            switch (CONFIG.strategy) {
+                case 'martingale':
+                    STATE.currentBet = CONFIG.baseBet;
+                    break;
+                case 'fibonacci':
+                    STATE.fibIndex = Math.max(0, STATE.fibIndex - 2);
+                    STATE.currentBet = (STATE.fibSequence[STATE.fibIndex] || 1) * CONFIG.baseBet;
+                    break;
+                case 'dalembert':
+                    STATE.currentBet = Math.max(CONFIG.baseBet, STATE.currentBet - CONFIG.dalembertStep);
+                    break;
+                case 'paroli':
+                    if (STATE.winStreak >= 3) STATE.currentBet = CONFIG.baseBet;
+                    else STATE.currentBet = STATE.currentBet * CONFIG.multiplier;
+                    break;
+                case 'flat':
+                    STATE.currentBet = CONFIG.baseBet;
+                    break;
+            }
+        },
+        onLoss() {
+            switch (CONFIG.strategy) {
+                case 'martingale':
+                    STATE.currentBet = STATE.currentBet * CONFIG.multiplier;
+                    break;
+                case 'fibonacci':
+                    STATE.fibIndex++;
+                    while (STATE.fibSequence.length <= STATE.fibIndex) {
+                        const len = STATE.fibSequence.length;
+                        STATE.fibSequence.push(STATE.fibSequence[len - 1] + STATE.fibSequence[len - 2]);
+                    }
+                    STATE.currentBet = STATE.fibSequence[STATE.fibIndex] * CONFIG.baseBet;
+                    break;
+                case 'dalembert':
+                    STATE.currentBet = STATE.currentBet + CONFIG.dalembertStep;
+                    break;
+                case 'paroli':
+                    STATE.currentBet = CONFIG.baseBet;
+                    break;
+                case 'flat':
+                    STATE.currentBet = CONFIG.baseBet;
+                    break;
+            }
+        },
+        clamp() {
+            if (STATE.currentBet > CONFIG.maxBet) STATE.currentBet = CONFIG.maxBet;
+            if (STATE.currentBet < CONFIG.baseBet) STATE.currentBet = CONFIG.baseBet;
+        }
+    };
+
+    // ==================================================================
+    // DOM HELPERS
+    // ==================================================================
+    const DOM = {
+        getInput() {
+            return document.querySelector('input[data-test="wager-field"]')
+                || document.querySelectorAll('input[inputmode="decimal"]')[0]
+                || document.querySelector('input[name="bet_amount"]')
+                || document.querySelector('input[data-testid="amount-field"]');
+        },
+        getButton() {
+            return document.querySelector('button[data-test="bet-button"]')
+                || document.querySelector('button[data-testid="bet-btn"]')
+                || Array.from(document.querySelectorAll('button')).find(b => b.textContent.trim().toLowerCase().includes('bet'));
+        },
+        getBalance() {
+            const el = document.querySelector('[data-test="balance-amount"]')
+                || document.querySelector('[data-testid="balance"]')
+                || document.querySelector('.balance-value');
+            if (!el) return STATE.lastBalance;
+            const val = parseFloat(el.innerText.replace(/[^0-9.]/g, ''));
+            return isNaN(val) ? STATE.lastBalance : val;
+        },
+        setInput(value) {
+            const input = this.getInput();
+            if (!input) return false;
+            const nativeInputValueSetter = Object.getOwnPropertyDescriptor(window.HTMLInputElement.prototype, 'value').set;
+            nativeInputValueSetter.call(input, value.toFixed(8));
+            input.dispatchEvent(new Event('input', { bubbles: true }));
+            input.dispatchEvent(new Event('change', { bubbles: true }));
+            return true;
+        }
+    };
+
+    // ==================================================================
+    // LOGGER
+    // ==================================================================
+    const Logger = {
+        maxLines: 100,
+        add(msg, type = 'info') {
+            const box = document.getElementById('ag-log-box');
+            if (!box) return;
+            const t = new Date().toLocaleTimeString([], { hour12: false });
+            const colors = { win: '#00ff7f', loss: '#ff4b2b', info: '#aaa', warn: '#f0c040', error: '#ff6b6b' };
+            const line = document.createElement('div');
+            line.style.cssText = `border-left:2px solid ${colors[type] || colors.info};padding-left:6px;margin-bottom:3px;color:${colors[type] || colors.info};font-size:10px;`;
+            line.textContent = `[${t}] ${msg}`;
+            box.insertBefore(line, box.firstChild);
+            while (box.children.length > this.maxLines) box.lastChild.remove();
+        }
+    };
+
+    // ==================================================================
+    // UI BUILDER
+    // ==================================================================
+    function buildUI() {
+        if (document.getElementById('ag-overlay')) return;
+
+        const style = document.createElement('style');
+        style.textContent = `
+            @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap');
+            #ag-overlay {
+                position:fixed;top:70px;right:20px;z-index:2147483647;
+                width:340px;
+                background:rgba(8,10,14,0.93);
+                backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);
+                border:1px solid rgba(0,255,127,0.35);
+                border-radius:18px;
+                color:#fff;
+                font-family:'JetBrains Mono',monospace;
+                padding:22px;
+                box-shadow:0 25px 60px rgba(0,0,0,0.9),0 0 30px rgba(0,255,127,0.08);
+                user-select:none;
+                animation:ag-in 0.4s cubic-bezier(.16,1,.3,1);
+            }
+            @keyframes ag-in{from{opacity:0;transform:translateY(-25px) scale(.95)}to{opacity:1;transform:none}}
+            .ag-title{font-size:15px;font-weight:700;color:#00ff7f;text-align:center;letter-spacing:3px;margin-bottom:6px}
+            .ag-sub{font-size:9px;color:#444;text-align:center;margin-bottom:18px;letter-spacing:1px}
+            .ag-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:16px}
+            .ag-card{background:rgba(255,255,255,0.04);padding:10px 12px;border-radius:10px;border:1px solid rgba(255,255,255,0.06)}
+            .ag-lbl{font-size:9px;color:#555;text-transform:uppercase;letter-spacing:1px;display:block}
+            .ag-val{font-size:13px;font-weight:700;color:#fff;margin-top:3px;display:block}
+            .ag-green{color:#00ff7f!important}
+            .ag-red{color:#ff4b2b!important}
+            .ag-yellow{color:#f0c040!important}
+            .ag-wide{grid-column:span 2}
+            .ag-strat{display:flex;gap:5px;flex-wrap:wrap;margin-bottom:14px}
+            .ag-strat-btn{flex:1;padding:5px;border-radius:7px;border:1px solid rgba(255,255,255,0.1);background:rgba(255,255,255,0.05);color:#888;font-size:9px;cursor:pointer;text-align:center;text-transform:uppercase;letter-spacing:.5px;transition:all .2s;font-family:inherit}
+            .ag-strat-btn.active{background:rgba(0,255,127,0.15);border-color:#00ff7f;color:#00ff7f}
+            .ag-strat-btn:hover{border-color:rgba(0,255,127,0.4);color:#ccc}
+            .ag-btns{display:flex;gap:10px}
+            .ag-btn{flex:1;padding:13px;border-radius:12px;border:none;font-weight:900;cursor:pointer;text-transform:uppercase;letter-spacing:1px;font-family:inherit;font-size:11px;transition:transform .1s,filter .2s}
+            #ag-launch{background:linear-gradient(135deg,#00ff7f,#00c866);color:#000}
+            #ag-abort{background:linear-gradient(135deg,#ff4b2b,#cc2200);color:#fff}
+            .ag-btn:hover{filter:brightness(1.1)}
+            .ag-btn:active{transform:scale(.96)}
+            #ag-log-box{height:110px;overflow-y:auto;background:#000;border-radius:10px;margin-top:14px;padding:10px;border:1px solid rgba(0,255,127,0.15)}
+            #ag-log-box::-webkit-scrollbar{width:3px}
+            #ag-log-box::-webkit-scrollbar-thumb{background:#00ff7f;border-radius:2px}
+            .ag-divider{border:none;border-top:1px solid rgba(255,255,255,0.06);margin:14px 0}
+            .ag-esc{font-size:8px;color:#333;text-align:center;margin-top:10px;letter-spacing:.5px}
+        `;
+        document.head.appendChild(style);
+
+        const el = document.createElement('div');
+        el.id = 'ag-overlay';
+        el.innerHTML = `
+            <div class="ag-title">ANTIGRAVITY v4.0</div>
+            <div class="ag-sub">PLATINUM EDITION · STEALTH MODE</div>
+            <div class="ag-strat" id="ag-strat-wrap">
+                <div class="ag-strat-btn ${CONFIG.strategy === 'martingale' ? 'active' : ''}" data-s="martingale">Martingale</div>
+                <div class="ag-strat-btn ${CONFIG.strategy === 'fibonacci' ? 'active' : ''}" data-s="fibonacci">Fibonacci</div>
+                <div class="ag-strat-btn ${CONFIG.strategy === 'dalembert' ? 'active' : ''}" data-s="dalembert">D'Alembert</div>
+                <div class="ag-strat-btn ${CONFIG.strategy === 'paroli' ? 'active' : ''}" data-s="paroli">Paroli</div>
+                <div class="ag-strat-btn ${CONFIG.strategy === 'flat' ? 'active' : ''}" data-s="flat">Flat</div>
+            </div>
+            <div class="ag-grid" id="ag-stats">
+                <div class="ag-card"><span class="ag-lbl">Status</span><span id="st-status" class="ag-val ag-red">IDLE</span></div>
+                <div class="ag-card"><span class="ag-lbl">Strategy</span><span id="st-strat" class="ag-val ag-yellow">${CONFIG.strategy.toUpperCase()}</span></div>
+                <div class="ag-card"><span class="ag-lbl">Total Bets</span><span id="st-bets" class="ag-val">0</span></div>
+                <div class="ag-card"><span class="ag-lbl">Streak</span><span id="st-streak" class="ag-val">0</span></div>
+                <div class="ag-card"><span class="ag-lbl">Wins</span><span id="st-wins" class="ag-val ag-green">0</span></div>
+                <div class="ag-card"><span class="ag-lbl">Losses</span><span id="st-losses" class="ag-val ag-red">0</span></div>
+                <div class="ag-card ag-wide"><span class="ag-lbl">Session Profit</span><span id="st-profit" class="ag-val">0.00000000</span></div>
+                <div class="ag-card ag-wide"><span class="ag-lbl">Next Bet</span><span id="st-next" class="ag-val ag-green">0.00003200</span></div>
+                <div class="ag-card ag-wide"><span class="ag-lbl">Runtime</span><span id="st-time" class="ag-val">00:00:00</span></div>
+            </div>
+            <div class="ag-btns">
+                <button class="ag-btn" id="ag-launch">🚀 LAUNCH</button>
+                <button class="ag-btn" id="ag-abort">⛔ ABORT</button>
+            </div>
+            <div id="ag-log-box">Initializing...</div>
+            <div class="ag-esc">Press ESC to emergency stop</div>
+        `;
+        document.body.appendChild(el);
+
+        // Drag
+        let ox = 0, oy = 0, px = 0, py = 0;
+        el.onmousedown = (e) => {
+            if (['BUTTON', 'DIV'].includes(e.target.tagName) && e.target.className.includes('ag-strat-btn')) return;
+            if (e.target.tagName === 'BUTTON') return;
+            e.preventDefault();
+            ox = e.clientX; oy = e.clientY;
+            document.onmousemove = (e) => {
+                el.style.left = (el.offsetLeft - el.style.right.replace('px', '') + (e.clientX - ox)) + 'px';
+                el.style.right = 'auto';
+                el.style.top = (el.offsetTop + (e.clientY - oy)) + 'px';
+                ox = e.clientX; oy = e.clientY;
+            };
+            document.onmouseup = () => { document.onmousemove = null; document.onmouseup = null; };
+        };
+
+        // Strategy selector
+        document.querySelectorAll('.ag-strat-btn').forEach(btn => {
+            btn.onclick = () => {
+                if (STATE.running) return;
+                document.querySelectorAll('.ag-strat-btn').forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                CONFIG.strategy = btn.dataset.s;
+                document.getElementById('st-strat').textContent = CONFIG.strategy.toUpperCase();
+                Logger.add(`Strategy: ${CONFIG.strategy}`, 'info');
+            };
+        });
+
+        document.getElementById('ag-launch').onclick = Bot.start.bind(Bot);
+        document.getElementById('ag-abort').onclick = Bot.stop.bind(Bot);
+
+        // Runtime timer
+        setInterval(() => {
+            if (!STATE.running || !STATE.startTime) return;
+            const sec = Math.floor((Date.now() - STATE.startTime) / 1000);
+            const h = String(Math.floor(sec / 3600)).padStart(2, '0');
+            const m = String(Math.floor((sec % 3600) / 60)).padStart(2, '0');
+            const s = String(sec % 60).padStart(2, '0');
+            document.getElementById('st-time').textContent = `${h}:${m}:${s}`;
+        }, 1000);
+
+        Logger.add('System ready. Select strategy and LAUNCH.', 'info');
+    }
+
+    // ==================================================================
+    // UI UPDATE
+    // ==================================================================
+    function updateUI() {
+        const $ = id => document.getElementById(id);
+        if (!$('st-status')) return;
+        let statusText = 'IDLE';
+        let statusClass = 'ag-red';
+        if (STATE.running) {
+            statusText = STATE.isCooldown ? 'COOLDOWN' : 'DOMINATING';
+            statusClass = STATE.isCooldown ? 'ag-yellow' : 'ag-green';
+        }
+        $('st-status').textContent = statusText;
+        $('st-status').className = `ag-val ${statusClass}`;
+        $('st-bets').textContent = STATE.sessionBets;
+        $('st-wins').textContent = STATE.wins;
+        $('st-losses').textContent = STATE.losses;
+        $('st-streak').textContent = STATE.streak > 0 ? `-${STATE.streak}` : `+${STATE.winStreak}`;
+        $('st-streak').className = `ag-val ${STATE.streak > 0 ? 'ag-red' : 'ag-green'}`;
+        $('st-profit').textContent = STATE.totalProfit.toFixed(8);
+        $('st-profit').className = `ag-val ${STATE.totalProfit >= 0 ? 'ag-green' : 'ag-red'}`;
+        $('st-next').textContent = STATE.currentBet.toFixed(8);
+        $('st-strat').textContent = CONFIG.strategy.toUpperCase();
+    }
+
+    // ==================================================================
+    // BOT ENGINE
+    // ==================================================================
+    const Bot = {
+        _timer: null,
+
+        start() {
+            if (STATE.running) return;
+            STATE.running = true;
+            STATE.startTime = Date.now();
+            STATE.initialBalance = DOM.getBalance();
+            STATE.lastBalance = STATE.initialBalance;
+            STATE.totalProfit = 0;
+            STATE.sessionBets = 0;
+            STATE.wins = 0;
+            STATE.losses = 0;
+            STATE.streak = 0;
+            STATE.winStreak = 0;
+            STATE.currentBet = CONFIG.baseBet;
+            STATE.fibIndex = 0;
+            STATE.fibSequence = [1, 1];
+            STATE.errorCount = 0;
+            Sound.init();
+            Logger.add(`🚀 LAUNCHED | Strategy: ${CONFIG.strategy} | Balance: ${STATE.initialBalance}`, 'win');
+            updateUI();
+            this._loop();
+        },
+
+        stop() {
+            STATE.running = false;
+            clearTimeout(this._timer);
+            Logger.add(`⛔ ABORTED | Bets: ${STATE.sessionBets} | P/L: ${STATE.totalProfit.toFixed(8)}`, 'error');
+            updateUI();
+        },
+
+        _loop() {
+            if (!STATE.running) return;
+            this._bet();
+        },
+
+        _bet() {
+            if (!STATE.running || STATE.isCooldown) return;
+
+            const input = DOM.getInput();
+            const btn = DOM.getButton();
+
+            if (!input || !btn) {
+                STATE.errorCount++;
+                Logger.add(`⚠️ UI elements not found (attempt ${STATE.errorCount})`, 'warn');
+                if (CONFIG.retryOnError && STATE.errorCount < 20) {
+                    this._timer = setTimeout(() => this._loop(), 3000);
+                } else {
+                    Logger.add('❌ Too many errors. Stopping.', 'error');
+                    this.stop();
+                }
+                return;
+            }
+
+            STATE.errorCount = 0;
+
+            // Auto flip side
+            if (CONFIG.autoFlipSide && STATE.sessionBets > 0 && STATE.sessionBets % CONFIG.flipEvery === 0) {
+                STATE.side = STATE.side === 'over' ? 'under' : 'over';
+                Logger.add(`🔄 Anti-Detect: Side Flipped to ${STATE.side.toUpperCase()}`, 'info');
+            }
+
+            // Strategy clamp
+            Strategy.clamp();
+
+            // Set bet amount with human-like reaction time
+            const reaction = Math.floor(Math.random() * (CONFIG.reactionMax - CONFIG.reactionMin)) + CONFIG.reactionMin;
+            
+            setTimeout(() => {
+                DOM.setInput(STATE.currentBet);
+                
+                // Human-like pause after setting amount
+                setTimeout(() => {
+                    const balBefore = DOM.getBalance();
+                    Logger.add(`💰 Placing Bet: ${STATE.currentBet.toFixed(8)} | ${STATE.side.toUpperCase()}`, 'info');
+                    btn.click();
+                    STATE.sessionBets++;
+
+                    const processingDelay = Math.floor(Math.random() * (CONFIG.speedMax - CONFIG.speedMin)) + CONFIG.speedMin;
+                    this._timer = setTimeout(() => {
+                        this._processResult(balBefore);
+                    }, processingDelay);
+                }, reaction / 2);
+            }, reaction);
+        },
+
+        _processResult(balBefore) {
+            if (!STATE.running) return;
+
+            const balAfter = DOM.getBalance();
+            STATE.lastBalance = balAfter;
+            STATE.totalProfit = balAfter - STATE.initialBalance;
+
+            const diff = balAfter - balBefore;
+            const isWin = diff > 0.000000001;
+            const isLoss = diff < -0.000000001;
+
+            if (isWin) {
+                STATE.wins++;
+                STATE.winStreak++;
+                STATE.streak = 0;
+                Strategy.onWin();
+                Logger.add(`✅ WIN! +${diff.toFixed(8)} | P/L: ${STATE.totalProfit.toFixed(8)}`, 'win');
+                Sound.win();
+                if (STATE.winStreak >= 5) Sound.bigWin();
+            } else if (isLoss) {
+                STATE.losses++;
+                STATE.streak++;
+                STATE.winStreak = 0;
+                Strategy.onLoss();
+                Logger.add(`❌ LOSS | Streak: ${STATE.streak} | Next: ${STATE.currentBet.toFixed(8)}`, 'loss');
+                Sound.loss();
+                
+                // Cooldown Check
+                if (STATE.streak >= CONFIG.cooldownOnStreak) {
+                    this._enterCooldown();
+                    updateUI();
+                    return;
+                }
+            }
+
+            if (!CONFIG.unlimitedMode) {
+                if (STATE.totalProfit >= CONFIG.targetProfit) {
+                    Logger.add(`🎯 TARGET REACHED (+${STATE.totalProfit.toFixed(8)})`, 'win');
+                    this.stop(); return;
+                }
+                if (STATE.totalProfit <= -CONFIG.stopLoss) {
+                    Logger.add(`🛑 STOP LOSS HIT (${STATE.totalProfit.toFixed(8)})`, 'error');
+                    this.stop(); return;
+                }
+            }
+
+            updateUI();
+            this._timer = setTimeout(() => this._loop(), 500);
+        },
+
+        _enterCooldown() {
+            STATE.isCooldown = true;
+            Logger.add(`❄️ COOLDOWN PHASE: Pausing for ${CONFIG.cooldownTime / 60000}m to reset seat.`, 'warn');
+            Sound.bigLoss();
+            
+            setTimeout(() => {
+                STATE.isCooldown = false;
+                STATE.streak = 0; // Reset streak inside cooldown to resume fresh
+                Logger.add('🔥 COOLDOWN OVER: Resuming hunt...', 'win');
+                this._loop();
+            }, CONFIG.cooldownTime);
+        }
+    };
+
+    // ==================================================================
+    // ESC KEY KILL SWITCH
+    // ==================================================================
+    document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape' && STATE.running) {
+            Bot.stop();
+            Logger.add('🔴 ESC KEY — Emergency stop!', 'error');
+        }
+    });
+
+    // ==================================================================
+    // EXPOSE GLOBALLY
+    // ==================================================================
+    window.__AG_BOT__ = Bot;
+    window.__AG_CFG__ = CONFIG;
+
+    // ==================================================================
+    // INIT UI
+    // ==================================================================
+    buildUI();
+    Logger.add('Antigravity v3.0 UNLIMITED loaded. Press LAUNCH to begin.', 'info');
+
+    console.log('%c ANTIGRAVITY v3.0 UNLIMITED LOADED ', 'background:#000;color:#00ff7f;font-size:20px;font-weight:900;padding:8px;border:2px solid #00ff7f;border-radius:5px;');
+    console.log('%c window.__AG_CFG__ to change settings | ESC to stop ', 'color:#888;font-style:italic;');
+
+})();
+
+</current_dom>

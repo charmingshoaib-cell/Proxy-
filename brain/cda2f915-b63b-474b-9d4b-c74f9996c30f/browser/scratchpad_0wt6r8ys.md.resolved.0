@@ -1,0 +1,9 @@
+# Stake Dice Bot Launch Task
+
+- [ ] Navigate to https://stake.com/casino/games/dice
+- [ ] Wait for page load and take screenshot
+- [ ] Check if bot panel is visible
+- [ ] Inject bot if missing
+- [ ] Click "LAUNCH"
+- [ ] Verify bot is running (status: DOMINATING)
+- [ ] Capture final screenshot and report balance/status

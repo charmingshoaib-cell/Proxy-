@@ -1,0 +1,2730 @@
+ - File: js/agentic-patterns.md
+   Title: Implementing Agentic Patterns
+   Description: Learn to build powerful AI systems by understanding the trade-offs between reliable workflows and flexible agents, and implementing key agentic patterns with Genkit.
+   Headers:
+     ## Patterns on the agentic scale
+     ## Workflow: Sequential processing
+     ## Workflow: Conditional routing
+     ## Workflow: Parallel execution
+     ## Hybrid: Tool calling
+     ## Hybrid: Iterative refinement
+     ## Agent: Autonomous operation
+     ## Bonus: Stateful interactions
+     
+
+ - File: js/api-references.md
+   Title: API References
+   Description: Complete API documentation for Genkit, including detailed reference guides for all methods, classes, and interfaces.
+   Headers:
+     ## JavaScript/TypeScript API reference
+     ## Go API reference
+     ## Dart API reference
+     ## Python API reference
+     ## Community and support
+     
+
+ - File: js/api-stability.md
+   Title: API Stability Channels
+   Description: This document explains the API stability channels in Genkit, including stable and beta versions, and how to use them.
+   Headers:
+     ## Using the stable channel
+     ## Using the beta channel
+     ### Current features in beta
+     
+
+ - File: js/chat.md
+   Title: Creating persistent chat sessions
+   Description: Learn how to create persistent chat sessions in Genkit, including session basics, stateful sessions, multi-thread sessions, and session persistence.
+   Headers:
+     ## Before you begin
+     ## Chat session basics
+     ### Model configuration
+     ## Stateful chat sessions
+     ## Multi-thread sessions
+     ## Session persistence (EXPERIMENTAL)
+     ## Next steps
+     ## Before you begin
+     ## Session basics
+     ## Stateful sessions with tools
+     ## Using session state in prompts
+     ## Session persistence
+     ### Implementing a custom store
+     ### Firebase Firestore store
+     ## Session API reference
+     ### Creating sessions
+     ### Loading sessions
+     ### Accessing session state
+     ### Context integration
+     ## Next steps
+     
+
+ - File: js/client.md
+   Title: Accessing flows from the client
+   Description: Learn how to access Genkit flows from client-side applications.
+   Headers:
+     ## Using the Genkit client library
+     ### Non-streaming flow calls
+     ### Streaming flow calls
+     ### Custom object streaming
+     ### Working with Genkit data objects
+     ### Authentication
+     ## When deploying to Cloud Functions for Firebase
+     
+
+ - File: js/context.md
+   Title: Passing information through context
+   Description: Learn how Genkit's context object propagates generation and execution information throughout your application, making it available to flows, tools, and prompts.
+   Headers:
+     ## Why is context important?
+     ## Context structure
+     ## Use context in an action
+     ## Provide context at runtime
+     ## Context propagation and overrides
+     ## Why is context important?
+     ## Context structure
+     ## Use context in an action
+     ## Provide context at runtime
+     ## Context propagation
+     
+
+ - File: js/develop-with-ai.md
+   Title: AI-Assisted Development
+   Description: Configure AI tools and IDEs to work with Genkit for enhanced code generation.
+   Headers:
+     ## Usage
+     ### Supported AI tools
+     #### Gemini CLI
+     #### Other integrators
+     ### Genkit Agent Skills
+     #### Installation
+     #### Usage
+     ### Tips for using AI assistants with Genkit
+     ### Custom instructions
+     
+
+ - File: js/devtools.md
+   Title: Developer Tools
+   Description: Explore Genkit's developer tools, including the CLI for command-line operations and the local web-based Developer UI for interactive testing and development.
+   Headers:
+     ### Install the CLI
+     ### Command line interface (CLI)
+     ### Genkit Developer UI
+     # Running a typical development server
+     # Running a TypeScript file directly
+     # Running a JavaScript file directly
+     # Running a Go application
+     # Running a specific Go file
+     # Running a Python application
+     # Running a specific Python file
+     # Running with a virtual environment activated
+     # Running a Dart application
+     # Running a specific Dart file
+     ### Analytics
+     
+
+ - File: js/dotprompt.md
+   Title: Managing prompts with Dotprompt
+   Description: Learn how to use Dotprompt to manage prompts, models, and parameters for generative AI models, with a streamlined approach to prompt engineering and iteration.
+   Headers:
+     ## Before you begin
+     ## Creating prompt files
+     ### Creating a prompt directory
+     ### Creating a prompt file
+     #### Using a text editor
+     #### Using the Developer UI
+     ## Running prompts
+     ### Run prompts from code
+     # Access the text output
+     # optional final (aggregated) response
+     ### Using the Developer UI
+     ## Model configuration
+     ## Input and output schemas
+     ### Picoschema
+     ### JSON schema
+     ### Schema references defined in code
+     # output is now typed as MenuItem
+     # response.output is MenuItem
+     ## Tool calling
+     ## Prompt templates
+     ### Multi-message prompts
+     ### Multi-modal prompts
+     ### Partials
+     #### Defining partials in code
+     ### Defining custom helpers
+     ## Prompt variants
+     ## Defining prompts in code
+     # response.output is CountryList
+     ## Next steps
+     
+
+ - File: js/durable-streaming.md
+   Title: Durable Streaming
+   Description: Learn how to use durable streaming to persist flow state and allow client reconnection.
+   Headers:
+     ## How it works
+     ## Configuration
+     ### Development
+     ### Production
+     #### Firestore TTL setup
+     ## Framework integration
+     ### Express
+     ### Next.js
+     ### `net/http` server
+     ### Firestore-backed durable streaming
+     ## Client usage
+     ### Starting a new stream
+     ### Reconnecting to an existing stream
+     ## Limitations
+     ## Configuration options
+     ### InMemoryStreamManager options
+     ### FirestoreStreamManager options
+     
+
+ - File: js/error-types.md
+   Title: Error Types
+   Description: Learn about Genkit's specialized error types, GenkitError and UserFacingError, and how they are used to differentiate between internal and user-facing issues.
+
+ - File: js/evaluation.md
+   Title: Evaluation
+   Description: Learn about Genkit's evaluation capabilities, including inference-based and raw evaluation, dataset creation, and how to use the Developer UI and CLI for testing and analysis.
+   Headers:
+     ### Types of evaluation
+     ## Quick start
+     ### Setup
+     ### Create a dataset
+     ### Run evaluation and view results
+     ## Core concepts
+     ### Terminology
+     ### Schema validation
+     ## Supported evaluators
+     ### Genkit evaluators
+     ### Evaluator plugins
+     ### Custom evaluators
+     ## Advanced use
+     ### Evaluation comparison
+     #### Prerequisites
+     #### Comparing evaluations
+     ##### Metric highlighting (optional)
+     ### Evaluation using the CLI
+     #### `eval:flow` command
+     # Referencing an existing dataset
+     # or, using a dataset from a file
+     #### `eval:extractData` and `eval:run` commands
+     ### Batching evaluations
+     ### Custom extractors
+     ### Synthesizing test data using an LLM
+     ## Next steps
+     ## Learn more
+     ### Types of evaluation
+     ## Quick start
+     ### Setup
+     ### Create a dataset
+     ### Run evaluation and view results
+     ## Core concepts
+     ### Terminology
+     ## Supported evaluators
+     ### Genkit evaluators
+     ### Custom evaluators
+     ## Advanced use
+     ### Evaluation using the CLI
+     #### Evaluation `eval:flow` command
+     # Referencing an existing dataset
+     # or, using a dataset from a file
+     #### `eval:extractData` and `eval:run` commands
+     ## Next steps
+     ## Learn more
+     ### Types of evaluation
+     ## Quick start
+     ### Setup
+     # Initialize Genkit
+     # Dummy retriever that always returns the same docs
+     # Define input/output schemas
+     # A simple question-answering flow
+     # Add evaluators to your Genkit instance
+     ### Create a dataset
+     ### Run evaluation and view results
+     ## Core concepts
+     ### Terminology
+     ### Schema validation
+     ## Supported evaluators
+     ### Genkit evaluators
+     ### Evaluator plugins
+     ### Custom evaluators
+     ### Running evaluations programmatically
+     # ... define your evaluator ...
+     ## Advanced use
+     ### Evaluation comparison
+     #### Prerequisites
+     #### Comparing evaluations
+     ##### Metric highlighting (optional)
+     ### Evaluation using the CLI
+     #### `eval:flow` command
+     # Referencing an existing dataset
+     # or, using a dataset from a file
+     #### `eval:extractData` and `eval:run` commands
+     ### Custom extractors
+     ### Synthesizing test data using an LLM
+     ## Next steps
+     ## Learn more
+     
+
+ - File: js/feedback.md
+   Title: Connect with us
+   Description: Learn how to connect with the Genkit community and provide feedback on your experience with Genkit, including Discord and GitHub resources.
+   Headers:
+     ## Community resources
+     ## What we'd love to hear
+     ## Language-Specific feedback
+     ## Contributing
+     ## Next steps
+     
+
+ - File: js/flows.md
+   Title: Defining AI workflows
+   Description: Learn how to define and manage AI workflows in Genkit using flows, which provide type safety, integration with the developer UI, and simplified deployment.
+   Headers:
+     ## Defining and calling flows
+     ### Input and output schemas
+     ### Calling flows
+     ## Streaming flows
+     #### Using iterator-based streaming
+     #### Using callback-based streaming
+     #### Using channel-based streaming (experimental)
+     ### Calling streaming flows
+     ## Running flows from the command line
+     ## Debugging flows
+     ### Flow steps
+     ### Flow steps
+     ### Flow steps
+     ## Deploying flows
+     ### Cloud Functions for Firebase
+     ### Express.js
+     ### `net/http` server
+     ### Other server frameworks
+     ### FastAPI
+     # Initialize Genkit
+     ### Calling deployed flows
+     ### Learn more about deployment
+     
+
+ - File: js/get-started.md
+   Title: Get started with Genkit
+   Description: Learn how to get started with Genkit, including project setup, installing packages, configuring API keys, creating your first flow, and testing in the Developer UI.
+   Headers:
+     ## Prerequisites
+     # On macOS and Linux
+     # On Windows
+     ## Set up your project
+     # Create and navigate to a new directory
+     # Initialize a new Node.js project
+     # Install and configure TypeScript
+     # Set up your source directory
+     ## Install Genkit packages
+     ## Configure your model API key
+     ## Create your first application
+     # Initialize Genkit with the Google AI plugin
+     # Define input schema
+     # Define output schema
+     # Define a recipe generator flow
+     ### Why use flows?
+     ## Run your application
+     ## Test your flow via HTTP
+     ## Test in the Developer UI
+     ### Start the Developer UI
+     ##### Optional: Add an npm script
+     ### Run and inspect flows
+     ## Next steps
+     
+
+ - File: js/interrupts.md
+   Title: Pause generation using interrupts
+   Description: Learn how to use interrupts in Genkit to pause and resume LLM generation, enabling human-in-the-loop interactions, asynchronous processing, and controlled task completion.
+   Headers:
+     ## Before you begin
+     ## Overview of interrupts
+     ## Define manual-response interrupts
+     ### Use interrupts
+     ### Respond to interrupts
+     ## Tools with restartable interrupts
+     ### Define a restartable tool
+     ### Restart tools after interruption
+     ## Before you begin
+     ## Overview of interrupts
+     ## Defining tools with interrupts
+     ### Use interrupts
+     ### Respond to interrupts
+     ## Tools with restartable interrupts
+     ### Define a restartable tool
+     ### Restart tools after interruption
+     ### Access original input after replacement
+     ## Before you begin
+     ## Overview of interrupts
+     ## Define manual-response interrupts
+     ### Use interrupts
+     ### Respond to interrupts
+     ## Tools with restartable interrupts
+     ### Define a restartable tool
+     ### Restart tools after interruption
+     ## Before you begin
+     ## Overview of interrupts
+     ## Define manual-response interrupts
+     ### Use interrupts
+     ### Respond to interrupts
+     # You can check the 'finish_reason' attribute of the response
+     # Or you can check if any interrupt requests are on the response
+     # Get the user's answer (e.g., from user input)
+     # Resume generation with the tool response
+     ### Handle multiple interrupts in a loop
+     ## Tools with confirmation interrupts
+     ## Using interrupts with flows
+     
+
+ - File: js/local-observability.md
+   Title: Local observability and metrics
+   Description: Learn about Genkit's local observability features, including tracing, metrics collection, and logging, powered by OpenTelemetry and integrated with the Genkit Developer UI.
+   Headers:
+     ## Tracing
+     ## Tracing & metrics
+     ## Log and export events
+     ## Log and export events
+     ## Production observability
+     
+
+ - File: js/mcp-server.md
+   Title: Genkit MCP Server
+   Description: Integrate Genkit with MCP-aware IDEs and tools.
+   Headers:
+     ## What is the MCP server?
+     ## Getting started
+     ### Configuring the MCP server
+     ## Integration with AI development tools
+     ### Video tutorial
+     ## Using the MCP server
+     ### Get Genkit usage guide
+     ### Access Genkit documentation
+     ### Runtime management
+     ### List Genkit flows
+     ### Run Genkit flows
+     ### Get trace details
+     ## Local development and documentation bundle
+     
+
+ - File: js/model-context-protocol.md
+   Title: Model Context Protocol (MCP)
+   Description: Learn how to extend Genkit's capabilities using the Model Context Protocol to connect with external tools, resources, and data sources.
+   Headers:
+     ## Installation
+     ## MCP host
+     ### `createMcpHost()` options
+     ## MCP client (single server)
+     ### `createMcpClient()` options
+     ### Using MCP actions (tools, prompts)
+     ### Tool responses
+     ## MCP server
+     ### `createMcpServer()` options
+     ### Known limitations
+     ### Testing your MCP server
+     ## Prerequisites
+     ## Configuration
+     ### Single Server Connection
+     ### Multiple server management
+     ### Exposing as MCP server
+     ## Usage
+     ### Using Tools from MCP Servers
+     ### Using prompts from MCP servers
+     ### Managing multiple servers
+     ### Running as MCP server
+     ## Transport options
+     ### Stdio Transport
+     ## Testing
+     ### Testing Your MCP Server
+     # Run your server
+     # Test with MCP Inspector in another terminal
+     ## Configuration options
+     ### MCPClientOptions
+     ### StdioConfig
+     ### MCPServerConfig
+     ### MCPHostOptions
+     ### MCPServerOptions
+     
+
+ - File: js/models.md
+   Title: Generating content with AI models
+   Description: Learn how to generate content with AI models using Genkit's unified interface, covering basic usage, configuration, structured output, streaming, and multimodal input/output.
+   Headers:
+     ### Before you begin
+     ### Loading and configuring model plugins
+     ### The generate() method
+     ## The Blackheart's Bounty
+     ### System prompts
+     ### Multi-turn conversations with messages
+     ### Model parameters
+     #### Parameters that control output length
+     #### Parameters that control "creativity"
+     #### Experiment with model parameters
+     ### Structured output
+     #### Handling errors
+     ### Streaming
+     ### Multimodal input
+     ### Generating media
+     #### Image generation
+     #### Audio generation
+     ### Middleware
+     #### Retry middleware
+     #### Fallback middleware
+     #### Model safety
+     #### Custom middleware
+     ### Next steps
+     #### Learn more about Genkit
+     #### Advanced LLM use
+     #### Testing model output
+     ### The `genkit.Generate()` function
+     ## The Blackheart's Bounty
+     ### System prompts
+     ### Model parameters
+     #### Parameters that control output length
+     #### Parameters that control "creativity"
+     #### Experiment with model parameters
+     #### Pair model with its config
+     ### Structured output
+     #### Using registered schemas
+     #### Handling errors
+     ### Streaming
+     #### Iterator-based streaming
+     #### Streaming structured output
+     #### Callback-based streaming
+     ### Multimodal input
+     ### Next steps
+     #### Learn more about Genkit
+     #### Advanced LLM use
+     ### The `ai.generate()` method
+     ### System prompts
+     ### Model parameters
+     ### Structured output
+     ### Streaming
+     ### Multimodal input
+     ### Generating media
+     ### Middleware
+     #### Retry middleware
+     ### Consuming remote models
+     ### The generate() method
+     ## The Blackheart's Bounty
+     ### System prompts
+     ### Model parameters
+     #### Parameters that control output length
+     #### Parameters that control "creativity"
+     #### Experiment with model parameters
+     ### Structured output
+     #### Handling errors
+     ### Streaming
+     ### Multimodal input
+     # Assume read_file is defined elsewhere to read image bytes
+     # def read_file(path):
+     #     with open(path, 'rb') as f:
+     #         return f.read()
+     ### Next steps
+     #### Advanced LLM use
+     #### Testing model output
+     
+
+ - File: js/multi-agent.md
+   Title: Building multi-agent systems
+   Description: Learn how to build multi-agent systems in Genkit by delegating tasks to specialized agents, addressing challenges of complex agentic workflows.
+
+ - File: js/overview.md
+   Title: Genkit | Open-source AI development framework by Google
+   Description: Build high-quality GenAI features for your app with intuitive Genkit SDKs.
+   Headers:
+     ## Explore & build with Genkit
+     ## Key capabilities
+     ## How does it work?
+     ## Implementation path
+     ## Connect with us
+     
+
+ - File: js/rag.md
+   Title: Retrieval-augmented generation (RAG)
+   Description: Learn how Genkit simplifies retrieval-augmented generation (RAG) by providing abstractions and plugins for indexers, embedders, and retrievers to incorporate external data into LLM responses.
+   Headers:
+     ## What is RAG?
+     ### Indexers
+     ### Embedders
+     ### Retrievers
+     ## Supported indexers, retrievers, and embedders
+     ## Defining a RAG flow
+     ### Install dependencies for processing PDFs
+     ### Add a local vector store to your configuration
+     ### Define an indexer
+     #### Create the indexer
+     #### Create chunking config
+     #### Define your indexer flow
+     #### Run the indexer flow
+     ### Define a flow with retrieval
+     #### Run the retriever flow
+     ## Write your own indexers and retrievers
+     ### Simple retrievers
+     ### Custom retrievers
+     ### Rerankers and Two-Stage retrieval
+     #### Reranker example
+     #### Custom rerankers
+     ### Embedders
+     ### Retrievers
+     ## Supported retrievers and embedders
+     ## Defining a RAG flow
+     ### Install dependencies
+     #### Create chunking config
+     ### Initialize Genkit and vector store
+     #### Define your indexer flow
+     #### Run the indexer flow
+     ### Define a flow with retrieval
+     ## Write your own retrievers
+     ### Indexers
+     #### Defining an indexer
+     #### Using an indexer
+     # Prepare your documents
+     # Index the documents
+     #### Using an IndexerRef
+     # Reference an indexer
+     # Use the reference with ai.index()
+     ### Embedders
+     ### Retrievers
+     ## Defining a RAG flow
+     # Define a Firestore vector store retriever (returns the retriever action name).
+     # Important: use the same embedding model for indexing and retrieval.
+     #### Run the retriever flow
+     ## Write your own retrievers
+     ## Next steps
+     
+
+ - File: js/tool-calling.md
+   Title: Tool calling
+   Description: Learn how to enable LLMs to interact with external applications and data using Genkit's tool calling feature, covering tool definition, usage, and advanced scenarios.
+   Headers:
+     ## Before you begin
+     ## Overview of tool calling
+     ## Tool calling with Genkit
+     ### Model support
+     ### Defining tools
+     ### Using tools
+     ### Streaming and tool calling
+     ### Limiting tool call iterations with `maxTurns`
+     ### Pause the tool loop by using interrupts
+     ### Explicitly handling tool calls
+     ## Extending tool capabilities with MCP
+     ## Next steps
+     ## Before you begin
+     ## Overview of tool calling
+     ## Tool calling with Genkit
+     ### Model support
+     ### Defining tools
+     ### Using tools
+     ### Explicitly handling tool calls
+     ## Before you begin
+     ### Models supported by Genkit
+     ### Defining tools
+     ### Using tools
+     ### Explicitly handling tool calls
+     ## Before you begin
+     ## Overview of tool calling
+     ## Tool calling with Genkit
+     ### Model support
+     ### Defining tools
+     ### Using tools
+     # assuming prompt file is named weatherPrompt.prompt
+     ### Streaming and tool calling
+     ### Limiting tool call iterations with `max_turns`
+     ### Pause the tool loop by using interrupts
+     ### Explicitly handling tool calls
+     ## Extending tool capabilities with MCP
+     ## Next steps
+     
+
+ - File: js/tutorials/chat-with-pdf.md
+   Title: Chat with a PDF file
+   Description: Learn how to build a conversational application that allows users to extract information from PDF documents using natural language across JavaScript, Go, and Python.
+   Headers:
+     ## Prerequisites
+     ## Implementation Steps
+     ### 1. Set up your project
+     ### 2. Import the required dependencies
+     ### 3. Configure Genkit and the default model
+     ### 4. Load and parse the PDF
+     ### 5. Set up the prompt
+     ### 6. Implement the UI
+     ### 7. Implement the chat loop
+     ### 8. Run the app
+     
+
+ - File: js/tutorials/summarize-youtube-videos.md
+   Title: Summarize YouTube videos
+   Description: Learn how to build a conversational application that allows users to summarize YouTube videos and chat about their contents using natural language across JavaScript, Go, and Python.
+   Headers:
+     ## Prerequisites
+     ## Implementation Steps
+     ### 1. Set up your project
+     ### 2. Import the required dependencies
+     ### 3. Configure Genkit and the default model
+     ### 4. Parse the command line and get the video URL
+     ### 5. Set up the prompt
+     ### 6. Generate the response
+     ### 7. Run the app
+     
+
+ - File: js/plugin-authoring/overview.md
+   Title: Creating Genkit Plugins
+   Description: Learn how to extend Genkit's capabilities by writing custom plugins, covering plugin creation, options, and implementing new model providers.
+   Headers:
+     ## Creating a Plugin
+     ### Plugin options guidance
+     ## Building your plugin
+     ### Model plugins
+     #### Transforming Requests and Responses
+     #### Action References (Models, Embedders, etc.)
+     ## Publishing a plugin
+     ## Creating a Plugin
+     ### Provider ID
+     ### Standard Exports
+     ## Building Plugin Features
+     ### Model Plugins
+     #### Model definitions
+     #### Declaring model capabilities
+     #### Defining your model's config schema
+     #### Transforming requests and responses
+     #### Exports
+     ### Telemetry Plugins
+     #### Exporters and Loggers
+     #### Building the plugin
+     ##### Dependencies
+     ##### `Config`
+     ##### `Init()`
+     #### PII redaction
+     #### Troubleshooting
+     ## Publishing a Plugin
+     ## Creating a Plugin
+     ### 1. Define the Plugin
+     ### 2. Register the Plugin
+     ### 3. Idiomatic usage
+     ### 4. Publishing a Plugin
+     # ...
+     ## Creating a Plugin
+     ### Basic Plugin Structure
+     ### Plugin Options Guidance
+     ## Building Plugin Features
+     ### Model Plugins
+     #### Defining a Model
+     #### Model Capabilities
+     ## Publishing a Plugin
+     ### Recommended Keywords
+     
+
+ - File: js/observability/advanced-configuration.md
+   Title: Advanced Configuration
+   Description: This guide covers advanced configuration options for Genkit's Firebase telemetry plugin, including fine-tuning telemetry collection, export settings, and disabling specific data types.
+   Headers:
+     ## Default Configuration
+     ## Export local telemetry
+     ## Adjust auto instrumentation
+     ## Disable telemetry
+     ### Disable input and output logging
+     ### Disable metrics
+     ### Disable traces
+     
+
+ - File: js/observability/authentication.md
+   Title: Authentication and authorization
+   Description: Learn how to authenticate and authorize the Firebase telemetry plugin for Genkit, covering API enablement, user authentication, and deployment to Google Cloud or other environments.
+   Headers:
+     ## Enable APIs
+     ## User Authentication
+     ## Deploy to Google Cloud
+     ## Deploy outside of Google Cloud (with ADC)
+     ## Deploy outside of Google Cloud (without ADC)
+     ## Find or create your service account
+     
+
+ - File: js/observability/getting-started.md
+   Title: Get started with Genkit Monitoring
+   Description: This quickstart guide explains how to set up Genkit Monitoring for your deployed Genkit features to collect and view real-time telemetry data, including metrics, traces, and production trace exports for evaluations.
+   Headers:
+     ## Before you begin
+     ## Step 1. Add the Firebase plugin
+     ### Environment-based configuration
+     ### Programmatic configuration
+     ## Step 2. Enable the required APIs
+     ## Step 3. Set up permissions
+     ## Step 4. (Optional) Test your configuration locally
+     ## Step 5. Re-build and deploy code
+     
+
+ - File: js/observability/telemetry-collection.md
+   Title: Telemetry Collection
+   Description: This document details the metrics, trace attributes, and logs collected by the Firebase telemetry plugin for Genkit, along with information on latency, quotas, and cost.
+   Headers:
+     ## Telemetry delay
+     ## Quotas and limits
+     ## Cost
+     ## Metrics
+     ### Feature metrics
+     ### Action metrics
+     ### Generate metrics
+     ## Traces
+     ### Root Spans
+     ### Flow
+     ### Util
+     ### Model
+     ### Tool
+     ## Logs
+     ### Input
+     ### Output
+     ### Config
+     ### Paths
+     
+
+ - File: js/observability/troubleshooting.md
+   Title: Genkit Monitoring - Troubleshooting
+   Description: This guide provides solutions to common issues encountered when using Genkit Monitoring, including problems with traces, metrics, and telemetry export.
+   Headers:
+     ## I can't see traces or metrics in Genkit Monitoring
+     ## Request count does not match traces count
+     ### Metric and trace export intervals can be different
+     ### Intermittent network issues
+     ### Intermittent network issues
+     ### Telemetry upload reliability in Firebase Functions or Cloud Run
+     
+
+ - File: js/js/agentic-patterns.md
+   Title: Implementing Agentic Patterns
+   Description: Learn to build powerful AI systems by understanding the trade-offs between reliable workflows and flexible agents, and implementing key agentic patterns with Genkit.
+   Headers:
+     ## Patterns on the agentic scale
+     ## Workflow: Sequential processing
+     ## Workflow: Conditional routing
+     ## Workflow: Parallel execution
+     ## Hybrid: Tool calling
+     ## Hybrid: Iterative refinement
+     ## Agent: Autonomous operation
+     ## Bonus: Stateful interactions
+     
+
+ - File: js/js/api-references.md
+   Title: API References
+   Description: Complete API documentation for Genkit, including detailed reference guides for all methods, classes, and interfaces.
+   Headers:
+     ## JavaScript/TypeScript API reference
+     ## Community and support
+     
+
+ - File: js/js/api-stability.md
+   Title: API Stability Channels
+   Description: This document explains the API stability channels in Genkit, including stable and beta versions, and how to use them.
+   Headers:
+     ## Using the stable channel
+     ## Using the beta channel
+     ### Current features in beta
+     
+
+ - File: js/js/chat.md
+   Title: Creating persistent chat sessions
+   Description: Learn how to create persistent chat sessions in Genkit, including session basics, stateful sessions, multi-thread sessions, and session persistence.
+   Headers:
+     ## Before you begin
+     ## Chat session basics
+     ### Model configuration
+     ## Stateful chat sessions
+     ## Multi-thread sessions
+     ## Session persistence (EXPERIMENTAL)
+     ## Next steps
+     
+
+ - File: js/js/context.md
+   Title: Passing information through context
+   Description: Learn how Genkit's context object propagates generation and execution information throughout your application, making it available to flows, tools, and prompts.
+   Headers:
+     ## Why is context important?
+     ## Context structure
+     ## Use context in an action
+     ## Provide context at runtime
+     ## Context propagation and overrides
+     
+
+ - File: js/js/develop-with-ai.md
+   Title: AI-Assisted Development
+   Description: Configure AI tools and IDEs to work with Genkit for enhanced code generation.
+   Headers:
+     ## Usage
+     ### Supported AI tools
+     #### Gemini CLI
+     #### Other integrators
+     ### Genkit Agent Skills
+     #### Installation
+     #### Usage
+     ### Tips for using AI assistants with Genkit
+     ### Custom instructions
+     
+
+ - File: js/js/devtools.md
+   Title: Developer Tools
+   Description: Explore Genkit's developer tools, including the CLI for command-line operations and the local web-based Developer UI for interactive testing and development.
+   Headers:
+     ### Install the CLI
+     ### Command line interface (CLI)
+     ### Genkit Developer UI
+     # Running a typical development server
+     # Running a TypeScript file directly
+     # Running a JavaScript file directly
+     ### Analytics
+     
+
+ - File: js/js/dotprompt.md
+   Title: Managing prompts with Dotprompt
+   Description: Learn how to use Dotprompt to manage prompts, models, and parameters for generative AI models, with a streamlined approach to prompt engineering and iteration.
+   Headers:
+     ## Before you begin
+     ## Creating prompt files
+     ### Creating a prompt directory
+     ### Creating a prompt file
+     #### Using a text editor
+     #### Using the Developer UI
+     ## Running prompts
+     ### Run prompts from code
+     ### Using the Developer UI
+     ## Model configuration
+     ## Input and output schemas
+     ### Picoschema
+     ### JSON schema
+     ### Schema references defined in code
+     ## Tool calling
+     ## Prompt templates
+     ### Multi-message prompts
+     ### Multi-modal prompts
+     ### Partials
+     #### Defining partials in code
+     ### Defining custom helpers
+     ## Prompt variants
+     ## Defining prompts in code
+     ## Next steps
+     
+
+ - File: js/js/durable-streaming.md
+   Title: Durable Streaming
+   Description: Learn how to use durable streaming to persist flow state and allow client reconnection.
+   Headers:
+     ## How it works
+     ## Configuration
+     ### Development
+     ### Production
+     ## Framework integration
+     ### Express
+     ### Next.js
+     ## Client usage
+     ## Limitations
+     ## Configuration options
+     
+
+ - File: js/js/error-types.md
+   Title: Error Types
+   Description: Learn about Genkit's specialized error types, GenkitError and UserFacingError, and how they are used to differentiate between internal and user-facing issues.
+
+ - File: js/js/evaluation.md
+   Title: Evaluation
+   Description: Learn about Genkit's evaluation capabilities, including inference-based and raw evaluation, dataset creation, and how to use the Developer UI and CLI for testing and analysis.
+   Headers:
+     ### Types of evaluation
+     ## Quick start
+     ### Setup
+     ### Create a dataset
+     ### Run evaluation and view results
+     ## Core concepts
+     ### Terminology
+     ### Schema validation
+     ## Supported evaluators
+     ### Genkit evaluators
+     ### Evaluator plugins
+     ### Custom evaluators
+     ## Advanced use
+     ### Evaluation comparison
+     #### Prerequisites
+     #### Comparing evaluations
+     ##### Metric highlighting (optional)
+     ### Evaluation using the CLI
+     #### `eval:flow` command
+     # Referencing an existing dataset
+     # or, using a dataset from a file
+     #### `eval:extractData` and `eval:run` commands
+     ### Batching evaluations
+     ### Custom extractors
+     ### Synthesizing test data using an LLM
+     ## Next steps
+     ## Learn more
+     
+
+ - File: js/js/flows.md
+   Title: Defining AI workflows
+   Description: Learn how to define and manage AI workflows in Genkit using flows, which provide type safety, integration with the developer UI, and simplified deployment.
+   Headers:
+     ## Defining and calling flows
+     ### Input and output schemas
+     ### Calling flows
+     ## Streaming flows
+     ### Calling streaming flows
+     ## Running flows from the command line
+     ## Debugging flows
+     ### Flow steps
+     ## Deploying flows
+     ### Cloud Functions for Firebase
+     ### Express.js
+     ### Calling deployed flows
+     ### Learn more about deployment
+     
+
+ - File: js/js/get-started.md
+   Title: Get started with Genkit
+   Description: Learn how to get started with Genkit, including project setup, installing packages, configuring API keys, creating your first flow, and testing in the Developer UI.
+   Headers:
+     ## Prerequisites
+     ## Set up your project
+     # Create and navigate to a new directory
+     # Initialize a new Node.js project
+     # Install and configure TypeScript
+     # Set up your source directory
+     ## Install Genkit packages
+     ## Configure your model API key
+     ## Create your first application
+     ### Why use flows?
+     ## Run your application
+     ## Test in the Developer UI
+     ### Start the Developer UI
+     ##### Optional: Add an npm script
+     ### Run and inspect flows
+     ## Next steps
+     
+
+ - File: js/js/interrupts.md
+   Title: Pause generation using interrupts
+   Description: Learn how to use interrupts in Genkit to pause and resume LLM generation, enabling human-in-the-loop interactions, asynchronous processing, and controlled task completion.
+   Headers:
+     ## Before you begin
+     ## Overview of interrupts
+     ## Define manual-response interrupts
+     ### Use interrupts
+     ### Respond to interrupts
+     ## Tools with restartable interrupts
+     ### Define a restartable tool
+     ### Restart tools after interruption
+     
+
+ - File: js/js/local-observability.md
+   Title: Local observability and metrics
+   Description: Learn about Genkit's local observability features, including tracing, metrics collection, and logging, powered by OpenTelemetry and integrated with the Genkit Developer UI.
+   Headers:
+     ## Tracing & metrics
+     ## Log and export events
+     ## Production observability
+     
+
+ - File: js/js/model-context-protocol.md
+   Title: Model Context Protocol (MCP)
+   Description: Learn how to extend Genkit's capabilities using the Model Context Protocol to connect with external tools, resources, and data sources.
+   Headers:
+     ## Installation
+     ## MCP host
+     ### `createMcpHost()` options
+     ## MCP client (single server)
+     ### `createMcpClient()` options
+     ### Using MCP actions (tools, prompts)
+     ### Tool responses
+     ## MCP server
+     ### `createMcpServer()` options
+     ### Known limitations
+     ### Testing your MCP server
+     
+
+ - File: js/js/models.md
+   Title: Generating content with AI models
+   Description: Learn how to generate content with AI models using Genkit's unified interface, covering basic usage, configuration, structured output, streaming, and multimodal input/output.
+   Headers:
+     ### Before you begin
+     ### Loading and configuring model plugins
+     ### The generate() method
+     ## The Blackheart's Bounty
+     ### System prompts
+     ### Multi-turn conversations with messages
+     ### Model parameters
+     #### Parameters that control output length
+     #### Parameters that control "creativity"
+     #### Experiment with model parameters
+     ### Structured output
+     #### Handling errors
+     ### Streaming
+     ### Multimodal input
+     ### Generating media
+     #### Image generation
+     #### Audio generation
+     ### Middleware
+     #### Retry middleware
+     #### Fallback middleware
+     #### Model safety
+     #### Custom middleware
+     ### Next steps
+     #### Learn more about Genkit
+     #### Advanced LLM use
+     #### Testing model output
+     
+
+ - File: js/js/multi-agent.md
+   Title: Building multi-agent systems
+   Description: Learn how to build multi-agent systems in Genkit by delegating tasks to specialized agents, addressing challenges of complex agentic workflows.
+
+ - File: js/js/overview.md
+   Title: Genkit | Open-source AI development framework by Google
+   Description: Build high-quality GenAI features for your app with intuitive Genkit SDKs.
+   Headers:
+     ## Explore & build with Genkit
+     ## Key capabilities
+     ## How does it work?
+     ## Implementation path
+     ## Connect with us
+     
+
+ - File: js/js/rag.md
+   Title: Retrieval-augmented generation (RAG)
+   Description: Learn how Genkit simplifies retrieval-augmented generation (RAG) by providing abstractions and plugins for indexers, embedders, and retrievers to incorporate external data into LLM responses.
+   Headers:
+     ## What is RAG?
+     ### Indexers
+     ### Embedders
+     ### Retrievers
+     ## Supported indexers, retrievers, and embedders
+     ## Defining a RAG flow
+     ### Install dependencies for processing PDFs
+     ### Add a local vector store to your configuration
+     ### Define an indexer
+     #### Create the indexer
+     #### Create chunking config
+     #### Define your indexer flow
+     #### Run the indexer flow
+     ### Define a flow with retrieval
+     #### Run the retriever flow
+     ## Write your own indexers and retrievers
+     ### Simple retrievers
+     ### Custom retrievers
+     ### Rerankers and Two-Stage retrieval
+     #### Reranker example
+     #### Custom rerankers
+     ## Next steps
+     
+
+ - File: js/js/tool-calling.md
+   Title: Tool calling
+   Description: Learn how to enable LLMs to interact with external applications and data using Genkit's tool calling feature, covering tool definition, usage, and advanced scenarios.
+   Headers:
+     ## Before you begin
+     ## Overview of tool calling
+     ## Tool calling with Genkit
+     ### Model support
+     ### Defining tools
+     ### Using tools
+     ### Streaming and tool calling
+     ### Limiting tool call iterations with `maxTurns`
+     ### Pause the tool loop by using interrupts
+     ### Explicitly handling tool calls
+     ## Extending tool capabilities with MCP
+     ## Next steps
+     
+
+ - File: js/js/tutorials/chat-with-pdf.md
+   Title: Chat with a PDF file
+   Description: Learn how to build a conversational application that allows users to extract information from PDF documents using natural language across JavaScript, Go, and Python.
+   Headers:
+     ## Prerequisites
+     ## Implementation Steps
+     ### 1. Set up your project
+     ### 2. Import the required dependencies
+     ### 3. Configure Genkit and the default model
+     ### 4. Load and parse the PDF
+     ### 5. Set up the prompt
+     ### 6. Implement the UI
+     ### 7. Implement the chat loop
+     ### 8. Run the app
+     
+
+ - File: js/js/tutorials/summarize-youtube-videos.md
+   Title: Summarize YouTube videos
+   Description: Learn how to build a conversational application that allows users to summarize YouTube videos and chat about their contents using natural language across JavaScript, Go, and Python.
+   Headers:
+     ## Prerequisites
+     ## Implementation Steps
+     ### 1. Set up your project
+     ### 2. Import the required dependencies
+     ### 3. Configure Genkit and the default model
+     ### 4. Parse the command line and get the video URL
+     ### 5. Set up the prompt
+     ### 6. Generate the response
+     ### 7. Run the app
+     
+
+ - File: js/js/plugin-authoring/overview.md
+   Title: Creating Genkit Plugins
+   Description: Learn how to extend Genkit's capabilities by writing custom plugins, covering plugin creation, options, and implementing new model providers.
+   Headers:
+     ## Creating a Plugin
+     ### Plugin options guidance
+     ## Building your plugin
+     ### Model plugins
+     #### Transforming Requests and Responses
+     #### Action References (Models, Embedders, etc.)
+     ## Publishing a plugin
+     
+
+ - File: js/js/observability/advanced-configuration.md
+   Title: Advanced Configuration
+   Description: This guide covers advanced configuration options for Genkit's Firebase telemetry plugin, including fine-tuning telemetry collection, export settings, and disabling specific data types.
+   Headers:
+     ## Default Configuration
+     ## Export local telemetry
+     ## Adjust auto instrumentation
+     ## Disable telemetry
+     ### Disable input and output logging
+     ### Disable metrics
+     ### Disable traces
+     
+
+ - File: js/js/observability/authentication.md
+   Title: Authentication and authorization
+   Description: Learn how to authenticate and authorize the Firebase telemetry plugin for Genkit, covering API enablement, user authentication, and deployment to Google Cloud or other environments.
+   Headers:
+     ## Enable APIs
+     ## User Authentication
+     ## Deploy to Google Cloud
+     ## Deploy outside of Google Cloud (with ADC)
+     ## Deploy outside of Google Cloud (without ADC)
+     ## Find or create your service account
+     
+
+ - File: js/js/observability/getting-started.md
+   Title: Get started with Genkit Monitoring
+   Description: This quickstart guide explains how to set up Genkit Monitoring for your deployed Genkit features to collect and view real-time telemetry data, including metrics, traces, and production trace exports for evaluations.
+   Headers:
+     ## Before you begin
+     ## Step 1. Add the Firebase plugin
+     ### Environment-based configuration
+     ### Programmatic configuration
+     ## Step 2. Enable the required APIs
+     ## Step 3. Set up permissions
+     ## Step 4. (Optional) Test your configuration locally
+     ## Step 5. Re-build and deploy code
+     
+
+ - File: js/js/observability/telemetry-collection.md
+   Title: Telemetry Collection
+   Description: This document details the metrics, trace attributes, and logs collected by the Firebase telemetry plugin for Genkit, along with information on latency, quotas, and cost.
+   Headers:
+     ## Telemetry delay
+     ## Quotas and limits
+     ## Cost
+     ## Metrics
+     ### Feature metrics
+     ### Action metrics
+     ### Generate metrics
+     ## Traces
+     ### Root Spans
+     ### Flow
+     ### Util
+     ### Model
+     ### Tool
+     ## Logs
+     ### Input
+     ### Output
+     ### Config
+     ### Paths
+     
+
+ - File: js/js/observability/troubleshooting.md
+   Title: Genkit Monitoring - Troubleshooting
+   Description: This guide provides solutions to common issues encountered when using Genkit Monitoring, including problems with traces, metrics, and telemetry export.
+   Headers:
+     ## I can't see traces or metrics in Genkit Monitoring
+     ## Request count does not match traces count
+     ### Metric and trace export intervals can be different
+     ### Intermittent network issues
+     ### Telemetry upload reliability in Firebase Functions or Cloud Run
+     
+
+ - File: js/js/integrations/anthropic.md
+   Title: Anthropic Plugin
+   Description: Learn how to configure and use the Genkit Anthropic plugin to access Claude models.
+   Headers:
+     ## Setup
+     ### Installation
+     ### Configuration
+     ### Authentication
+     ### Configuration Options
+     #### Request-level Configuration
+     ### Prompt Caching
+     #### Basic Usage
+     #### Cache Visibility
+     ## Language Models
+     ### Available Models
+     ### Basic Usage
+     ### Structured Output
+     #### Schema Limitations
+     ### Thinking and Reasoning
+     ### Streaming
+     ### Multimodal Input Capabilities
+     #### Image Understanding
+     #### PDF Support
+     ### Tool Calling
+     ### Web Search
+     #### Basic Usage
+     ### Documents and Citations
+     ### System Role
+     ### Configuration Options
+     ### Direct Model Usage
+     ### Beta API Limitations
+     ## Examples
+     ## Learn More
+     
+
+ - File: js/js/integrations/astra-db.md
+   Title: Astra DB Vector Database
+   Description: Learn how to use DataStax Astra DB with Genkit for serverless vector storage, semantic search, and RAG applications.
+   Headers:
+     ## Installation
+     ## Prerequisites
+     ## Configuration
+     ### Client Parameters
+     ### Configuration Options
+     ### Astra DB Vectorize
+     ## Usage
+     ### Indexing
+     ### Retrieval
+     #### Retrieval Options
+     #### Advanced Retrieval
+     ## Further Information
+     ## Learn More
+     
+
+ - File: js/js/integrations/auth0.md
+   Title: Auth0 AI Plugin
+   Description: Learn how to use the Auth0 AI plugin for Genkit to build secure AI-powered applications with authentication, authorization, and fine-grained access control using Auth0 and Okta FGA.
+   Headers:
+     ## Features
+     ## Installation
+     ## Initialization
+     ## Calling APIs
+     ## CIBA: Client-Initiated Backchannel Authentication
+     ### CIBA with RAR (Rich Authorization Requests)
+     ## Device Flow Authorizer
+     ## FGA
+     ## RAG with FGA
+     ## Handling Interrupts
+     ## Learn More
+     
+
+ - File: js/js/integrations/aws-bedrock.md
+   Title: AWS Bedrock Plugin
+   Description: Learn how to configure and use the AWS Bedrock plugin for Genkit to interact with AWS Bedrock models and embedders.
+   Headers:
+     ## Installation
+     ### Versions
+     ## Features
+     ## Quick Start
+     ## Configuration
+     ### Standard Initialization
+     ### Production Environment Authentication
+     ### Local Environment Authentication
+     ### Configuration with Inference Endpoint
+     ## Features
+     ## Using Custom Models
+     ## Supported models
+     
+
+ - File: js/js/integrations/azure-foundry.md
+   Title: Azure Foundry Plugin
+   Description: Learn how to configure and use the Azure Foundry plugin for Genkit to interact with Azure Foundry models and embedders.
+   Headers:
+     ## Installation
+     ## Usage
+     ### Initialize
+     ## Features
+     
+
+ - File: js/js/integrations/chroma.md
+   Title: Chroma Vector Database
+   Description: Learn how to use Chroma with Genkit for vector storage, semantic search, and RAG applications.
+   Headers:
+     ## Installation
+     ## Configuration
+     ## Usage
+     
+
+ - File: js/js/integrations/cloud-firestore.md
+   Title: Cloud Firestore Vector Search
+   Description: Learn how to use Google Cloud Firestore as a vector database for RAG applications with Genkit.
+   Headers:
+     ## Installation
+     ## Prerequisites
+     ### Firebase Project Setup
+     ### Firebase Admin SDK Initialization
+     ### Credentials
+     ## Cloud Firestore vector search
+     ### Using `GCLOUD_SERVICE_ACCOUNT_CREDS` and Firestore
+     ### Define a Firestore retriever
+     ### Retrieve documents
+     ### Available Retrieval Options
+     ### Populate Firestore with Embeddings
+     ### Deploy flows as Cloud Functions
+     ## Learn more
+     
+
+ - File: js/js/integrations/cloud-sql-postgresql.md
+   Title: Cloud SQL for PostgreSQL Vector Database
+   Description: Learn how to use Google Cloud SQL for PostgreSQL with pgvector extension and Genkit for managed vector storage and semantic search.
+   Headers:
+     ## Installation
+     ## Configuration
+     ## Usage
+     ### Index Documents
+     #### Indexing Options
+     ### Retrieve Documents
+     #### Retriever Options
+     #### Distance Strategies
+     #### Metadata Handling
+     
+
+ - File: js/js/integrations/deepseek.md
+   Title: DeepSeek Plugin
+   Description: Learn how to configure and use the Genkit DeepSeek plugin to access DeepSeek models.
+   Headers:
+     ## Installation
+     ## Configuration
+     ## Usage
+     ## Advanced usage
+     ### Passthrough configuration
+     
+
+ - File: js/js/integrations/dev-local-vectorstore.md
+   Title: Dev Local Vector Store
+   Description: Learn how to use the Dev Local Vector Store for local development and testing with Genkit.
+   Headers:
+     ## Installation
+     ## Configuration
+     ### Configuration Options
+     ## Usage
+     ### Indexing Documents
+     ### Retrieving Documents
+     
+
+ - File: js/js/integrations/google-cloud.md
+   Title: Google Cloud Plugin
+   Description: Integrations with Google Cloud Platform services, including telemetry and Model Armor.
+   Headers:
+     ## Features
+     ## Set up a Google Cloud account
+     ## Installation
+     ## Google Cloud Observability
+     ## Model Armor
+     ### Usage
+     ### Configuration Options
+     ## Production monitoring via Google Cloud's operations suite
+     ### Logs and traces
+     ### Metrics
+     #### Flow-level metrics
+     #### Action-level metrics
+     #### Generate-level metrics
+     ## Telemetry Delay
+     ## Quotas and limits
+     ## Cost
+     
+
+ - File: js/js/integrations/google-genai.md
+   Title: Google Generative AI plugin
+   Description: Learn how to use Google's Generative AI models through the Gemini Developer API, including text generation, embeddings, image generation, video generation, and text-to-speech.
+   Headers:
+     ## Setup
+     ### Installation
+     ### Configuration
+     ### Authentication
+     ## Language Models
+     ### Available Models
+     ### Basic Usage
+     ### Structured Output
+     #### Schema Limitations
+     ### Thinking and Reasoning
+     ### Context Caching
+     ### Safety Settings
+     ### Google Search Grounding
+     ### Google Maps Grounding
+     ### URL Context
+     ### Code Execution
+     ### Generating Text and Images (Nano Banana)
+     ### Multimodal Input Capabilities
+     #### Video Understanding
+     #### Image Understanding
+     #### Audio Understanding
+     #### PDF Support
+     #### File Inputs and Gemini Files API
+     ## Embedding Models
+     ### Available Models
+     ### Usage
+     ## Image Models
+     ### Available Models
+     ### Usage
+     ## Video Models
+     ### Available Models
+     ### Usage
+     #### Text-to-Video
+     #### Video Generation from Photo Reference
+     ## Speech Models
+     ### Available Models
+     ### Usage
+     
+
+ - File: js/js/integrations/lancedb.md
+   Title: LanceDB Vector Database
+   Description: Learn how to use LanceDB with Genkit for embedded vector storage, semantic search, and RAG applications.
+   Headers:
+     ## Installation
+     ## Configuration
+     ## Usage
+     ### Retrieval
+     ### Indexing
+     ## Example: Creating a RAG Flow
+     ## Learn More
+     
+
+ - File: js/js/integrations/neo4j.md
+   Title: Neo4j Graph Vector Database
+   Description: Learn how to use Neo4j with Genkit for graph-based vector storage, semantic search, and knowledge graph applications.
+   Headers:
+     ## Installation
+     ## Configuration
+     ### Connection Configuration
+     ### Configuration Options
+     ## Usage
+     ### Retrieval
+     ### Indexing
+     ## Learn More
+     
+
+ - File: js/js/integrations/ollama.md
+   Title: Ollama Plugin
+   Description: Learn how to configure and use the Ollama plugin for Genkit to interact with local LLMs and embedders.
+   Headers:
+     ## Installation
+     ## Configuration
+     ### Authentication
+     ## Usage
+     ## Embedders
+     
+
+ - File: js/js/integrations/openai-compatible.md
+   Title: OpenAI-Compatible Plugin
+   Description: Learn how to configure and use the Genkit OpenAI-compatible plugin to access models through any OpenAI-compatible API.
+   Headers:
+     ## Installation
+     ## General-Purpose OpenAI-Compatible Plugin
+     ### Configuration
+     ### Usage
+     ### Passing Model Configuration
+     
+
+ - File: js/js/integrations/openai.md
+   Title: OpenAI Plugin
+   Description: Learn how to configure and use the Genkit OpenAI plugin to access models and embedders from OpenAI.
+   Headers:
+     ## Installation
+     ## Configuration
+     ## Usage
+     ### Chat Models
+     ### Image Generation Models
+     ### Text Embedding Models
+     ### Audio Transcription and Speech Models
+     #### Transcription (Speech-to-Text)
+     #### Speech Generation (Text-to-Speech)
+     ## Advanced usage
+     ### Passthrough configuration
+     ### Web-search built-in tool
+     
+
+ - File: js/js/integrations/pgvector.md
+   Title: pgvector (PostgreSQL Vector Extension)
+   Description: Learn how to use pgvector with Genkit for vector storage, semantic search, and RAG applications using PostgreSQL.
+   Headers:
+     ## Installation and Setup
+     ## Usage
+     
+
+ - File: js/js/integrations/pinecone.md
+   Title: Pinecone Vector Database
+   Description: Learn how to use Pinecone with Genkit for cloud vector storage, semantic search, and RAG applications.
+   Headers:
+     ## Installation
+     ## Configuration
+     ## Usage
+     
+
+ - File: js/js/integrations/toolbox.md
+   Title: MCP Toolbox for Databases
+   Description: Learn how to use the MCP Toolbox for Databases with Genkit to build enterprise-grade database tools with connection pooling, authentication, and security features.
+   Headers:
+     ## Features
+     ## Setup
+     ### 1. Configure and Deploy Toolbox Server
+     ### 2. Install Client SDK
+     ## Usage
+     ### Loading Toolbox Tools
+     ### Example: Database Query Tool
+     ## Advanced Features
+     ### Authenticated Parameters
+     ### Authorized Invocations
+     ### OpenTelemetry Integration
+     ## Security Best Practices
+     ## Production Deployment
+     ### Server Configuration
+     # Example Toolbox server configuration
+     ### Client Configuration
+     ## Troubleshooting
+     ### Common Issues
+     ## Learn More
+     ## Next Steps
+     
+
+ - File: js/js/integrations/vectorsearch-bigquery.md
+   Title: Vertex AI Vector Search with Bigquery
+   Description: Learn how to use Vertex AI Vector Search with Bigquery using Genkit.
+   Headers:
+     ## Installation
+     ## Configuration
+     ### Configuration Options
+     ## Usage
+     ### Indexing Documents
+     ### Retrieving Documents
+     
+
+ - File: js/js/integrations/vectorsearch-firestore.md
+   Title: Vertex AI Vector Search with Firestore
+   Description: Learn how to use the Vertex AI Vector Search with Firestore using Genkit.
+   Headers:
+     ## Installation
+     ## Configuration
+     ### Configuration Options
+     ## Usage
+     ### Indexing Documents
+     ### Retrieving Documents
+     
+
+ - File: js/js/integrations/vertex-ai.md
+   Title: Vertex AI plugin
+   Description: Learn how to use Google Cloud Vertex AI with Genkit, including enterprise features like grounding, Vector Search, Model Garden, and evaluation metrics.
+   Headers:
+     ## Accessing Google GenAI Models via Vertex AI
+     ## Basic Model Access
+     ### Installation
+     ### Configuration
+     ### Basic Usage
+     ### Text Embedding
+     ### Image Generation (Imagen)
+     ### Thinking Config
+     #### Thinking Level (Gemini 3.0+)
+     #### Thinking Budget (Gemini 2.5)
+     ## Enterprise Features (JavaScript Only)
+     ### Model Garden Integration
+     #### Claude 4.6 Models
+     #### Llama 4
+     #### Mistral AI Models
+     ### Evaluation Metrics
+     ### Vector Search
+     #### Setup
+     #### Configuration
+     #### Usage
+     ## Next Steps
+     
+
+ - File: js/js/integrations/xai.md
+   Title: xAI Plugin
+   Description: Learn how to configure and use the Genkit xAI plugin to access xAI (Grok) models.
+   Headers:
+     ## Installation
+     ## Configuration
+     ## Usage
+     ## Advanced usage
+     ### Passthrough configuration
+     
+
+ - File: js/js/frameworks/angular.md
+   Title: Use Genkit in an Angular app
+   Description: Learn how to use Genkit flows in Angular applications
+   Headers:
+     ## Before you begin
+     ## Create an Angular project
+     ## Install Genkit dependencies
+     ## Define Genkit flows
+     ## Add server routes
+     ## Call your flows from the frontend
+     ### Non-streaming Flow Calls
+     ### Streaming Flow Calls
+     ## Authentication (Optional)
+     ## Test your app locally
+     ## Deploy your app
+     ## Next steps
+     
+
+ - File: js/js/frameworks/express.md
+   Title: Express plugin
+   Description: The Genkit Express plugin provides utilities for conveniently exposing Genkit flows and actions via an Express HTTP server as REST APIs.
+   Headers:
+     ## Installation
+     ## Usage
+     ### Serving Models
+     ### Durable Streaming (Beta)
+     ### Accessing flows from the client
+     ## Authentication
+     ### Using `withContextProvider`
+     #### `apiKey` Context Provider
+     ## Using `startFlowServer`
+     
+
+ - File: js/js/frameworks/nextjs.md
+   Title: Next.js Integration
+   Description: Learn how to integrate Genkit with Next.js applications across JavaScript, Go, and Python, including API routes, client-side calls, streaming, and deployment strategies.
+   Headers:
+     ## Before you begin
+     ## Create a Next.js project
+     ## Install Genkit dependencies
+     ## Define Genkit flows
+     ## Create API routes
+     ## Durable Streaming (Beta)
+     ## Call your flows from the frontend
+     ## Authentication (Optional)
+     ## Test your app locally
+     ## Deploy your app
+     
+
+ - File: js/js/deployment/any-platform.md
+   Title: Deploy to Any Platform
+   Description: Learn how to deploy Genkit flows to any supported hosting platform with maximum flexibility and control.
+   Headers:
+     ## Before you begin
+     ## 1. Set up your project
+     ## 2. Configure your Genkit app
+     ## 3. Prepare your Node.js project for deployment
+     ### Add start and build scripts to `package.json`
+     ### Build and test locally
+     ## Optional: Start the Developer UI
+     ## 4. Deploy the project
+     ## Environments that restrict `eval()`
+     ## Call your flows from the client
+     ### Non-streaming Flow Calls
+     ### Streaming Flow Calls
+     ### Authentication (Optional)
+     
+
+ - File: js/js/deployment/authorization.md
+   Title: Authorization and integrity
+   Description: This document explains how to manage authorization and integrity in Genkit applications, covering Firebase and non-Firebase HTTP authorization.
+   Headers:
+     ## Authorize within a Flow
+     ## Authorize using Cloud Functions for Firebase
+     ### User authentication
+     #### Client integrity
+     ## Non-Firebase HTTP authorization
+     
+
+ - File: js/js/deployment/cloud-run.md
+   Title: Deploy with Cloud Run
+   Description: Learn how to deploy Genkit flows to Google Cloud Run with automatic scaling and containerization.
+   Headers:
+     ## Before you begin
+     ## 1. Set up a Google Cloud project
+     ## 2. Prepare your Node project for deployment
+     ### Add start and build scripts to package.json
+     ### Add code to configure and start the flow server
+     ### Optional: Define an authorization policy
+     ### Make API credentials available to deployed flows
+     ## 3. Deploy flows to Cloud Run
+     ## Optional: Try the deployed flow
+     
+
+ - File: js/js/deployment/firebase.md
+   Title: Deploy with Firebase
+   Description: Learn how to deploy Genkit flows as Cloud Functions for Firebase with built-in authentication and authorization.
+   Headers:
+     ## Before you begin
+     ## 1. Set up a Firebase project
+     ## 2. Wrap the Flow in onCallGenkit
+     ### Define an authorization policy
+     ### Make API credentials available to deployed flows
+     ### Add App Check enforcement
+     ### Set a CORS policy
+     ### Complete example
+     ## 3. Deploy flows to Firebase
+     ## Optional: Try the deployed flow
+     ## Optional: Run flows in the developer UI
+     ## Optional: Developing using Firebase Local Emulator Suite
+     
+
+ - File: js/integrations/anthropic.md
+   Title: Anthropic Plugin
+   Description: Learn how to configure and use the Genkit Anthropic plugin to access Claude models.
+   Headers:
+     ## Setup
+     ### Installation
+     ### Configuration
+     ### Authentication
+     ### Configuration Options
+     #### Request-level Configuration
+     ### Prompt Caching
+     #### Basic Usage
+     #### Cache Visibility
+     ## Language Models
+     ### Available Models
+     ### Basic Usage
+     ### Structured Output
+     #### Schema Limitations
+     ### Thinking and Reasoning
+     ### Streaming
+     ### Multimodal Input Capabilities
+     #### Image Understanding
+     #### PDF Support
+     ### Tool Calling
+     ### Web Search
+     #### Basic Usage
+     ### Documents and Citations
+     ### System Role
+     ### Configuration Options
+     ### Direct Model Usage
+     ### Beta API Limitations
+     ## Examples
+     ## Learn More
+     ## Configuration
+     ## Supported Models
+     ## Usage Example
+     ## Using Multiple Providers
+     ## Advanced Features
+     ### Multimodal Support
+     ### Streaming
+     ### Configuration
+     ## Setup
+     ### Installation
+     ### Configuration
+     ## Usage
+     ### Language Models
+     ### Streaming
+     ### Tool Calling
+     ### Thinking (Claude 3.7+)
+     ### Structured Output
+     ## Installation
+     ## Configuration
+     ### Authentication
+     ## Available Models
+     ## Basic Usage
+     ## Structured Output
+     ## Thinking and Reasoning
+     ## Tool Calling
+     ## Streaming
+     ## Multimodal (Image Understanding)
+     ## Configuration Options
+     
+
+ - File: js/integrations/astra-db.md
+   Title: Astra DB Vector Database
+   Description: Learn how to use DataStax Astra DB with Genkit for serverless vector storage, semantic search, and RAG applications.
+   Headers:
+     ## Installation
+     ## Prerequisites
+     ## Configuration
+     ### Client Parameters
+     ### Configuration Options
+     ### Astra DB Vectorize
+     ## Usage
+     ### Indexing
+     ### Retrieval
+     #### Retrieval Options
+     #### Advanced Retrieval
+     ## Further Information
+     ## Learn More
+     
+
+ - File: js/integrations/auth0.md
+   Title: Auth0 AI Plugin
+   Description: Learn how to use the Auth0 AI plugin for Genkit to build secure AI-powered applications with authentication, authorization, and fine-grained access control using Auth0 and Okta FGA.
+   Headers:
+     ## Features
+     ## Installation
+     ## Initialization
+     ## Calling APIs
+     ## CIBA: Client-Initiated Backchannel Authentication
+     ### CIBA with RAR (Rich Authorization Requests)
+     ## Device Flow Authorizer
+     ## FGA
+     ## RAG with FGA
+     ## Handling Interrupts
+     ## Learn More
+     
+
+ - File: js/integrations/aws-bedrock.md
+   Title: AWS Bedrock Plugin
+   Description: Learn how to configure and use the AWS Bedrock plugin for Genkit to interact with AWS Bedrock models and embedders.
+   Headers:
+     ## Installation
+     ### Versions
+     ## Features
+     ## Quick Start
+     ## Configuration
+     ### Standard Initialization
+     ### Production Environment Authentication
+     ### Local Environment Authentication
+     ### Configuration with Inference Endpoint
+     ## Features
+     ## Using Custom Models
+     ## Supported models
+     ## Installation
+     ## Features
+     ## Quick Start
+     ## Using Custom Models
+     ## Configuration Options
+     ### Available Configuration
+     ## AWS Setup and Authentication
+     ### Authentication Methods
+     ### Required IAM Permissions
+     ### Prompt Caching
+     
+
+ - File: js/integrations/azure-foundry.md
+   Title: Azure Foundry Plugin
+   Description: Learn how to configure and use the Azure Foundry plugin for Genkit to interact with Azure Foundry models and embedders.
+   Headers:
+     ## Installation
+     ## Usage
+     ### Initialize
+     ## Features
+     ## Installation
+     ## Features
+     ### Initialize the Plugin
+     ## Configuration Options
+     ### Available Configuration
+     ## Azure Setup and Authentication
+     ### Getting Your Endpoint and API Key
+     ### Authentication Methods
+     #### 1. API Key Authentication (Quick Start)
+     #### 2. Azure Default Credential (Recommended for Production)
+     # Required environment variables
+     # Optional: For service principal authentication
+     #### 3. Managed Identity (Azure Deployments)
+     #### 4. Client Secret Credential (Service Principal)
+     #### 5. Azure CLI Credential (Local Development)
+     # Login to Azure CLI first
+     ### Model Deployments
+     ### Image Generation
+     ### Text-to-Speech
+     ### Speech-to-Text
+     
+
+ - File: js/integrations/chroma.md
+   Title: Chroma Vector Database
+   Description: Learn how to use Chroma with Genkit for vector storage, semantic search, and RAG applications.
+   Headers:
+     ## Installation
+     ## Configuration
+     ## Usage
+     
+
+ - File: js/integrations/cloud-firestore.md
+   Title: Cloud Firestore Vector Search
+   Description: Learn how to use Google Cloud Firestore as a vector database for RAG applications with Genkit.
+   Headers:
+     ## Installation
+     ## Prerequisites
+     ### Firebase Project Setup
+     ### Firebase Admin SDK Initialization
+     ### Credentials
+     ## Cloud Firestore vector search
+     ### Using `GCLOUD_SERVICE_ACCOUNT_CREDS` and Firestore
+     ### Define a Firestore retriever
+     ### Retrieve documents
+     ### Available Retrieval Options
+     ### Populate Firestore with Embeddings
+     ### Deploy flows as Cloud Functions
+     ## Learn more
+     ## Prerequisites
+     ### Firebase Setup
+     ## Configuration
+     ### Basic Configuration
+     ### Environment Variable Configuration
+     ### Advanced Configuration
+     ## Usage
+     ### Defining Firestore Retrievers
+     ### Using Retrievers in RAG Workflows
+     ### Complete RAG Example
+     ## Firestore Data Structure
+     ### Document Storage Format
+     ### Indexing Documents
+     ## Configuration Options
+     ### Firebase struct
+     ### RetrieverOptions
+     ## Authentication
+     ### Local Development
+     # Install Firebase CLI
+     # Login and set project
+     ### Production Deployment
+     #### Service Account Key
+     #### Application Default Credentials
+     ## Error Handling
+     ## Best Practices
+     ### Performance Optimization
+     ### Security
+     ### Cost Management
+     ## Integration Examples
+     ### With Multiple Embedders
+     ### With Flows
+     ## Installation
+     ## Prerequisites
+     ### Firebase Project Setup
+     ### Credentials
+     ## Configuration
+     ### Define a Firestore Retriever
+     # Initialize plugins
+     # Create Firestore client
+     # Define the retriever
+     ### Configuration Options
+     ## Usage
+     ### Retrieve Documents
+     ### Retrieval Options
+     ## Populating Firestore with Embeddings
+     # Example usage
+     # documents = [
+     #     "Firebase Genkit provides vector search capabilities.",
+     #     "Cloud Firestore supports vector embeddings for semantic search.",
+     #     "RAG applications combine retrieval with generation.",
+     # ]
+     # import asyncio
+     # asyncio.run(index_documents(documents, 'documents'))
+     ## Creating a Firestore Vector Index
+     ## Learn More
+     
+
+ - File: js/integrations/cloud-sql-postgresql.md
+   Title: Cloud SQL for PostgreSQL Vector Database
+   Description: Learn how to use Google Cloud SQL for PostgreSQL with pgvector extension and Genkit for managed vector storage and semantic search.
+   Headers:
+     ## Installation
+     ## Configuration
+     ## Usage
+     ### Index Documents
+     #### Indexing Options
+     ### Retrieve Documents
+     #### Retriever Options
+     #### Distance Strategies
+     #### Metadata Handling
+     ## Configuration
+     ## Usage
+     
+
+ - File: js/integrations/deepseek.md
+   Title: DeepSeek Plugin
+   Description: Learn how to configure and use the Genkit DeepSeek plugin to access DeepSeek models.
+   Headers:
+     ## Installation
+     ## Configuration
+     ## Usage
+     ## Advanced usage
+     ### Passthrough configuration
+     ## Installation
+     ## Configuration
+     ## Usage
+     ## Advanced usage
+     ### Reasoning Model
+     ### Tool Calling
+     ### Streaming
+     ### Multi-turn Chat
+     ### Structured Output
+     ### Passthrough configuration
+     
+
+ - File: js/integrations/dev-local-vectorstore.md
+   Title: Dev Local Vector Store
+   Description: Learn how to use the Dev Local Vector Store for local development and testing with Genkit.
+   Headers:
+     ## Installation
+     ## Configuration
+     ### Configuration Options
+     ## Usage
+     ### Indexing Documents
+     ### Retrieving Documents
+     ## Installation
+     ## Configuration
+     ### Configuration Options
+     ## Usage
+     ### Indexing Documents
+     ### Retrieving Documents
+     ## Installation
+     ## Configuration
+     ### Configuration Options
+     ## Usage
+     ### Indexing Documents
+     # Assuming 'ai' is configured as shown in the Configuration section
+     # ai = Genkit(...)
+     # Ensure the vector store name matches the one in define_dev_local_vector_store
+     ### Retrieving Documents
+     # Assuming 'ai' is configured as shown in the Configuration section
+     # ai = Genkit(...)
+     # print(docs) # Process the retrieved documents
+     
+
+ - File: js/integrations/google-cloud.md
+   Title: Google Cloud Plugin
+   Description: Integrations with Google Cloud Platform services, including telemetry and Model Armor.
+   Headers:
+     ## Features
+     ## Set up a Google Cloud account
+     ## Installation
+     ## Google Cloud Observability
+     ## Model Armor
+     ### Usage
+     ### Configuration Options
+     ## Prerequisites
+     ## Configuration
+     ## Prerequisites
+     ## Installation
+     ## Configuration
+     ## Production monitoring via Google Cloud's operations suite
+     ### Logs and traces
+     ### Metrics
+     #### Flow-level metrics
+     #### Action-level metrics
+     #### Generate-level metrics
+     ## Telemetry Delay
+     ## Quotas and limits
+     ## Cost
+     
+
+ - File: js/integrations/google-genai.md
+   Title: Google Generative AI plugin
+   Description: Learn how to use Google's Generative AI models through the Gemini Developer API, including text generation, embeddings, image generation, video generation, and text-to-speech.
+   Headers:
+     ## Setup
+     ### Installation
+     ### Configuration
+     ### Authentication
+     ## Language Models
+     ### Available Models
+     ### Basic Usage
+     ### Structured Output
+     #### Schema Limitations
+     ### Thinking and Reasoning
+     ### Context Caching
+     ### Safety Settings
+     ### Google Search Grounding
+     ### Google Maps Grounding
+     ### URL Context
+     ### Code Execution
+     ### Generating Text and Images (Nano Banana)
+     ### Multimodal Input Capabilities
+     #### Video Understanding
+     #### Image Understanding
+     #### Audio Understanding
+     #### PDF Support
+     #### File Inputs and Gemini Files API
+     ## Embedding Models
+     ### Available Models
+     ### Usage
+     ## Image Models
+     ### Available Models
+     ### Usage
+     ## Video Models
+     ### Available Models
+     ### Usage
+     #### Text-to-Video
+     #### Video Generation from Photo Reference
+     ## Speech Models
+     ### Available Models
+     ### Usage
+     ## Configuration
+     ## Usage
+     ### Generative models
+     ### Embedding models
+     ## Next Steps
+     ## Setup
+     ### Installation
+     ### Configuration
+     ### Authentication
+     ## Language Models
+     ### Available Models
+     ### Basic Usage
+     ### Structured Output
+     #### Schema Limitations
+     ### Thinking and Reasoning
+     ### Multimodal Input
+     ### Safety Settings
+     ### Google Search Grounding
+     ### Code Execution
+     ## Embedding Models
+     ### Usage
+     ## Image Models
+     ### Usage
+     ## Speech Models
+     ### Unsupported Features
+     ## Installation
+     ## Configuration
+     ### Authentication
+     ## Language Models
+     ### Available Models
+     ### Basic Usage
+     ### Structured Output
+     ### Thinking and Reasoning
+     ### Google Search Grounding
+     ### Safety Settings
+     ### Multimodal Input
+     #### Image Understanding
+     # From file
+     #### Video Understanding
+     ## Embedding Models
+     ### Available Models
+     ### Usage
+     ## Image Models
+     ### Available Models
+     ### Usage
+     # Access generated image
+     ## Video Models (Veo)
+     ### Available Models
+     ### Usage
+     # Start video generation (returns an Operation)
+     # Video generation returns an operation that needs to be polled
+     ## Speech Models (TTS)
+     ### Available Models
+     ### Usage
+     # Extract audio
+     ## Next Steps
+     
+
+ - File: js/integrations/lancedb.md
+   Title: LanceDB Vector Database
+   Description: Learn how to use LanceDB with Genkit for embedded vector storage, semantic search, and RAG applications.
+   Headers:
+     ## Installation
+     ## Configuration
+     ## Usage
+     ### Retrieval
+     ### Indexing
+     ## Example: Creating a RAG Flow
+     ## Learn More
+     
+
+ - File: js/integrations/neo4j.md
+   Title: Neo4j Graph Vector Database
+   Description: Learn how to use Neo4j with Genkit for graph-based vector storage, semantic search, and knowledge graph applications.
+   Headers:
+     ## Installation
+     ## Configuration
+     ### Connection Configuration
+     ### Configuration Options
+     ## Usage
+     ### Retrieval
+     ### Indexing
+     ## Learn More
+     
+
+ - File: js/integrations/ollama.md
+   Title: Ollama Plugin
+   Description: Learn how to configure and use the Ollama plugin for Genkit to interact with local LLMs and embedders.
+   Headers:
+     ## Installation
+     ## Configuration
+     ### Authentication
+     ## Usage
+     ## Embedders
+     ## Prerequisites
+     ## Configuration
+     ## Usage
+     ## Prerequisites
+     ## Installation
+     ## Configuration
+     ### Authentication
+     ## Usage
+     ## Advanced usage
+     ### Embeddings
+     ### Streaming
+     ### Tool Calling
+     ### Structured Output
+     ### Custom Server Configuration
+     
+
+ - File: js/integrations/openai-compatible.md
+   Title: OpenAI-Compatible Plugin
+   Description: Learn how to configure and use the Genkit OpenAI-compatible plugin to access models through any OpenAI-compatible API.
+   Headers:
+     ## Installation
+     ## General-Purpose OpenAI-Compatible Plugin
+     ### Configuration
+     ### Usage
+     ### Passing Model Configuration
+     ## Overview
+     ## Prerequisites
+     ## Configuration
+     ### Use with Compatible Providers
+     ### Common Configuration
+     ## Overview
+     ## Prerequisites
+     ## Installation
+     ## Configuration
+     ### Use with Compatible Providers
+     # Custom base URL for OpenAI-compatible services
+     ### Common Configuration
+     
+
+ - File: js/integrations/openai.md
+   Title: OpenAI Plugin
+   Description: Learn how to configure and use the Genkit OpenAI plugin to access models and embedders from OpenAI.
+   Headers:
+     ## Installation
+     ## Configuration
+     ## Usage
+     ### Chat Models
+     ### Image Generation Models
+     ### Text Embedding Models
+     ### Audio Transcription and Speech Models
+     #### Transcription (Speech-to-Text)
+     #### Speech Generation (Text-to-Speech)
+     ## Advanced usage
+     ### Passthrough configuration
+     ### Web-search built-in tool
+     ## Configuration
+     ## Supported Models
+     ### Latest Models
+     ### Production Models
+     ### Reasoning Models
+     ### Legacy Models
+     ## Embedding Models
+     ## Usage Example
+     ## Using a custom provider
+     ## Advanced Features
+     ### Tool Calling
+     ### Multimodal Support
+     ### Streaming
+     ## Setup
+     ### Installation
+     ### Configuration
+     ## Usage
+     ### Chat Models
+     ### Tool Calling
+     ### Streaming
+     ### Structured Output
+     ## OpenAI-Compatible APIs
+     ### Groq
+     ## Installation
+     ## Configuration
+     ## Usage
+     ### Chat Models
+     ### Text Embedding Models
+     ### Tool Calling
+     ### Streaming
+     ## Advanced usage
+     ### Passthrough configuration
+     
+
+ - File: js/integrations/pgvector.md
+   Title: pgvector (PostgreSQL Vector Extension)
+   Description: Learn how to use pgvector with Genkit for vector storage, semantic search, and RAG applications using PostgreSQL.
+   Headers:
+     ## Installation and Setup
+     ## Usage
+     ## Installation and Setup
+     ## Usage
+     
+
+ - File: js/integrations/pinecone.md
+   Title: Pinecone Vector Database
+   Description: Learn how to use Pinecone with Genkit for cloud vector storage, semantic search, and RAG applications.
+   Headers:
+     ## Installation
+     ## Configuration
+     ## Usage
+     ## Configuration
+     ## Usage
+     
+
+ - File: js/integrations/toolbox.md
+   Title: MCP Toolbox for Databases
+   Description: Learn how to use the MCP Toolbox for Databases with Genkit to build enterprise-grade database tools with connection pooling, authentication, and security features.
+   Headers:
+     ## Features
+     ## Setup
+     ### 1. Configure and Deploy Toolbox Server
+     ### 2. Install Client SDK
+     ## Usage
+     ### Loading Toolbox Tools
+     ### Example: Database Query Tool
+     ## Advanced Features
+     ### Authenticated Parameters
+     ### Authorized Invocations
+     ### OpenTelemetry Integration
+     ## Security Best Practices
+     ## Production Deployment
+     ### Server Configuration
+     # Example Toolbox server configuration
+     ### Client Configuration
+     ## Troubleshooting
+     ### Common Issues
+     ## Learn More
+     ## Next Steps
+     ### Configure and deploy
+     ### Install client SDK
+     ### Loading Toolbox Tools
+     ### Advanced Toolbox Features
+     
+
+ - File: js/integrations/vectorsearch-bigquery.md
+   Title: Vertex AI Vector Search with Bigquery
+   Description: Learn how to use Vertex AI Vector Search with Bigquery using Genkit.
+   Headers:
+     ## Installation
+     ## Configuration
+     ### Configuration Options
+     ## Usage
+     ### Indexing Documents
+     ### Retrieving Documents
+     ## Installation
+     ## Configuration
+     ### Configuration Options
+     ## Usage
+     ### Indexing Documents
+     ### Retrieving Documents
+     ## Installation
+     ## Prerequisites
+     ## Configuration
+     # Initialize plugins
+     # Create BigQuery client
+     # Define the retriever
+     ### Configuration Options
+     ## Usage
+     ### Indexing Documents
+     # Example usage
+     # documents = [
+     #     "Machine learning is a subset of artificial intelligence.",
+     #     "Deep learning uses neural networks with multiple layers.",
+     #     "Natural language processing enables computers to understand text.",
+     # ]
+     # import asyncio
+     # asyncio.run(index_documents_to_bigquery(documents, 'my_dataset', 'documents'))
+     ### Retrieving Documents
+     ### Complete RAG Example
+     # Initialize
+     # Define retriever
+     ## Learn More
+     
+
+ - File: js/integrations/vectorsearch-firestore.md
+   Title: Vertex AI Vector Search with Firestore
+   Description: Learn how to use the Vertex AI Vector Search with Firestore using Genkit.
+   Headers:
+     ## Installation
+     ## Configuration
+     ### Configuration Options
+     ## Usage
+     ### Indexing Documents
+     ### Retrieving Documents
+     ## Installation
+     ## Configuration
+     ### Configuration Options
+     ## Usage
+     ### Indexing Documents
+     ### Retrieving Documents
+     ## Installation
+     ## Prerequisites
+     ## Configuration
+     # Initialize plugins
+     # Create Firestore client
+     # Define the retriever
+     ### Configuration Options
+     ## Usage
+     ### Indexing Documents
+     # Example usage
+     # documents = [
+     #     "Machine learning is a subset of artificial intelligence.",
+     #     "Deep learning uses neural networks with multiple layers.",
+     #     "Natural language processing enables computers to understand text.",
+     # ]
+     # import asyncio
+     # asyncio.run(index_documents_to_vertex_search(documents, 'documents'))
+     ### Retrieving Documents
+     ### Complete RAG Example
+     # Initialize
+     # Define retriever
+     ## Learn More
+     
+
+ - File: js/integrations/vertex-ai.md
+   Title: Vertex AI plugin
+   Description: Learn how to use Google Cloud Vertex AI with Genkit, including enterprise features like grounding, Vector Search, Model Garden, and evaluation metrics.
+   Headers:
+     ## Configuration
+     ## Usage
+     ### Generative models
+     ## Accessing Google GenAI Models via Vertex AI
+     ## Basic Model Access
+     ### Installation
+     ### Configuration
+     ### Basic Usage
+     ### Text Embedding
+     ### Image Generation (Imagen)
+     ### Thinking Config
+     #### Thinking Level (Gemini 3.0+)
+     #### Thinking Budget (Gemini 2.5)
+     ## Enterprise Features (JavaScript Only)
+     ### Model Garden Integration
+     #### Claude 4.6 Models
+     #### Llama 4
+     #### Mistral AI Models
+     ### Evaluation Metrics
+     ### Vector Search
+     #### Setup
+     #### Configuration
+     #### Usage
+     ## Next Steps
+     ## Configuration
+     ## Usage
+     ### Generative models
+     ### Embedding models
+     ## Advanced Features
+     ## Next Steps
+     ## Basic Model Access
+     ### Installation
+     ### Configuration
+     # Using Vertex AI Express Mode (Easy to start, some limitations)
+     # Get an API key from the Vertex AI Studio Express Mode setup.
+     ### Basic Usage
+     ### Text Embedding
+     ### Image Generation (Imagen)
+     ### Thinking Config
+     #### Thinking Level (Gemini 3.0)
+     #### Thinking Budget (Gemini 2.5)
+     ## Enterprise Features (Python)
+     ### Installation for Advanced Features
+     ### Configuration for Advanced Features
+     ### Grounding
+     ### Context Caching
+     #### How to Use Context Caching
+     #### Example: Leveraging Large Texts with Context
+     ### Model Garden Integration
+     #### Claude 3 Models
+     #### Llama 3.1 405b
+     #### Mistral Models
+     ### Evaluation Metrics
+     # Register evaluators using the evaluators plugin
+     ### Vector Search
+     #### Setup
+     #### Configuration
+     # Define a Firestore-backed retriever
+     # Define a BigQuery-backed retriever
+     #### Usage
+     # Use the retriever in a RAG flow
+     ## Next Steps
+     
+
+ - File: js/integrations/xai.md
+   Title: xAI Plugin
+   Description: Learn how to configure and use the Genkit xAI plugin to access xAI (Grok) models.
+   Headers:
+     ## Installation
+     ## Configuration
+     ## Usage
+     ## Advanced usage
+     ### Passthrough configuration
+     ## Configuration
+     ## Usage
+     ## Installation
+     ## Configuration
+     ## Usage
+     ## Advanced usage
+     ### Passthrough configuration
+     
+
+ - File: js/frameworks/angular.md
+   Title: Use Genkit in an Angular app
+   Description: Learn how to use Genkit flows in Angular applications
+   Headers:
+     ## Before you begin
+     ## Create an Angular project
+     ## Install Genkit dependencies
+     ## Define Genkit flows
+     ## Add server routes
+     ## Call your flows from the frontend
+     ### Non-streaming Flow Calls
+     ### Streaming Flow Calls
+     ## Authentication (Optional)
+     ## Test your app locally
+     ## Deploy your app
+     ## Next steps
+     
+
+ - File: js/frameworks/express.md
+   Title: Express plugin
+   Description: The Genkit Express plugin provides utilities for conveniently exposing Genkit flows and actions via an Express HTTP server as REST APIs.
+   Headers:
+     ## Installation
+     ## Usage
+     ### Serving Models
+     ### Durable Streaming (Beta)
+     ### Accessing flows from the client
+     ## Authentication
+     ### Using `withContextProvider`
+     #### `apiKey` Context Provider
+     ## Using `startFlowServer`
+     
+
+ - File: js/frameworks/nextjs.md
+   Title: Next.js Integration
+   Description: Learn how to integrate Genkit with Next.js applications across JavaScript, Go, and Python, including API routes, client-side calls, streaming, and deployment strategies.
+   Headers:
+     ## Before you begin
+     ## Create a Next.js project
+     ## Install Genkit dependencies
+     ## Define Genkit flows
+     ## Create API routes
+     ## Durable Streaming (Beta)
+     ## Call your flows from the frontend
+     ## Authentication (Optional)
+     ## Test your app locally
+     ## Deploy your app
+     
+
+ - File: js/deployment/any-platform.md
+   Title: Deploy to Any Platform
+   Description: Learn how to deploy Genkit flows to any supported hosting platform with maximum flexibility and control.
+   Headers:
+     ## Before you begin
+     ## 1. Set up your project
+     ## 2. Configure your Genkit app
+     ## 3. Prepare your Node.js project for deployment
+     ### Add start and build scripts to `package.json`
+     ### Build and test locally
+     ## Optional: Start the Developer UI
+     ## 4. Deploy the project
+     ## Environments that restrict `eval()`
+     ## Call your flows from the client
+     ### Non-streaming Flow Calls
+     ### Streaming Flow Calls
+     ### Authentication (Optional)
+     ## 1. Set up your project (uv)
+     ## 2. Define a flow
+     ## 3. Create a web server
+     ## 4. Run the app
+     ## 5. Deploy the project
+     
+
+ - File: js/deployment/authorization.md
+   Title: Authorization and integrity
+   Description: This document explains how to manage authorization and integrity in Genkit applications, covering Firebase and non-Firebase HTTP authorization.
+   Headers:
+     ## Authorize within a Flow
+     ## Authorize using Cloud Functions for Firebase
+     ### User authentication
+     #### Client integrity
+     ## Non-Firebase HTTP authorization
+     ## Authorize within a Flow
+     ## Context Providers (Shelf)
+     
+
+ - File: js/deployment/cloud-run.md
+   Title: Deploy with Cloud Run
+   Description: Learn how to deploy Genkit flows to Google Cloud Run with automatic scaling and containerization.
+   Headers:
+     ## Before you begin
+     ## 1. Set up a Google Cloud project
+     ## 2. Prepare your Node project for deployment
+     ### Add start and build scripts to package.json
+     ### Add code to configure and start the flow server
+     ### Optional: Define an authorization policy
+     ### Make API credentials available to deployed flows
+     ## 3. Deploy flows to Cloud Run
+     ## Optional: Try the deployed flow
+     ## Before you begin
+     ## 1. Set up a Google Cloud project
+     ## 2. Prepare your Dart project
+     ### Update `bin/server.dart`
+     ### Create a Dockerfile
+     # Specify the Dart SDK base image version using dart:<version> (ex: dart:2.12)
+     # Resolve app dependencies.
+     # Copy app source code and AOT compile it.
+     # Ensure generated files are built
+     # Build minimal serving image from AOT-compiled `/server` and required system
+     # libraries and configuration files stored in `/runtime/` from the build stage.
+     # Start server.
+     ## 3. Deploy to Cloud Run
+     ### Make API credentials available
+     # (Press Enter, paste your API key, then press Ctrl+D)
+     ## 4. Test your deployment
+     ## Before you begin
+     ## 1. Set up a Google Cloud project
+     ## 2. Prepare your Python project for deployment
+     ### Initialize your project with uv
+     # Create project directory
+     # Initialize with uv
+     # Add dependencies
+     ### Create your FastAPI application with Genkit
+     # Initialize Genkit
+     # Define input/output schemas
+     # Application lifespan for startup/shutdown
+     # Create FastAPI app
+     # Health check endpoint
+     # Define Genkit flow
+     # FastAPI endpoint that uses the flow
+     ### Optional: Add authorization
+     ### Create a Dockerfile for Cloud Run
+     # Install uv
+     # Copy dependency files
+     # Install dependencies
+     # Copy application code
+     # Expose port
+     # Run with uvicorn
+     ### Create .dockerignore
+     ### Make API credentials available to deployed flows
+     ## 3. Deploy to Cloud Run
+     ### Alternative: Deploy with existing container
+     # Build and push to Artifact Registry
+     # Deploy the container
+     ## 4. Test the deployed flow
+     # Save the service URL
+     # Test health endpoint
+     # Test joke generation
+     # With IAM authentication (if required)
+     # Test summarization
+     ## 5. View automatic API documentation
+     ## Advanced Configuration
+     ### Environment Variables
+     ### Resource Limits
+     ### Custom Domains
+     # Map your domain
+     ### Monitoring and Logging
+     # Stream logs
+     # View recent logs
+     ## Production Best Practices
+     ### 1. Use Structured Logging
+     ### 2. Add Request Validation
+     ### 3. Implement Rate Limiting
+     ### 4. Enable CORS for Web Applications
+     ## Next Steps
+     
+
+ - File: js/deployment/firebase.md
+   Title: Deploy with Firebase
+   Description: Learn how to deploy Genkit flows as Cloud Functions for Firebase with built-in authentication and authorization.
+   Headers:
+     ## Before you begin
+     ## 1. Set up a Firebase project
+     ## 2. Wrap the Flow in onCallGenkit
+     ### Define an authorization policy
+     ### Make API credentials available to deployed flows
+     ### Add App Check enforcement
+     ### Set a CORS policy
+     ### Complete example
+     ## 3. Deploy flows to Firebase
+     ## Optional: Try the deployed flow
+     ## Optional: Run flows in the developer UI
+     ## Optional: Developing using Firebase Local Emulator Suite
+     
+
+
+IMPORTANT: if doing anything more than basic model calling, look up "js/models.md" file, it contains important details about how to work with models.
+

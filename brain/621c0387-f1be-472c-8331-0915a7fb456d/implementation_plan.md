@@ -1,0 +1,38 @@
+# Agentic Workspace Integration Plan
+
+This plan outlines the steps to add a **Workspace Explorer** to the DevTool Suite. This will allow the user (and the agent) to navigate the local project structure directly from the UI and seamlessly share file context with the Chat Assistant.
+
+## Proposed Changes
+
+### [Core Types]
+#### [MODIFY] [types.ts](file:///c:/Users/shoaib/.gemini/antigravity/scratch/gemini-devtool-suite/types.ts)
+- Add `WORKSPACE = 'WORKSPACE'` to the `View` enum.
+
+### [Main Application]
+#### [MODIFY] [App.tsx](file:///c:/Users/shoaib/.gemini/antigravity/scratch/gemini-devtool-suite/App.tsx)
+- Import the new `WorkspaceExplorer` component.
+- Update the `renderView` function to handle `View.WORKSPACE`.
+
+### [Navigation]
+#### [MODIFY] [Sidebar.tsx](file:///c:/Users/shoaib/.gemini/antigravity/scratch/gemini-devtool-suite/components/Sidebar.tsx)
+- Add a "Workspace" item to `navItems` with a relevant icon (e.g., `FolderOpen` from `lucide-react`).
+
+### [New Components]
+#### [NEW] [WorkspaceExplorer.tsx](file:///c:/Users/shoaib/.gemini/antigravity/scratch/gemini-devtool-suite/components/WorkspaceExplorer.tsx)
+- A new component that:
+    - Fetches the file list from `http://localhost:3005/api/files`.
+    - Denders a hierarchical file tree.
+    - Allows selecting a file to view its details or "Send to Assistant".
+
+## Verification Plan
+
+### Automated Verification
+- I will use the browser tool to:
+    1. Navigate to `http://localhost:5173` (ensure the dev server is running).
+    2. Click the "Workspace" button in the sidebar.
+    3. Verify that the file tree appears and correctly reflects the project structure.
+
+### Manual Verification
+- **File Interaction**: Click on a file in the explorer and verify it triggers a "Read" action or shows a preview.
+- **Theme Support**: Verify the new component looks good in both Light and Dark modes.
+- **Responsiveness**: Ensure the file tree handles long filenames and deep nesting gracefully.

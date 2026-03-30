@@ -1,0 +1,124 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:dice="using:Gambler.Bot.Views.Games.Dice"
+             mc:Ignorable="d" d:DesignWidth="300" d:DesignHeight="450"
+             x:Class="Gambler.Bot.Views.Games.Strategies.Martingale.MartingaleView"
+             xmlns:vm="using:Gambler.Bot.ViewModels.Strategies"
+             x:DataType="vm:MartingaleViewModel"
+             xmlns:diceVM="using:Gambler.Bot.ViewModels.Games.Dice"
+             xmlns:system="using:System"
+             >
+    <ScrollViewer>
+        <StackPanel Orientation="Vertical">
+            <ContentControl Content="{Binding PlaceBetVM}">
+                <ContentControl.DataTemplates>
+                    <DataTemplate DataType="dice:DicePlaceBetView">
+                        <dice:DicePlaceBetView/>
+                    </DataTemplate>
+                </ContentControl.DataTemplates>
+            </ContentControl>
+            <TabControl>
+                <TabItem Header="{DynamicResource Localization.Common.Reset.OnLoss}">
+                    <StackPanel Orientation="Vertical">
+                        <Expander Margin="2"  Header="{DynamicResource Localization.Strategy.Martingale.MultiplierSetting}" IsExpanded="True" >
+                            <Expander.HeaderTemplate>
+                                <DataTemplate x:DataType="system:String" >
+                                    <Grid>
+                                        <TextBlock Text="{Binding}" HorizontalAlignment="Center"/>
+                                    </Grid>
+                                </DataTemplate>
+                            </Expander.HeaderTemplate>
+                            <Grid RowDefinitions="*,*,*,*,*,*" ColumnDefinitions="auto,*, auto">
+                                <TextBlock Text="{DynamicResource Localization.Strategy.Martingale.Multiplier}" Grid.Row="0" Grid.Column="0" VerticalAlignment="Center"/>
+                                <NumericUpDown Value="{Binding Multiplier}" Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2" HorizontalAlignment="Stretch" FormatString="n5"/>
+                                <TextBlock Text="{DynamicResource Localization.Strategy.Martingale.PercIncrease}" Grid.Row="1" Grid.Column="0" VerticalAlignment="Center"/>
+
+                                <NumericUpDown Value="{Binding PercIncrease}"  HorizontalAlignment="Stretch" FormatString="n5" Grid.Row="1" Grid.Column="1"/>
+                                <TextBlock VerticalAlignment="Center" Grid.Row="1" Grid.Column="2">%</TextBlock>
+
+                                <TextBlock Text="{DynamicResource Localization.Strategy.Martingale.MultiplyMode}" Grid.Row="2" Grid.Column="0" VerticalAlignment="Center"/>
+                                <ComboBox SelectedValue="{Binding MultiMode}" ItemsSource="{Binding MultiplierModes}" Grid.Row="2"  Grid.Column="1" Grid.ColumnSpan="2" HorizontalAlignment="Stretch"/>
+                                <TextBlock IsVisible="{Binding ShowMax}" Text="{DynamicResource Localization.Strategy.Martingale.MaxMultiplies}" Grid.Row="3" Grid.Column="0" VerticalAlignment="Center"/>
+                                <NumericUpDown IsVisible="{Binding ShowMax}" Value="{Binding Strategy.MaxMultiplies}" Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="2" HorizontalAlignment="Stretch" FormatString="n0"/>
+                                <TextBlock IsVisible="{Binding ShowModifier}" Text="{DynamicResource Localization.Strategy.Martingale.ChangeAfter}" Grid.Row="4" Grid.Column="0" VerticalAlignment="Center"/>
+                                <NumericUpDown IsVisible="{Binding ShowModifier}" Value="{Binding Strategy.Devidecounter}" Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="2" HorizontalAlignment="Stretch" FormatString="n0"/>
+                                <TextBlock IsVisible="{Binding ShowModifier}" Text="{DynamicResource Localization.Strategy.Martingale.Modifier}" Grid.Row="5" Grid.Column="0" VerticalAlignment="Center"/>
+                                <NumericUpDown IsVisible="{Binding ShowModifier}" Value="{Binding Strategy.Devider}" Grid.Row="5" Grid.Column="1" Grid.ColumnSpan="2" HorizontalAlignment="Stretch" FormatString="n5"/>
+                            </Grid>
+                        </Expander>
+                        <Grid RowDefinitions="*,*,*,*,*,*" ColumnDefinitions="auto,auto,*,auto">
+                            <CheckBox IsChecked="{Binding Strategy.EnableChangeLoseStreak}" Grid.Column="0" Grid.Row="0" />
+                            <TextBlock Grid.Column="1" Grid.Row="0" VerticalAlignment="Center" Text="{DynamicResource Localization.Strategy.Martingale.After}" />
+                            <NumericUpDown Value="{Binding Strategy.ChangeLoseStreak}" Grid.Column="2" Grid.Row="0" Grid.ColumnSpan="2"/>
+                            <TextBlock Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2" VerticalAlignment="Center" Text="{DynamicResource Localization.Strategy.Martingale.LossesInARowChangeBet}" />
+                            <NumericUpDown Value="{Binding Strategy.ChangeLoseStreakTo}" Grid.Column="2" Grid.Row="1" Grid.ColumnSpan="2"/>
+
+                            <CheckBox IsChecked="{Binding Strategy.EnableChangeChanceLose}" Grid.Column="0" Grid.Row="2" />
+                            <TextBlock Grid.Column="1" Grid.Row="2" VerticalAlignment="Center" Text="{DynamicResource Localization.Strategy.Martingale.After}" />
+                            <NumericUpDown Value="{Binding Strategy.ChangeChanceLoseStreak}" Grid.Column="2" Grid.Row="2" Grid.ColumnSpan="2"/>
+                            <TextBlock Grid.Column="0" Grid.Row="3" Grid.ColumnSpan="2" VerticalAlignment="Center" Text="{DynamicResource Localization.Strategy.Martingale.LossesInARowChangeChance}" />
+                            <NumericUpDown Value="{Binding Strategy.ChangeChanceLoseTo}" Grid.Column="2" Grid.Row="3" Grid.ColumnSpan="2"/>
+
+                            <TextBlock Grid.Column="0" Grid.Row="4" Grid.ColumnSpan="1" VerticalAlignment="Center">Multiply every</TextBlock>
+                            <NumericUpDown Value="{Binding Strategy.StretchLoss}" Grid.Column="1" Grid.Row="4" Grid.ColumnSpan="2"/>
+                            <TextBlock Grid.Column="3" Grid.Row="4" Grid.ColumnSpan="1" VerticalAlignment="Center" Text="{DynamicResource Localization.Common.Losses}" />
+
+                            <TextBlock Grid.Column="0" Grid.Row="5" Grid.ColumnSpan="3" VerticalAlignment="Center" Text="{DynamicResource Localization.Strategy.Martingale.ResetFirstLoss}" />
+                            <CheckBox IsChecked="{Binding Strategy.EnableFirstResetLoss}" Grid.Column="3" Grid.Row="5"/>
+                        </Grid>
+                    </StackPanel>
+                </TabItem>
+                <TabItem Header="{DynamicResource Localization.Common.Reset.OnWin}">
+                    <StackPanel Orientation="Vertical">
+                        <Expander Margin="2"  Header="{DynamicResource Localization.Strategy.Martingale.MultiplierSetting}" IsExpanded="True" >
+                            <Expander.HeaderTemplate>
+                                <DataTemplate x:DataType="system:String" >
+                                    <Grid>
+                                        <TextBlock Text="{Binding}" HorizontalAlignment="Center"/>
+                                    </Grid>
+                                </DataTemplate>
+                            </Expander.HeaderTemplate>
+                            <Grid RowDefinitions="*,*,*,*,*,*" ColumnDefinitions="auto,*,auto">
+                                <TextBlock Text="{DynamicResource Localization.Strategy.Martingale.Multiplier}" Grid.Row="0" Grid.Column="0" VerticalAlignment="Center"/>
+                                <NumericUpDown Value="{Binding WinMultiplier}" Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2" HorizontalAlignment="Stretch" FormatString="n5"/>
+                                <TextBlock Text="{DynamicResource Localization.Strategy.Martingale.PercIncrease}" Grid.Row="1" Grid.Column="0" VerticalAlignment="Center"/>
+                                <NumericUpDown Value="{Binding WinPercIncrease}" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Stretch" FormatString="n5"/>
+                                <TextBlock Text="%" Grid.Row="1" Grid.Column="2" VerticalAlignment="Center"/>
+                                <TextBlock  Text="{DynamicResource Localization.Strategy.Martingale.MultiplyMode}" Grid.Row="2" Grid.Column="0" VerticalAlignment="Center"/>
+                                <ComboBox ItemsSource="{Binding MultiplierModes}" SelectedValue="{Binding WinMultiMode}" Grid.Row="2"  Grid.ColumnSpan="2" Grid.Column="1" HorizontalAlignment="Stretch"/>
+                                <TextBlock IsVisible="{Binding ShowWinMax}" Text="{DynamicResource Localization.Strategy.Martingale.MaxMultiplies}" Grid.Row="3" Grid.Column="0" VerticalAlignment="Center"/>
+                                <NumericUpDown IsVisible="{Binding ShowWinMax}" Value="{Binding Strategy.WinMaxMultiplies}" Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="2" HorizontalAlignment="Stretch" FormatString="n0"/>
+                                <TextBlock IsVisible="{Binding ShowWinModifier}" Text="{DynamicResource Localization.Strategy.Martingale.ChangeAfter}" Grid.Row="4" Grid.Column="0" VerticalAlignment="Center"/>
+                                <NumericUpDown IsVisible="{Binding ShowWinModifier}" Value="{Binding Strategy.WinDevideCounter}" Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="2" HorizontalAlignment="Stretch" FormatString="n0"/>
+                                <TextBlock IsVisible="{Binding ShowWinModifier}" Text="{DynamicResource Localization.Strategy.Martingale.Modifier}" Grid.Row="5" Grid.Column="0" VerticalAlignment="Center"/>
+                                <NumericUpDown IsVisible="{Binding ShowWinModifier}" Value="{Binding Strategy.WinDevider}" Grid.Row="5" Grid.Column="1" Grid.ColumnSpan="2" HorizontalAlignment="Stretch" FormatString="n5"/>
+                            </Grid>
+                        </Expander>
+                        <Grid RowDefinitions="*,*,*,*,*,*" ColumnDefinitions="auto,auto,*,auto">
+                            <CheckBox IsChecked="{Binding Strategy.EnableChangeWinStreak}" Grid.Column="0" Grid.Row="0" />
+                            <TextBlock Grid.Column="1" Grid.Row="0" VerticalAlignment="Center" Text="{DynamicResource Localization.Strategy.Martingale.After}" />
+                            <NumericUpDown Value="{Binding Strategy.ChangeWinStreak}" Grid.Column="2" Grid.Row="0" Grid.ColumnSpan="2"/>
+                            <TextBlock Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2" VerticalAlignment="Center"  Text="{DynamicResource Localization.Strategy.Martingale.WinsInARowChangeBet}" />
+                            <NumericUpDown Value="{Binding Strategy.ChangeWinStreakTo}" Grid.Column="2" Grid.Row="1" Grid.ColumnSpan="2"/>
+
+                            <CheckBox IsChecked="{Binding Strategy.EnableChangeChanceWin}" Grid.Column="0" Grid.Row="2" />
+                            <TextBlock Grid.Column="1" Grid.Row="2" VerticalAlignment="Center" Text="{DynamicResource Localization.Strategy.Martingale.After}" />
+                            <NumericUpDown Value="{Binding Strategy.ChangeChanceWinStreak}" Grid.Column="2" Grid.Row="2" Grid.ColumnSpan="2"/>
+                            <TextBlock Grid.Column="0" Grid.Row="3" Grid.ColumnSpan="2" VerticalAlignment="Center"  Text="{DynamicResource Localization.Strategy.Martingale.WinsInARowChangeChance}" />
+                            <NumericUpDown Value="{Binding Strategy.ChangeChanceWinTo}" Grid.Column="2" Grid.Row="3" Grid.ColumnSpan="2"/>
+
+                            <TextBlock Grid.Column="0" Grid.Row="4" Grid.ColumnSpan="1" VerticalAlignment="Center" Text="{DynamicResource Localization.Strategy.Martingale.MultiplyEvery}" />
+                            <NumericUpDown Value="{Binding Strategy.StretchWin}" Grid.Column="1" Grid.Row="4" Grid.ColumnSpan="2"/>
+                            <TextBlock Grid.Column="3" Grid.Row="4" Grid.ColumnSpan="1" VerticalAlignment="Center" Text="{DynamicResource Localization.Common.Wins}" />
+
+                            <TextBlock Grid.Column="0" Grid.Row="5" Grid.ColumnSpan="3" VerticalAlignment="Center" Text="{DynamicResource Localization.Strategy.Martingale.ResetFirstWin}" />
+                            <CheckBox IsChecked="{Binding Strategy.EnableFirstResetWin}" Grid.Column="3" Grid.Row="5" />
+                        </Grid>
+                    </StackPanel>
+                </TabItem>
+            </TabControl>
+        </StackPanel>
+    </ScrollViewer>
+</UserControl>

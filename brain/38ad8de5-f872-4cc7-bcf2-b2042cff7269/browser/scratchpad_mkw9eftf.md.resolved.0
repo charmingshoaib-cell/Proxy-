@@ -1,0 +1,10 @@
+# Task: Generate Urdu Audio for Kids Story
+
+- [x] Open ttsmaker.com
+- [x] Dismiss cookie consent
+- [ ] Select Urdu language
+- [ ] Input Urdu story text
+- [ ] Handle captcha (if possible/allowed)
+- [ ] Generate audio
+- [ ] Download audio result
+- [ ] Final report

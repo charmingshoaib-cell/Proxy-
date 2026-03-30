@@ -1,0 +1,78 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d" d:DesignWidth="400" d:DesignHeight="450"
+             xmlns:vm="using:Gambler.Bot.ViewModels.Strategies"
+             xmlns:dice="using:Gambler.Bot.Views.Games.Dice"
+             x:DataType="vm:LabouchereViewModel"
+             x:Class="Gambler.Bot.Views.Games.Strategies.Labouchere.LabouchereView"
+             xmlns:system="using:System"
+             xmlns:i="https://github.com/projektanker/icons.avalonia"
+             >
+    <Grid ColumnDefinitions="*,*">
+        <StackPanel Margin="5" Grid.Column="0">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <Button HorizontalAlignment="Left" Command="{Binding AddCommand}">
+                    <StackPanel Orientation="Horizontal">
+                        <i:Icon Classes="btnIcon" Value="mdi-plus" />
+                        <TextBlock Text="{DynamicResource Localization.Common.Triggers.Add}"/>
+                    </StackPanel>
+                </Button>
+                <Button HorizontalAlignment="Left"  Command="{Binding OpenCommand}" >
+                    <StackPanel Orientation="Horizontal">
+                        <i:Icon Classes="btnIcon" Value="mdi-dots-horizontal" />
+                        <TextBlock Text="{DynamicResource Localization.Strategy.Labouchere.Open}"/>
+                    </StackPanel>
+                </Button>
+                <Button HorizontalAlignment="Right"  Command="{Binding SaveCommand}" >
+                    <StackPanel Orientation="Horizontal">
+                        <i:Icon Classes="btnIcon" Value="mdi-content-save" />
+                        <TextBlock Text="{DynamicResource Localization.InstanceView.Menu.Save}"/>
+                    </StackPanel>
+                </Button>
+            </StackPanel>
+            <DataGrid SelectedIndex="{Binding SelectedIndex}" IsReadOnly="False" MinHeight="400" ItemsSource="{Binding BetList}"  VerticalAlignment="Stretch" >
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="{DynamicResource Localization.Game.Amount}" IsReadOnly="False" Binding="{Binding Item}"/>
+                    <DataGridTemplateColumn>
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate DataType="system:Decimal">
+                                <StackPanel Orientation="Horizontal">
+                                    <Button i:Attached.Icon="mdi-delete"  Command="{Binding $parent[DataGrid].((vm:LabouchereViewModel)DataContext).RemoveCommand}" />
+                                    <Button i:Attached.Icon="mdi-arrow-up-bold"  Command="{Binding $parent[DataGrid].((vm:LabouchereViewModel)DataContext).MoveUpCommand}"/>
+                                    <Button i:Attached.Icon="mdi-arrow-down-bold" Command="{Binding $parent[DataGrid].((vm:LabouchereViewModel)DataContext).MoveDownCommand}"/>
+                                </StackPanel>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+
+                    </DataGridTemplateColumn>
+                </DataGrid.Columns>
+            </DataGrid>
+        </StackPanel>
+        <StackPanel Margin="5" Grid.Column="1" Orientation="Vertical">
+            <ContentControl Content="{Binding PlaceBetVM}">
+                <ContentControl.DataTemplates>
+                    <DataTemplate DataType="dice:DicePlaceBetView">
+                        <dice:DicePlaceBetView/>
+                    </DataTemplate>
+                </ContentControl.DataTemplates>
+            </ContentControl>
+            <CheckBox IsChecked="{Binding Strategy.chkReverseLab}" Content="{DynamicResource Localization.Strategy.Labouchere.Reverse}"/>
+            <Expander Margin="2"  Header="{DynamicResource Localization.Strategy.Labouchere.General}" IsExpanded="True" >
+                <Expander.HeaderTemplate>
+                    <DataTemplate x:DataType="system:String" >
+                        <Grid>
+                            <TextBlock Text="{Binding}" HorizontalAlignment="Center"/>
+                        </Grid>
+                    </DataTemplate>
+                </Expander.HeaderTemplate>
+                <StackPanel>
+                    <RadioButton IsChecked="{Binding Strategy.rdbLabStop}" Content="{DynamicResource Localization.Common.Stop}"/>
+                    <RadioButton IsChecked="{Binding Strategy.rdbLabReset}" Content="{DynamicResource Localization.Common.Reset}"/>
+
+                </StackPanel>
+            </Expander>
+        </StackPanel>
+    </Grid>
+</UserControl>

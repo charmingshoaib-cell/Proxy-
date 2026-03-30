@@ -1,0 +1,12 @@
+# Task Checklist
+- [x] Open Stake.com dice game URL
+- [x] Wait for page to load (4 seconds)
+- [x] Confirm page load with screenshot
+- [x] Read `stake_injection.js` content (via opening in browser)
+- [x] Inject the script using `execute_browser_javascript` (v4.1 fixed)
+- [x] Wait for bot panel (3 seconds)
+- [x] Confirm bot panel with screenshot
+- [ ] Click "LAUNCH" button
+- [ ] Monitor betting activity (10 seconds)
+- [ ] Report final status
+- Note: Initial v4.0 injection had incorrect DOM selectors. Updated to v4.1 with precise selectors.

@@ -1,0 +1,8 @@
+# Task: Git Setup & Initial Commit
+
+- [ ] Initialize Git repository in `C:\Users\shoaib\.gemini\antigravity\scratch\age-verify-processor`
+- [ ] Create [.gitignore](file:///C:/Users/shoaib/.gemini/antigravity/scratch/age-verify-processor/.gitignore) file
+- [ ] Add all files to the repository
+- [ ] Create initial commit: "Initial setup of age-verify-processor Hono server"
+- [ ] Configure GitHub token-based authentication
+- [ ] (Pending User Decision) Push to a new GitHub repository

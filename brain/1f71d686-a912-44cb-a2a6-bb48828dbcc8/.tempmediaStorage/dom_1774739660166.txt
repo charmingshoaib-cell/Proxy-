@@ -1,0 +1,45 @@
+<current_dom_explanation>
+This is a temporary snapshot of the current page's DOM structure. The DOM will change if you navigate to or interact with another page. Use a tool like browser_get_dom to capture and preserve the DOM in your trajectory if needed for later reference.
+</current_dom_explanation>
+<current_dom>
+Hey there! Cookies are required to use this site. Feel free to check out our Cookie Policy at any time.
+[0] (680,47)<button class='gdpr-gookie-banner-button' id='accept-cookies'>I don’t mind Cookies />
+[1] (124,192)<a class='logo-wrapper' href='/' />
+	[2] (124,192)<div  />
+		[3] (124,192)<p  />
+			[4] (124,199)<span  />
+				[5] (124,192)<span  />
+					[6] (71,192)<span >NIKS />
+					[7] (108,192)<span  />
+					[8] (161,192)<span >INDIAN />
+[9] (329,191)<a href='/' />
+	[10] (325,191)<span >Home />
+[11] (380,191)<a href='/activity' />
+	[12] (380,191)<span >Calendar />
+[13] (439,191)<a href='/videos' />
+	[14] (439,191)<span >Videos />
+[15] (491,191)<a href='/photosets' />
+	[16] (491,191)<span >Photos />
+[17] (556,191)<a href='/liveshow' />
+	[18] (556,191)<span >Live shows />
+[19] (618,191)<a href='/tips' />
+	[20] (618,191)<span >Tip Me />
+[21] (674,191)<span >More />
+	[22] (695,190)<i  />
+[23] (873,192)<a href='/login' id='login-button' />
+	[24] (857,191)<i  />
+	[25] (883,192)<span >Login />
+[26] (938,192)<a href='/join' id='join-button' />
+	[27] (925,192)<i  />
+	[28] (946,192)<span >Join />
+Welcome to NIKS INDIAN's World
+Niks is the first ever male Pornstar from India who is working at an International level across Europe, Latin America and US, a passion he developed when he watched his first porn video during teenage led him to explore this world of gorgeous women doing unimaginable acts of sex.
+Porn industry has attracted the most beautiful women from around the world and this fact attracted him to this industry
+.
+Cum Enjoy his content & connect with him on Instagram @
+[29] (629,615)<a href='https://www.instagram.com/niksindiancom/' />
+	[30] (629,615)<span >https://www.instagram.com/niksindiancom/ />
+[31] (557,715)<a href='/about'>More about me />
+CUM and watch HOT TEENS, Desi BHABHIS and MILFS getting fucked
+
+</current_dom>

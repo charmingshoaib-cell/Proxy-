@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Neon Dice Roll</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #0f172a;
+            --container-bg: rgba(255, 255, 255, 0.05);
+            --primary-glow: 0 0 30px rgba(56, 189, 248, 0.5);
+            --text-color: #f8fafc;
+            --accent: #38bdf8;
+            --dice-bg: rgba(255, 255, 255, 0.1);
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Outfit', sans-serif;
+            background: var(--bg-color);
+            color: var(--text-color);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            overflow: hidden;
+            background: radial-gradient(circle at center, #1e293b 0%, #0f172a 100%);
+        }
+
+        .container {
+            background: var(--container-bg);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 3rem;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5), var(--primary-glow);
+            max-width: 400px;
+            width: 90%;
+            transition: transform 0.3s ease;
+        }
+
+        .container:hover {
+            transform: translateY(-5px);
+        }
+
+        h1 {
+            margin-top: 0;
+            margin-bottom: 2rem;
+            font-size: 2.5rem;
+            background: linear-gradient(135deg, #38bdf8, #818cf8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 700;
+        }
+
+        .dice-container {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 2.5rem;
+            perspective: 1000px;
+        }
+
+        .dice {
+            background: var(--dice-bg);
+            width: 100px;
+            height: 100px;
+            border-radius: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 4rem;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            box-shadow: inset 0 0 20px rgba(255, 255, 255, 0.05), 0 10px 20px rgba(0, 0, 0, 0.3);
+            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            transform-style: preserve-3d;
+        }
+
+        .dice.rolling {
+            animation: roll 0.6s ease-in-out;
+        }
+
+        @keyframes roll {
+            0% { transform: rotateX(0deg) rotateY(0deg); }
+            50% { transform: rotateX(180deg) rotateY(180deg) scale(1.1); }
+            100% { transform: rotateX(360deg) rotateY(360deg); }
+        }
+
+        .dot {
+            background-color: var(--accent);
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            position: absolute;
+            box-shadow: 0 0 10px var(--accent);
+        }
+
+        /* Dice Face Layouts */
+        .dice[data-value="1"] .dot { top: 50%; left: 50%; transform: translate(-50%, -50%); }
+
+        .dice[data-value="2"] .dot:nth-child(1) { top: 20%; left: 20%; }
+        .dice[data-value="2"] .dot:nth-child(2) { bottom: 20%; right: 20%; }
+
+        .dice[data-value="3"] .dot:nth-child(1) { top: 20%; left: 20%; }
+        .dice[data-value="3"] .dot:nth-child(2) { top: 50%; left: 50%; transform: translate(-50%, -50%); }
+        .dice[data-value="3"] .dot:nth-child(3) { bottom: 20%; right: 20%; }
+
+        .dice[data-value="4"] .dot:nth-child(1) { top: 20%; left: 20%; }
+        .dice[data-value="4"] .dot:nth-child(2) { top: 20%; right: 20%; }
+        .dice[data-value="4"] .dot:nth-child(3) { bottom: 20%; left: 20%; }
+        .dice[data-value="4"] .dot:nth-child(4) { bottom: 20%; right: 20%; }
+
+        .dice[data-value="5"] .dot:nth-child(1) { top: 20%; left: 20%; }
+        .dice[data-value="5"] .dot:nth-child(2) { top: 20%; right: 20%; }
+        .dice[data-value="5"] .dot:nth-child(3) { top: 50%; left: 50%; transform: translate(-50%, -50%); }
+        .dice[data-value="5"] .dot:nth-child(4) { bottom: 20%; left: 20%; }
+        .dice[data-value="5"] .dot:nth-child(5) { bottom: 20%; right: 20%; }
+
+        .dice[data-value="6"] .dot:nth-child(1) { top: 20%; left: 15%; }
+        .dice[data-value="6"] .dot:nth-child(2) { top: 50%; left: 15%; transform: translateY(-50%); }
+        .dice[data-value="6"] .dot:nth-child(3) { bottom: 20%; left: 15%; }
+        .dice[data-value="6"] .dot:nth-child(4) { top: 20%; right: 15%; }
+        .dice[data-value="6"] .dot:nth-child(5) { top: 50%; right: 15%; transform: translateY(-50%); }
+        .dice[data-value="6"] .dot:nth-child(6) { bottom: 20%; right: 15%; }
+
+        #result {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            min-height: 36px;
+            font-weight: 700;
+        }
+
+        button {
+            background: linear-gradient(135deg, #2563eb, #3b82f6);
+            color: white;
+            border: none;
+            padding: 1rem 2.5rem;
+            font-size: 1.25rem;
+            font-weight: 700;
+            border-radius: 9999px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 20px rgba(37, 99, 235, 0.4);
+            font-family: inherit;
+        }
+
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 15px 25px rgba(37, 99, 235, 0.6);
+        }
+
+        button:active {
+            transform: translateY(1px);
+        }
+        
+        button:disabled {
+            background: #475569;
+            box-shadow: none;
+            cursor: not-allowed;
+            transform: none;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Neon Dice Roll</h1>
+        
+        <div class="dice-container">
+            <div id="dice1" class="dice" data-value="1">
+                <div class="dot"></div>
+            </div>
+            <div id="dice2" class="dice" data-value="1">
+                <div class="dot"></div>
+            </div>
+        </div>
+
+        <div id="result">Ready to roll...</div>
+
+        <button id="rollButton" onclick="rollDice()">ROLL DICE</button>
+    </div>
+
+    <script>
+        function setDiceFace(diceElement, value) {
+            diceElement.setAttribute('data-value', value);
+            diceElement.innerHTML = '';
+            for (let i = 0; i < value; i++) {
+                const dot = document.createElement('div');
+                dot.className = 'dot';
+                diceElement.appendChild(dot);
+            }
+        }
+
+        function rollDice() {
+            const dice1 = document.getElementById('dice1');
+            const dice2 = document.getElementById('dice2');
+            const resultText = document.getElementById('result');
+            const button = document.getElementById('rollButton');
+
+            // Disable button during animation
+            button.disabled = true;
+            resultText.innerText = "Rolling...";
+
+            // Add rolling animation class
+            dice1.classList.add('rolling');
+            dice2.classList.add('rolling');
+
+            setTimeout(() => {
+                // Generate random numbers between 1 and 6
+                const value1 = Math.floor(Math.random() * 6) + 1;
+                const value2 = Math.floor(Math.random() * 6) + 1;
+
+                // Set new faces
+                setDiceFace(dice1, value1);
+                setDiceFace(dice2, value2);
+
+                // Show result
+                const total = value1 + value2;
+                resultText.innerHTML = `You rolled a <span style="color:var(--accent)">${total}</span>!`;
+
+                // Remove rolling class and enable button
+                dice1.classList.remove('rolling');
+                dice2.classList.remove('rolling');
+                button.disabled = false;
+            }, 600); // Matches animation duration
+        }
+
+        // Initialize faces
+        setDiceFace(document.getElementById('dice1'), 1);
+        setDiceFace(document.getElementById('dice2'), 1);
+    </script>
+</body>
+</html>

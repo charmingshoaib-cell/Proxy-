@@ -1,0 +1,9 @@
+- `[/]` Multi-Drive Backend Implementation
+    - `[ ]` Add `ROOTS` configuration to `server.js`
+    - `[ ]` Update file APIs to support `rootId` parameter
+- `[ ]` Define `Root` types in `types.ts`
+- `[ ]` Update `App.tsx` and `Sidebar` to handle drive/root selections
+- `[ ]` Implement Drive Switcher in `WorkspaceExplorer.tsx`
+- `[ ]` Ensure `FileEditor.tsx` handles `rootId` for multi-drive editing
+- `[ ]` Update `ChatInterface` and `MarkdownRenderer` to support drive-specific actions
+- `[ ]` Final verification across all drives (C, G, H, OneDrive)

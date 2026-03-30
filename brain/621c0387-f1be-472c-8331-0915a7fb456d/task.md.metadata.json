@@ -1,0 +1,5 @@
+{
+  "artifactType": "ARTIFACT_TYPE_TASK",
+  "summary": "Initial task list for the Agentic Workspace Integration feature. This project aims to add a \"Workspace Explorer\" to the `gemini-devtool-suite` allowing users to browse their local files and interact with the AI assistant through them.",
+  "updatedAt": "2026-03-26T17:24:46.274989200Z"
+}

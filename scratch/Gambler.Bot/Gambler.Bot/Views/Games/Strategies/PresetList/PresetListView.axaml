@@ -1,0 +1,119 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d" d:DesignWidth="300" d:DesignHeight="450"
+             x:Class="Gambler.Bot.Views.Games.Strategies.PresetList.PresetListView"
+             xmlns:vm="using:Gambler.Bot.ViewModels.Strategies"
+             xmlns:dice="using:Gambler.Bot.Views.Games.Dice"
+             x:DataType="vm:PresetListViewModel"
+             xmlns:system="using:System"
+             xmlns:i="https://github.com/projektanker/icons.avalonia"
+             xmlns:img="https://github.com/projektanker/icons.avalonia"
+             >
+    <StackPanel Orientation="Vertical">
+
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+            <Button HorizontalAlignment="Left" Command="{Binding AddCommand}">
+                <StackPanel Orientation="Horizontal">
+                    <img:Icon Classes="btnIcon" Value="mdi-plus" />
+                    <TextBlock Text="{DynamicResource Localization.Common.Triggers.Add}"/>
+                </StackPanel>
+            </Button>
+            <Button HorizontalAlignment="Left"  Command="{Binding OpenCommand}" >
+                <StackPanel Orientation="Horizontal">
+                    <img:Icon Classes="btnIcon" Value="mdi-dots-horizontal" />
+                    <TextBlock Text="{DynamicResource Localization.Strategy.Labouchere.Open}"/>
+                </StackPanel>
+            </Button>
+            <Button HorizontalAlignment="Right"  Command="{Binding SaveCommand}" >
+                <StackPanel Orientation="Horizontal">
+                    <img:Icon Classes="btnIcon" Value="mdi-content-save" />
+                    <TextBlock Text="{DynamicResource Localization.InstanceView.Menu.Save}"/>
+                </StackPanel>
+            </Button>
+        </StackPanel>
+
+        <DataGrid ItemsSource="{Binding BetList}" SelectedIndex="{Binding SelectedIndex}" MinHeight="200">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="{DynamicResource Localization.Game.Amount}" Binding="{Binding Amount}"></DataGridTextColumn>
+                <DataGridCheckBoxColumn Header="{DynamicResource Localization.Games.Dice.High}" IsThreeState="True" Binding="{Binding High}"></DataGridCheckBoxColumn>
+                <DataGridCheckBoxColumn Header="{DynamicResource Localization.Strategy.Preset.Switch}" Binding="{Binding Switch}"></DataGridCheckBoxColumn>
+                <DataGridTextColumn Header="{DynamicResource Localization.Games.Dice.Chance}" Binding="{Binding Chance}"></DataGridTextColumn>
+                <DataGridTemplateColumn>
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate >
+                            <StackPanel Orientation="Horizontal">
+                                <Button i:Attached.Icon="mdi-delete" Command="{Binding $parent[DataGrid].((vm:PresetListViewModel)DataContext).RemoveCommand}" />
+                                <Button i:Attached.Icon="mdi-arrow-up-bold" Command="{Binding $parent[DataGrid].((vm:PresetListViewModel)DataContext).MoveUpCommand}"/>
+                                <Button i:Attached.Icon="mdi-arrow-down-bold" Command="{Binding $parent[DataGrid].((vm:PresetListViewModel)DataContext).MoveDownCommand}"/>
+                            </StackPanel>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+        <Expander Margin="2"  Header="{DynamicResource Localization.Strategy.Preset.EndList}" IsExpanded="True" >
+            <Expander.HeaderTemplate>
+                <DataTemplate x:DataType="system:String" >
+                    <Grid>
+                        <TextBlock Text="{Binding}" HorizontalAlignment="Center"/>
+                    </Grid>
+                </DataTemplate>
+            </Expander.HeaderTemplate>
+            <StackPanel>
+                <ComboBox ItemsSource="{Binding Options}" SelectedItem="{Binding OnFinishAction}"/>
+                <StackPanel Orientation="Horizontal"  IsVisible="{Binding ShowFinishSteps}">
+                    <NumericUpDown Value="{Binding Strategy.EndStep}">
+
+                    </NumericUpDown>
+                    <TextBlock VerticalAlignment="Center" Text="{DynamicResource Localization.Strategy.Preset.StepsBackward}"/>
+                </StackPanel>
+            </StackPanel>
+
+        </Expander>
+        <Expander Margin="2"  Header="{DynamicResource Localization.Common.Reset.OnLoss}" IsExpanded="True" >
+            <Expander.HeaderTemplate>
+                <DataTemplate x:DataType="system:String" >
+                    <Grid>
+                        <TextBlock Text="{Binding}" HorizontalAlignment="Center"/>
+                    </Grid>
+                </DataTemplate>
+            </Expander.HeaderTemplate>
+            <StackPanel>
+                <ComboBox ItemsSource="{Binding Options}" SelectedItem="{Binding OnLossAction}"/>
+                <StackPanel Orientation="Horizontal" IsVisible="{Binding ShowLossSteps}">
+                    <NumericUpDown Value="{Binding Strategy.LossStep}">
+
+                    </NumericUpDown>
+                    <TextBlock VerticalAlignment="Center" Text="{DynamicResource Localization.Strategy.Preset.StepsForward}"/>
+                </StackPanel>
+
+
+            </StackPanel>
+
+        </Expander>
+        <Expander Margin="2"  Header="{DynamicResource Localization.Common.Reset.OnWin}" IsExpanded="True" >
+            <Expander.HeaderTemplate>
+                <DataTemplate x:DataType="system:String" >
+                    <Grid>
+                        <TextBlock Text="{Binding}" HorizontalAlignment="Center"/>
+                    </Grid>
+                </DataTemplate>
+            </Expander.HeaderTemplate>
+            <StackPanel>
+                <ComboBox ItemsSource="{Binding Options}" SelectedItem="{Binding OnWinAction}"/>
+                <StackPanel Orientation="Horizontal"  IsVisible="{Binding ShowWinSteps}">
+                    <NumericUpDown Value="{Binding Strategy.WinStep}">
+
+                    </NumericUpDown>
+                    <TextBlock VerticalAlignment="Center" Text="{DynamicResource Localization.Strategy.Preset.StepsBackward}"/>
+                </StackPanel>
+
+
+            </StackPanel>
+
+        </Expander>
+    </StackPanel>
+</UserControl>

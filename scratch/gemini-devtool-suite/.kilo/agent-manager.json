@@ -1,0 +1,17 @@
+{
+  "worktrees": {
+    "wt-1774736172717-1": {
+      "branch": "learned-cowl",
+      "path": "c:\\Users\\shoaib\\.gemini\\antigravity\\scratch\\gemini-devtool-suite\\.kilo\\worktrees\\learned-cowl",
+      "parentBranch": "master",
+      "createdAt": "2026-03-28T22:16:12.717Z"
+    }
+  },
+  "sessions": {
+    "ses_2c97a54d1ffe9lfCYb82X2TzUU": {
+      "worktreeId": "wt-1774736172717-1",
+      "createdAt": "2026-03-28T22:17:03.141Z"
+    }
+  },
+  "sessionsCollapsed": true
+}

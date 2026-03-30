@@ -1,0 +1,7 @@
+{
+  "artifactType": "ARTIFACT_TYPE_IMPLEMENTATION_PLAN",
+  "summary": "Implementation plan to add Multi-Drive support (G:, H:, OneDrive, etc.) to the Gemini DevTool Suite, alongside the existing IDE transformation.",
+  "updatedAt": "2026-03-28T21:12:17.050031300Z",
+  "version": "1",
+  "requestFeedback": true
+}

@@ -1,0 +1,72 @@
+[0] (190,45)<a aria-label='Front' class='navbar-brand' href='/' />
+	[1] (187,45)<img  />
+Free Text to Speech
+[2] (847,62)<a class='btn btn-ghost-primary  btn-sm p-1 rounded shadow shadow-sm  my-1 small pro-btn-font broder border-2 border-warning ' href='https://pro.ttsmaker.com/pricing?from=navbar-try-pro-btn'>Pro Upgrade />
+	[3] (822,61)<i  />
+[4] (335,163)<label class='form-label text-left d-flex flex-row'>Maximum characters />
+	Maximum characters
+	1000
+	remaining
+	1000
+	available
+	[5] (515,163)<a class=' text-muted  dropdown-toggle strong' href='javascript:void(0);' role='button'>Insert Pause />
+		[6] (481,163)<i  />
+[7] (335,615)<textarea class='form-control border-2 p-4 border-dark ' id='UserInputTextarea' placeholder=' ' />
+[8] (722,163)<label class='form-label'>Language />
+	[9] (763,162)<a class='float-end small text-link ' href='/voice-dialogue-generator/' />
+		[10] (651,161)<i  />
+		[11] (768,161)<span >Multi Speaker Mode (Try new AI Voice Dialogue Generator) />
+[12] (722,226)<button class='btn dropdown-toggle btn-light' role='combobox' title='English' />
+	[13] (716,226)<div  />
+		[14] (716,226)<div  />
+			[15] (716,226)<div >English />
+[16] (722,300)<label class='form-label text-left d-flex justify-content-between align-items-center'>Voices />
+	Voices
+	Selected: 148
+	[17] (837,300)<a class='text-secondary small' href='#'>Expand AI Voice Library />
+		[18] (799,300)<i  />
+[19] (722,558)<div class='  border-bottom pb-1  shadow-none border-top border-right   border-left p-1 w-100' scrollable='true' />
+	[20] (718,433)<label class='form-control text-left border-2 mb-1  text-capitalize m-auto justify-content-center  center-block m-auto align-self-center ann-label-div  rounded rounded-2 border border-1 border-dark  p-1' />
+		[21] (577,358)<span >1 />
+		[22] (718,443)<div  />
+			[23] (612,402)<span  />
+				[24] (612,404)<img  />
+			[25] (593,383)<input class='form-check-input m-auto' id='RadioUserSelectAnnouncerID148' />
+			[26] (725,426)<span >148 - 🔥alayna-🇺🇸united states female (hot + unlimited) />
+				[27] (648,404)<span >Unlimited />
+			[28] (726,489)<div  />
+				[29] (615,486)<a class=' nav-link  p-0  pt-2 pl-2 m-0  m-auto play-example-btn' href='javascript:;'>Example />
+					[30] (595,492)<i  />
+				[31] (710,494)<a aria-label='Upgrade to TTSMaker Pro for up to 20,000 characters per conversion.' class='badge badge-primary text-dark  px-0 rounded-pill hint--top hint--large'>Limit Per Conversion: 1000 characters />
+					[32] (646,494)<i  />
+	[33] (718,622)<label class='form-control text-left border-2 mb-1  text-capitalize m-auto justify-content-center  center-block m-auto align-self-center ann-label-div  rounded rounded-2 border border-1 border-dark  p-1' />
+		[34] (577,564)<span >2 />
+		[35] (718,631)<div  />
+			[36] (612,592)<span  />
+				[37] (612,594)<img  />
+			[38] (593,589)<input class='form-check-input m-auto' id='RadioUserSelectAnnouncerID149' />
+			[39] (725,607)<span >149 - 🔥sophia-🇺🇸united states female (hot + unlimited) />
+				[40] (648,594)<span >Unlimited />
+			[41] (726,662)<div  />
+				[42] (615,659)<a class=' nav-link  p-0  pt-2 pl-2 m-0  m-auto play-example-btn' href='javascript:;'>Example />
+					[43] (595,664)<i  />
+				[44] (710,666)<a aria-label='Upgrade to TTSMaker Pro for up to 20,000 characters per conversion.' class='badge badge-primary text-dark  px-0 rounded-pill hint--top hint--large'>Limit Per Conversion: 2000 characters />
+					[45] (646,666)<i  />
+	[46] (577,736)<span >3 />
+	[47] (612,764)<span  />
+		[48] (612,766)<img  />
+	[49] (593,761)<input class='form-check-input m-auto' id='RadioUserSelectAnnouncerID788' />
+	[50] (648,766)<span >Unlimited />
+	788 - 🔥alfie-🇺🇸 united states male voice (slow + unlimited)
+	Example
+	Limit Per Conversion: 1000 characters
+	4
+	Emotion
+	1480 - alayna-🇺🇸united states female (v2 multi-emotion version)
+Captcha code
+More Settings
+Convert To Speech
+This website uses Cookies to ensure you get the best experience on our website.
+[51] (606,942)<a href='/privacy'>Learn More />
+[52] (659,936)<button class='btn btn-primary btn-sm ml-3 p-2'>Yes, I agree />
+[53] (980,881)<img  />

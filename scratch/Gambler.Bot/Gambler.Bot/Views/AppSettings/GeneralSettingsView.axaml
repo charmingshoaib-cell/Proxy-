@@ -1,0 +1,95 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d" d:DesignWidth="450" d:DesignHeight="450"
+             x:Class="Gambler.Bot.Views.AppSettings.GeneralSettingsView"
+             xmlns:vm="clr-namespace:Gambler.Bot.ViewModels.AppSettings"
+             x:DataType="vm:GeneralSettingsViewModel" xmlns:actipro="http://schemas.actiprosoftware.com/avaloniaui"
+
+             >
+    <StackPanel Orientation="Vertical">
+
+       
+
+        <WrapPanel Orientation="Horizontal">
+
+            <Expander IsExpanded="True" Width="250" Margin="5" Header="{Binding}">
+                <Expander.HeaderTemplate>
+                    <DataTemplate x:DataType="vm:GeneralSettingsViewModel">
+                        <Grid>
+                            <TextBlock Text="{DynamicResource Localization.AppSettings.LookAndFeel}" HorizontalAlignment="Center"/>
+                        </Grid>
+                    </DataTemplate>
+                </Expander.HeaderTemplate>
+                <StackPanel >
+                    <Grid ColumnDefinitions="*,auto">
+                        <TextBlock Text="Colour scheme" Grid.Column="0"/>
+                        <actipro:ToggleThemeButton Command="{Binding ThemeToggled}" HorizontalAlignment="Right" Grid.Column="1" />
+
+                    </Grid>
+                    <ComboBox SelectedItem="{Binding SelectedRamp}" ItemsSource="{Binding Ramps}" DisplayMemberBinding="{Binding Name}" />
+                    <TextBlock Text="Should I offer multiple layouts here?" IsVisible="False"/>
+                    <ComboBox IsVisible="False"/>
+                </StackPanel>
+            </Expander>
+            <Expander IsExpanded="True"  Width="250"  Margin="5" Header="{Binding}">
+                <Expander.HeaderTemplate>
+                    <DataTemplate x:DataType="vm:GeneralSettingsViewModel">
+                        <Grid>
+                            <TextBlock Text="{DynamicResource Localization.AppSettings.Updates}" HorizontalAlignment="Center"/>
+                        </Grid>
+                    </DataTemplate>
+                </Expander.HeaderTemplate>
+                <StackPanel >
+                    <ComboBox SelectedValue="{Binding UiSettings.UpdateMode}" ItemsSource="{Binding UpdateModes}">
+
+                    </ComboBox>
+                </StackPanel>
+            </Expander>
+            <Expander IsExpanded="True"  Width="250" Margin="5" Header="{Binding}">
+                <Expander.HeaderTemplate>
+                    <DataTemplate x:DataType="vm:GeneralSettingsViewModel">
+                        <Grid>
+                            <TextBlock Text="{DynamicResource Localization.AppSettings.LiveBets}" HorizontalAlignment="Center"/>
+                        </Grid>
+                    </DataTemplate>
+                </Expander.HeaderTemplate>
+                <StackPanel >
+                    <TextBlock Text="Number of bets in live bets grid" />
+                    <NumericUpDown Value="{Binding UiSettings.LiveBets}" />
+                    <TextBlock Text="Number of bets in live bets chart" />
+                    <NumericUpDown Value="{Binding UiSettings.ChartBets}"/>
+                </StackPanel>
+            </Expander>
+            <Expander IsExpanded="True"  Width="250" Margin="5" Header="{Binding}">
+                <Expander.HeaderTemplate>
+                    <DataTemplate x:DataType="vm:GeneralSettingsViewModel">
+                        <Grid>
+                            <TextBlock Text="{DynamicResource Localization.AppSettings.Donate}" HorizontalAlignment="Center"/>
+                        </Grid>
+                    </DataTemplate>
+                </Expander.HeaderTemplate>
+                <StackPanel >
+                    <ComboBox SelectedItem="{Binding UiSettings.DonateMode}" ItemsSource="{Binding UpdateModes}" >
+                    </ComboBox>
+                    <NumericUpDown IsVisible="{Binding ShowDonatePercentage}"/>
+                </StackPanel>
+            </Expander>
+            <Expander IsExpanded="True"  Width="250" Margin="5" Header="{Binding}">
+                <Expander.HeaderTemplate>
+                    <DataTemplate x:DataType="vm:GeneralSettingsViewModel">
+                        <Grid>
+                            <TextBlock Text="{DynamicResource Localization.AppSettings.AutoLogin}" HorizontalAlignment="Center"/>
+                        </Grid>
+                    </DataTemplate>
+                </Expander.HeaderTemplate>
+                <StackPanel >
+                    <TextBlock Text="Specify login details here as required? Maybe this shouldn't be a setting but a cmd param?" />
+                    <TextBlock Text="Or doesn it just pull the current site? although these settings are not site specific?" />
+                    <TextBlock Text="Or specify a list of sites to log into and their details (when tabs can be used)" />
+                </StackPanel>
+            </Expander>
+        </WrapPanel>
+    </StackPanel>
+</UserControl>

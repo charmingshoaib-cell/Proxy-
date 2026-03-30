@@ -1,0 +1,40 @@
+# Stake API Key Setup for Gambler.Bot
+
+The user needs to obtain and configure the Stake.com API key to use Gambler.Bot for automated betting.
+
+## User Review Required
+
+> [!IMPORTANT]
+> **Security Warning**: Your API key grants access to your Stake account for betting and potentially other actions. **Never share your API Key or Session Token with anyone.** 
+
+> [!NOTE]
+> The long hex string you provided (96 characters) is likely your **Session Token** (cookie). While some bots use this, Gambler.Bot usually prefers the official **Stake API Key**.
+
+---
+
+## Proposed Instructions
+
+### 1. How to find your Stake API Key
+To obtain your official API key from Stake:
+1. Log in to your account on [Stake.com](https://stake.com).
+2. Click on your **User Profile icon** (top right).
+3. Select **Settings** (or the gear icon).
+4. Navigate to the **API** tab on the left sidebar.
+5. If you have 2FA enabled, you will need to enter your code.
+6. Look for the **API Key** section. If you haven't generated one yet, click **Generate**.
+7. Copy the key.
+
+### 2. How to use it in Gambler.Bot
+1. Open **Gambler.Bot**.
+2. Select **Stake** from the list of sites.
+3. When the login screen appears, look for the field labeled **API Key** or **Token**.
+4. Paste the key you copied from the Stake website.
+5. Click **Login**.
+
+---
+
+## Verification Plan
+
+### Manual Verification
+- The user should attempt to log in to Gambler.Bot using the official API key found in their Stake settings.
+- Check if the "Logged In" status (the green user icon) appears in the bot's interface.

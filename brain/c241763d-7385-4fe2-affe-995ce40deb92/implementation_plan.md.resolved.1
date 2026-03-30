@@ -1,0 +1,46 @@
+# Implementation Plan: Boosting Agentic Power
+
+The goal is to turn the **Gemini DevTool Suite** into a true "Agentic IDE" by giving the assistant the power to execute shell commands and modify the local filesystem directly through the web interface.
+
+## User Review Required
+
+> [!WARNING]
+> Enabling direct shell execution and file modification is powerful but carries risks. Ensure you only run the suite in trusted local environments.
+
+## Proposed Changes
+
+### Backend ([server.js](file:///c:/Users/shoaib/.gemini/antigravity/scratch/gemini-devtool-suite/server.js))
+
+#### [MODIFY] [server.js](file:///c:/Users/shoaib/.gemini/antigravity/scratch/gemini-devtool-suite/server.js)
+- **POST `/api/terminal`**: Execute shell commands and return output/errors.
+- **POST `/api/files/write`**: Write content to a specified file path.
+- **POST `/api/files/read`**: Read content from a file path.
+- **POST `/api/files/list`**: List contents of a directory.
+
+---
+
+### Frontend (React)
+
+#### [NEW] `Terminal.tsx`
+- A component to display command output and a command input field.
+- Integration with the backend `/api/terminal` endpoint.
+
+#### [MODIFY] [App.tsx](file:///c:/Users/shoaib/.gemini/antigravity/scratch/gemini-devtool-suite/App.tsx)
+- Add a new "Terminal" view/tab to the main layout.
+- Ensure the Terminal remains visible or easily accessible alongside the Chat.
+
+#### [MODIFY] [ChatInterface.tsx](file:///c:/Users/shoaib/.gemini/antigravity/scratch/gemini-devtool-suite/components/ChatInterface.tsx)
+- Update the chat logic to allow "Agentic Actions" (e.g., automatically suggesting or running a command based on user request).
+
+## Verification Plan
+
+### Automated Tests
+- Create `test_agentic_api.js` to verify:
+    - Command execution (e.g., `echo "hello"`).
+    - File writing and reading.
+
+### Manual Verification
+1. Open the DevTool Suite.
+2. In the new Terminal tab, run `dir` or [ls](file:///c:/Users/shoaib/Documents/ai-video-models-directory/app.js#519-567) to verify connection.
+3. Use the chat to ask: "Create a new file called power.txt with 'Active' content."
+4. Verify the file is created in the root directory.

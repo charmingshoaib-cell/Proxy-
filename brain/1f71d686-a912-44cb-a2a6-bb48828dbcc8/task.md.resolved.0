@@ -1,0 +1,8 @@
+# Task: Run Age Verification Processor
+
+- [ ] Create workspace directory: `C:\Users\shoaib\.gemini\antigravity\scratch\age-verify-processor`
+- [ ] Copy `index.ts` from `Temp\7zO0E0DA862` to workspace
+- [ ] Initialize Node project with `npm init -y`
+- [ ] Install dependencies: `hono` and `tsx`
+- [ ] Run the server with `npx tsx index.ts`
+- [ ] Verify functionality via `/health` endpoint

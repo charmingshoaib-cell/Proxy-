@@ -1,0 +1,5 @@
+{
+  "artifactType": "ARTIFACT_TYPE_IMPLEMENTATION_PLAN",
+  "summary": "Implementation plan for the Agentic Workspace Integration feature in `gemini-devtool-suite`. This includes adding a file explorer, updating navigation, and integrating file context with the assistant.",
+  "updatedAt": "2026-03-26T17:25:01.597327400Z"
+}

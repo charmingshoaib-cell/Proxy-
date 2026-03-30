@@ -1,0 +1,73 @@
+[0] (194,45)<a aria-label='Front' class='navbar-brand' href='/' />
+	[1] (190,45)<img  />
+Free Text to Speech
+[2] (851,62)<a class='btn btn-ghost-primary  btn-sm p-1 rounded shadow shadow-sm  my-1 small pro-btn-font broder border-2 border-warning ' href='https://pro.ttsmaker.com/pricing?from=navbar-try-pro-btn'>Pro Upgrade />
+	[3] (826,61)<i  />
+[4] (339,163)<label class='form-label text-left d-flex flex-row'>Maximum characters />
+	Maximum characters
+	3000
+	remaining
+	2610
+	available
+	[5] (519,163)<a class=' text-muted  dropdown-toggle strong' href='javascript:void(0);' role='button'>Insert Pause />
+		[6] (485,163)<i  />
+[7] (339,615)<textarea class='form-control border-2 p-4 border-dark ' id='UserInputTextarea' placeholder=' ' />
+[8] (726,163)<label class='form-label'>Language />
+	[9] (767,162)<a class='float-end small text-link ' href='/voice-dialogue-generator/' />
+		[10] (655,161)<i  />
+		[11] (772,161)<span >Multi Speaker Mode (Try new AI Voice Dialogue Generator) />
+[12] (726,226)<button class='btn dropdown-toggle btn-light' role='combobox' title='اردو - Urdu' />
+	[13] (720,226)<div  />
+		[14] (720,226)<div  />
+			[15] (720,226)<div >اردو - Urdu />
+[16] (726,300)<label class='form-label text-left d-flex justify-content-between align-items-center'>Voices />
+	Voices
+	Selected: 310011
+	[17] (841,300)<a class='text-secondary small' href='#'>Expand AI Voice Library />
+		[18] (803,300)<i  />
+[19] (726,558)<div class='  border-bottom pb-1  shadow-none border-top border-right   border-left p-1 w-100' scrollable='true' />
+	[20] (722,418)<label class='form-control text-left border-2 mb-1  text-capitalize m-auto justify-content-center  center-block m-auto align-self-center ann-label-div  rounded rounded-2 border border-1 border-dark  p-1' />
+		[21] (581,358)<span >1 />
+		[22] (722,428)<div  />
+			[23] (616,402)<span  />
+				[24] (616,404)<img  />
+			[25] (597,383)<input class='form-check-input m-auto' id='RadioUserSelectAnnouncerID310001' />
+			[26] (725,402)<span >310001 - aanya-🇮🇳 india female urdu voice />
+			[27] (730,459)<div  />
+				[28] (619,456)<a class=' nav-link  p-0  pt-2 pl-2 m-0  m-auto play-example-btn' href='javascript:;'>Example />
+					[29] (599,462)<i  />
+				[30] (713,464)<a aria-label='Upgrade to TTSMaker Pro for up to 20,000 characters per conversion.' class='badge badge-primary text-dark  px-0 rounded-pill hint--top hint--large'>Limit Per Conversion: 3000 characters />
+					[31] (650,464)<i  />
+	[32] (722,593)<label class='form-control text-left border-2 mb-1  text-capitalize m-auto justify-content-center  center-block m-auto align-self-center ann-label-div  rounded rounded-2 border border-1 border-dark  p-1' />
+		[33] (581,533)<span >2 />
+		[34] (722,602)<div  />
+			[35] (616,577)<span  />
+				[36] (616,579)<img  />
+			[37] (597,558)<input class='form-check-input m-auto' id='RadioUserSelectAnnouncerID310002' />
+			[38] (716,577)<span >310002 - amit-🇮🇳 india male urdu voice />
+			[39] (730,634)<div  />
+				[40] (619,631)<a class=' nav-link  p-0  pt-2 pl-2 m-0  m-auto play-example-btn' href='javascript:;'>Example />
+					[41] (599,637)<i  />
+				[42] (713,638)<a aria-label='Upgrade to TTSMaker Pro for up to 20,000 characters per conversion.' class='badge badge-primary text-dark  px-0 rounded-pill hint--top hint--large'>Limit Per Conversion: 3000 characters />
+					[43] (650,638)<i  />
+	[44] (722,768)<label class='form-control text-left border-2 mb-1  text-capitalize m-auto justify-content-center  center-block m-auto align-self-center ann-label-div  rounded rounded-2 border border-1 border-dark  p-1' />
+		[45] (581,708)<span >3 />
+		[46] (722,777)<div  />
+			[47] (616,752)<span  />
+				[48] (616,753)<img  />
+			[49] (597,733)<input class='form-check-input m-auto' id='RadioUserSelectAnnouncerID310011' />
+			[50] (731,752)<span >310011 - vidya-🇵🇰 pakistan female urdu voice />
+			Example
+			Limit Per Conversion: 3000 characters
+	4
+	310012 - rohan-🇵🇰 pakistan male urdu voice
+	Example
+	Limit Per Conversion: 3000 characters
+Captcha code
+[51] (704,830)<a class='small' href='https://pro.ttsmaker.com/pricing?from=remove-captcha-js-tips'>Upgrade TTSMaker Pro to skip CAPTCHA. />
+	[52] (637,830)<i  />
+[53] (684,898)<textarea aria-label='With textarea' class='form-control border-2 ' id='UserInputCaptcha' />
+[54] (840,898)<a class='border-0' id='reVerify' />
+More Settings
+Convert To Speech
+[55] (988,881)<img  />

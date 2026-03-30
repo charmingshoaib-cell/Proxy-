@@ -1,0 +1,66 @@
+# Agentic IDE Transformation Plan
+
+This plan outlines the steps to upgrade the **Gemini DevTool Suite** from a chat-based assistant into a fully functional **Agentic IDE**. The primary focus is on closing the loop between the AI assistant and the local workspace.
+
+## User Review Required
+
+> [!IMPORTANT]
+> This plan introduces a new **File Editor** view and modifies the **Workspace Explorer** to enable file editing. It also proposes a mechanism for the AI to "inject" commands into the terminal.
+
+## Proposed Changes
+
+### 1. Unified Workspace & Editor
+Currently, the Workspace Explorer only lists files. We will add a dedicated Editor view and connect it to the explorer.
+
+#### [NEW] [FileEditor.tsx](file:///c:/Users/shoaib/.gemini/antigravity/scratch/gemini-devtool-suite/components/FileEditor.tsx)
+- Use a `<textarea>` with monospace font (or a simple code editor component).
+- Implement Save functionality via the existing `/api/files/write` endpoint.
+- Add "Ask AI to modify this" button.
+
+#### [MODIFY] [types.ts](file:///c:/Users/shoaib/.gemini/antigravity/scratch/gemini-devtool-suite/types.ts)
+- Add `FILE_EDITOR` to the `View` enum.
+- Add `activeFile` property to state if needed.
+
+#### [MODIFY] [App.tsx](file:///c:/Users/shoaib/.gemini/antigravity/scratch/gemini-devtool-suite/App.tsx)
+- Handle the new `FILE_EDITOR` view.
+- Maintain `selectedFilePath` in the global state to pass to the editor.
+
+#### [MODIFY] [WorkspaceExplorer.tsx](file:///c:/Users/shoaib/.gemini/antigravity/scratch/gemini-devtool-suite/components/WorkspaceExplorer.tsx)
+- Add `onClick` handlers to file items to trigger the editor view.
+
+---
+
+### 2. Agentic Command Integration
+Enable the AI to directly interact with the IDE's tools.
+
+#### [MODIFY] [ChatInterface.tsx](file:///c:/Users/shoaib/.gemini/antigravity/scratch/gemini-devtool-suite/components/ChatInterface.tsx)
+- Detect terminal commands in AI responses (e.g., inside ` ```bash ` blocks).
+- Add a "Run in Terminal" button below such blocks that switches to the Terminal view and executes the command.
+
+#### [MODIFY] [AgentTerminal.tsx](file:///c:/Users/shoaib/.gemini/antigravity/scratch/gemini-devtool-suite/components/AgentTerminal.tsx)
+- Expose a way to receive commands from other components (via a custom event or shared state if lifted).
+
+---
+
+### 3. Backend Enhancements
+Improve the robustness of the local agent server.
+
+#### [MODIFY] [server.js](file:///c:/Users/shoaib/.gemini/antigravity/scratch/gemini-devtool-suite/server.js)
+- Add an endpoint to "Kill" a running terminal process.
+- Improve file listing to include file metadata (size, last modified).
+
+## Open Questions
+
+> [!NOTE]
+> 1. Should we use a more advanced editor library like `monaco-editor` or `react-simple-code-editor`, or stick to a styled `<textarea>` for a lightweight feel?
+> 2. Do you want the "Agentic" features to automatically run commands, or always require a "click to approve" from you?
+
+## Verification Plan
+
+### Automated Tests
+- N/A (Manual verification via browser tool).
+
+### Manual Verification
+1. **File Edit Flow**: Open Workspace -> Click a file -> Editor opens -> Change text -> Save -> Re-open to verify.
+2. **AI Command Flow**: Ask AI to "list files" -> Click "Run in Terminal" button in chat -> Verify Terminal view output.
+3. **Gambler Lab**: Verify strategy deployment still works after component restructuring.

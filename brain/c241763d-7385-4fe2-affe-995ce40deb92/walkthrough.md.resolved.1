@@ -1,0 +1,40 @@
+# Changes Overview
+
+I have enhanced the **Gemini DevTool Suite** and the **AI Video Models Directory** with persistent storage and the latest Gemini models.
+
+## 1. Gemini DevTool Suite (Persistent History & New Models)
+
+### Backend Enhancements
+- **Modified** [server.js](file:///c:/Users/shoaib/.gemini/antigravity/scratch/gemini-devtool-suite/server.js): Added `/api/history` GET and POST endpoints.
+- **New File**: [chat_history.json](file:///c:/Users/shoaib/.gemini/antigravity/scratch/chat_history.json) created in the root to store your chat data.
+
+### Frontend Enhancements
+- **Modified** [ChatInterface.tsx](file:///c:/Users/shoaib/.gemini/antigravity/scratch/gemini-devtool-suite/components/ChatInterface.tsx):
+    - integrated server-side fetching on load.
+    - Added auto-save to server on every message.
+- **Modified** [types.ts](file:///c:/Users/shoaib/.gemini/antigravity/scratch/gemini-devtool-suite/types.ts): Added Gemini 1.5 Pro/Flash and 2.0 Flash Lite/Pro/Thinking.
+- **Modified** [services/geminiService.ts](file:///c:/Users/shoaib/.gemini/antigravity/scratch/gemini-devtool-suite/services/geminiService.ts): Updated default model.
+- **Fixed**: Moved [vite-env.d.ts](file:///c:/Users/shoaib/.gemini/antigravity/scratch/gemini-devtool-suite/vite-env.d.ts) to the root for correct TypeScript support.
+
+---
+
+## 2. AI Video Models Directory (Data Update)
+
+- **Modified** [app.js](file:///c:/Users/shoaib/Documents/ai-video-models-directory/app.js): Added the following Google Gemini models to the directory:
+    - Gemini 2.0 Flash
+    - Gemini 1.5 Pro
+    - Gemini 1.5 Flash
+
+---
+
+## Verification
+
+### DevTool Suite
+1. Ensure the server is running: `node server.js`.
+2. Send a message in the chat.
+3. Refresh the page—your history will now persist reliably!
+4. Check the model dropdown to see the new Gemini 2.0 and Flash Lite options.
+
+### Video Directory
+1. Open the [index.html](file:///c:/Users/shoaib/Documents/ai-video-models-directory/index.html) in your browser.
+2. Scroll to the bottom of the models list or search for "Gemini" to see the new additions.

@@ -1,0 +1,5 @@
+{
+  "artifactType": "ARTIFACT_TYPE_IMPLEMENTATION_PLAN",
+  "summary": "Implementation plan for running GitHub Copilot CLI. This plan involves searching for the GitHub CLI and Copilot extension, and providing a guide for installation if they are missing.",
+  "updatedAt": "2026-03-27T04:18:00.229232700Z"
+}

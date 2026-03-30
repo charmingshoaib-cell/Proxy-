@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Antigravity — Power Demo</title>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700;900&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --c1: #7c3aed;
+      --c2: #06b6d4;
+      --c3: #f59e0b;
+      --c4: #ec4899;
+      --bg: #030712;
+    }
+
+    body {
+      font-family: 'Outfit', sans-serif;
+      background: var(--bg);
+      color: #fff;
+      overflow-x: hidden;
+    }
+
+    /* ── HERO ── */
+    #hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      overflow: hidden;
+    }
+
+    canvas#bg {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+    }
+
+    .hero-content { position: relative; z-index: 2; padding: 2rem; }
+
+    .badge {
+      display: inline-block;
+      background: rgba(124,58,237,0.2);
+      border: 1px solid rgba(124,58,237,0.5);
+      color: #a78bfa;
+      font-size: .85rem;
+      font-weight: 600;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      padding: .4rem 1.2rem;
+      border-radius: 999px;
+      margin-bottom: 1.5rem;
+      animation: fadeUp .6s ease both;
+    }
+
+    h1 {
+      font-size: clamp(3rem, 10vw, 8rem);
+      font-weight: 900;
+      line-height: 1;
+      background: linear-gradient(135deg, #fff 0%, var(--c2) 40%, var(--c1) 80%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      animation: fadeUp .7s .1s ease both;
+      margin-bottom: 1rem;
+    }
+
+    .sub {
+      font-size: clamp(1rem, 2.5vw, 1.4rem);
+      color: #94a3b8;
+      max-width: 600px;
+      margin: 0 auto 2.5rem;
+      animation: fadeUp .7s .2s ease both;
+      font-weight: 300;
+    }
+
+    .cta-row {
+      display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center;
+      animation: fadeUp .7s .3s ease both;
+    }
+
+    .btn {
+      padding: .9rem 2.2rem;
+      border-radius: 999px;
+      font-family: inherit;
+      font-weight: 700;
+      font-size: 1rem;
+      cursor: pointer;
+      border: none;
+      transition: transform .2s, box-shadow .2s;
+    }
+    .btn:hover { transform: translateY(-3px); box-shadow: 0 12px 40px rgba(0,0,0,.5); }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--c1), var(--c2));
+      color: #fff;
+    }
+    .btn-secondary {
+      background: transparent;
+      border: 2px solid rgba(255,255,255,.15);
+      color: #cbd5e1;
+    }
+
+    /* ── STATS ── */
+    #stats {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1px;
+      background: rgba(255,255,255,.05);
+      border-top: 1px solid rgba(255,255,255,.07);
+      border-bottom: 1px solid rgba(255,255,255,.07);
+    }
+    .stat-item {
+      padding: 2.5rem 2rem;
+      text-align: center;
+      background: var(--bg);
+      transition: background .3s;
+    }
+    .stat-item:hover { background: rgba(124,58,237,.08); }
+    .stat-num {
+      font-size: 3.5rem;
+      font-weight: 900;
+      background: linear-gradient(135deg, var(--c1), var(--c2));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .stat-label { font-size: .9rem; color: #64748b; margin-top: .3rem; text-transform: uppercase; letter-spacing: .1em; }
+
+    /* ── CARDS ── */
+    #cards {
+      padding: 6rem 2rem;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    .section-heading {
+      text-align: center;
+      margin-bottom: 3.5rem;
+    }
+    .section-heading h2 {
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      font-weight: 900;
+      background: linear-gradient(135deg, #fff, #94a3b8);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .section-heading p { color: #64748b; margin-top: .5rem; font-size: 1.1rem; }
+
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .card {
+      background: rgba(255,255,255,.03);
+      border: 1px solid rgba(255,255,255,.07);
+      border-radius: 1.5rem;
+      padding: 2rem;
+      transition: transform .3s, box-shadow .3s, border-color .3s;
+      position: relative;
+      overflow: hidden;
+    }
+    .card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      background: var(--card-grad, linear-gradient(90deg, var(--c1), var(--c2)));
+      opacity: 0;
+      transition: opacity .3s;
+    }
+    .card:hover { transform: translateY(-6px); box-shadow: 0 24px 60px rgba(0,0,0,.5); border-color: rgba(255,255,255,.13); }
+    .card:hover::before { opacity: 1; }
+
+    .card-icon {
+      width: 52px; height: 52px;
+      border-radius: 14px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.5rem;
+      margin-bottom: 1.2rem;
+    }
+    .card h3 { font-size: 1.2rem; font-weight: 700; margin-bottom: .6rem; }
+    .card p { color: #64748b; font-size: .95rem; line-height: 1.7; }
+
+    /* ── TERMINAL ── */
+    #terminal-section {
+      padding: 6rem 2rem;
+      max-width: 900px;
+      margin: auto;
+    }
+    .terminal {
+      background: #0d1117;
+      border: 1px solid rgba(255,255,255,.1);
+      border-radius: 1rem;
+      overflow: hidden;
+      box-shadow: 0 40px 100px rgba(0,0,0,.6);
+    }
+    .terminal-bar {
+      background: #161b22;
+      padding: .8rem 1.2rem;
+      display: flex;
+      align-items: center;
+      gap: .5rem;
+    }
+    .dot { width: 12px; height: 12px; border-radius: 50%; }
+    .dot-r { background: #ff5f57; }
+    .dot-y { background: #febc2e; }
+    .dot-g { background: #28c840; }
+    .terminal-title { color: #64748b; font-size: .85rem; margin-left: .5rem; }
+    .terminal-body { padding: 1.5rem 1.8rem; font-family: 'Courier New', monospace; font-size: .9rem; line-height: 1.9; }
+    .t-prompt { color: #7c3aed; }
+    .t-cmd { color: #e2e8f0; }
+    .t-out { color: #22d3ee; }
+    .t-success { color: #4ade80; }
+    .t-warn { color: #facc15; }
+    .t-cursor {
+      display: inline-block;
+      width: 8px; height: 1.1em;
+      background: #7c3aed;
+      animation: blink 1s step-end infinite;
+      vertical-align: text-bottom;
+    }
+    @keyframes blink { 50% { opacity: 0; } }
+
+    /* ── GRAPH ── */
+    #graph-section {
+      padding: 3rem 2rem 6rem;
+      max-width: 900px;
+      margin: auto;
+    }
+    .graph-card {
+      background: rgba(255,255,255,.03);
+      border: 1px solid rgba(255,255,255,.07);
+      border-radius: 1.5rem;
+      padding: 2rem;
+    }
+    .graph-title { font-size: 1.1rem; font-weight: 700; margin-bottom: 1.5rem; }
+    canvas#graph { width: 100%; height: 220px; }
+    .graph-legend { display: flex; gap: 1.5rem; margin-top: 1rem; flex-wrap: wrap; }
+    .legend-item { display: flex; align-items: center; gap: .4rem; font-size: .85rem; color: #94a3b8; }
+    .legend-dot { width: 8px; height: 8px; border-radius: 50%; }
+
+    /* ── FOOTER ── */
+    footer {
+      text-align: center;
+      padding: 3rem 2rem;
+      color: #334155;
+      font-size: .85rem;
+      border-top: 1px solid rgba(255,255,255,.04);
+    }
+    footer span { color: #7c3aed; }
+
+    /* ── ANIMATIONS ── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .reveal {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity .7s ease, transform .7s ease;
+    }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+  </style>
+</head>
+<body>
+
+<!-- ── HERO ── -->
+<section id="hero">
+  <canvas id="bg"></canvas>
+  <div class="hero-content">
+    <div class="badge">⚡ Antigravity AI</div>
+    <h1>POWER<br>UNLEASHED</h1>
+    <p class="sub">I can build, debug, deploy, analyze, design, and automate — right inside your editor. This entire page was written by me in seconds.</p>
+    <div class="cta-row">
+      <button class="btn btn-primary" onclick="runDemo()">🚀 Run Live Demo</button>
+      <button class="btn btn-secondary" onclick="scrollTo({top:document.getElementById('cards').offsetTop,behavior:'smooth'})">Explore Capabilities</button>
+    </div>
+  </div>
+</section>
+
+<!-- ── STATS ── -->
+<div id="stats">
+  <div class="stat-item reveal">
+    <div class="stat-num" id="s1">0</div>
+    <div class="stat-label">Lines of Code / min</div>
+  </div>
+  <div class="stat-item reveal">
+    <div class="stat-num" id="s2">0</div>
+    <div class="stat-label">MCP Servers Connected</div>
+  </div>
+  <div class="stat-item reveal">
+    <div class="stat-num" id="s3">0</div>
+    <div class="stat-label">Tools Available</div>
+  </div>
+  <div class="stat-item reveal">
+    <div class="stat-num" id="s4">0</div>
+    <div class="stat-label">Frameworks Supported</div>
+  </div>
+</div>
+
+<!-- ── CARDS ── -->
+<section id="cards">
+  <div class="section-heading reveal">
+    <h2>What I Can Do</h2>
+    <p>From a single prompt to full production apps</p>
+  </div>
+  <div class="cards-grid">
+    <div class="card reveal" style="--card-grad: linear-gradient(90deg,#7c3aed,#06b6d4)">
+      <div class="card-icon" style="background:rgba(124,58,237,.15)">🧠</div>
+      <h3>Write Full Applications</h3>
+      <p>Next.js, React, Vue, Python, Go, Rust — I scaffold, implement, and wire up complete production-ready codebases from scratch.</p>
+    </div>
+    <div class="card reveal" style="--card-grad: linear-gradient(90deg,#06b6d4,#4ade80)">
+      <div class="card-icon" style="background:rgba(6,182,212,.15)">🔍</div>
+      <h3>Debug Anything</h3>
+      <p>I read your files, trace call stacks, grep patterns, and pinpoint bugs across thousands of lines of code in seconds.</p>
+    </div>
+    <div class="card reveal" style="--card-grad: linear-gradient(90deg,#f59e0b,#ec4899)">
+      <div class="card-icon" style="background:rgba(245,158,11,.15)">☁️</div>
+      <h3>Deploy to Cloud</h3>
+      <p>Firebase, Cloud Run, GCP — I configure, build, and deploy your apps with a single command. CI/CD pipelines included.</p>
+    </div>
+    <div class="card reveal" style="--card-grad: linear-gradient(90deg,#ec4899,#7c3aed)">
+      <div class="card-icon" style="background:rgba(236,72,153,.15)">🎨</div>
+      <h3>Design Stunning UIs</h3>
+      <p>Like what you see right now? I design with glassmorphism, gradients, and micro-animations that make jaws drop.</p>
+    </div>
+    <div class="card reveal" style="--card-grad: linear-gradient(90deg,#4ade80,#06b6d4)">
+      <div class="card-icon" style="background:rgba(74,222,128,.15)">🔗</div>
+      <h3>Integrate Any API</h3>
+      <p>OAuth, REST, GraphQL, WebSockets — I connect your app to any external service and handle auth, errors, and retries.</p>
+    </div>
+    <div class="card reveal" style="--card-grad: linear-gradient(90deg,#7c3aed,#f59e0b)">
+      <div class="card-icon" style="background:rgba(124,58,237,.15)">🤖</div>
+      <h3>Build AI Features</h3>
+      <p>Genkit flows, Gemini, Claude, embeddings, RAG pipelines — I instrument production AI into your stack the right way.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ── TERMINAL ── -->
+<section id="terminal-section">
+  <div class="section-heading reveal">
+    <h2>Live in Your Editor</h2>
+    <p>I have full access to your filesystem, terminal, and browser</p>
+  </div>
+  <div class="terminal reveal">
+    <div class="terminal-bar">
+      <div class="dot dot-r"></div>
+      <div class="dot dot-y"></div>
+      <div class="dot dot-g"></div>
+      <span class="terminal-title">antigravity — pwsh</span>
+    </div>
+    <div class="terminal-body" id="term-body">
+      <div><span class="t-prompt">PS C:\project&gt;</span> <span class="t-cmd">antigravity build my-app --framework next --deploy firebase</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ── GRAPH ── -->
+<section id="graph-section">
+  <div class="graph-card reveal">
+    <div class="graph-title">⚡ Live Performance — Tasks Completed Over Time</div>
+    <canvas id="graph"></canvas>
+    <div class="graph-legend">
+      <div class="legend-item"><div class="legend-dot" style="background:#7c3aed"></div> Code written</div>
+      <div class="legend-item"><div class="legend-dot" style="background:#06b6d4"></div> Bugs fixed</div>
+      <div class="legend-item"><div class="legend-dot" style="background:#f59e0b"></div> Deployments</div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  Built in ≈ 30 seconds by <span>Antigravity AI</span> — Google DeepMind &copy; 2026
+</footer>
+
+<script>
+/* ── PARTICLE BG ── */
+const bgCanvas = document.getElementById('bg');
+const bctx = bgCanvas.getContext('2d');
+let W, H, particles = [];
+
+function resizeBg() {
+  W = bgCanvas.width = window.innerWidth;
+  H = bgCanvas.height = window.innerHeight;
+}
+
+class Particle {
+  constructor() { this.reset(true); }
+  reset(init) {
+    this.x = Math.random() * W;
+    this.y = init ? Math.random() * H : H + 10;
+    this.r = Math.random() * 1.5 + .3;
+    this.speed = Math.random() * .4 + .1;
+    this.opacity = Math.random() * .5 + .1;
+    this.hue = [260, 190, 45, 320][Math.floor(Math.random()*4)];
+  }
+  update() {
+    this.y -= this.speed;
+    if (this.y < -10) this.reset(false);
+  }
+  draw() {
+    bctx.beginPath();
+    bctx.arc(this.x, this.y, this.r, 0, Math.PI*2);
+    bctx.fillStyle = `hsla(${this.hue},90%,70%,${this.opacity})`;
+    bctx.fill();
+  }
+}
+
+function initParticles() { particles = Array.from({length: 180}, () => new Particle()); }
+
+function animBg() {
+  bctx.clearRect(0, 0, W, H);
+  // radial glow
+  const g = bctx.createRadialGradient(W/2, H/2, 0, W/2, H/2, W*.7);
+  g.addColorStop(0, 'rgba(124,58,237,.12)');
+  g.addColorStop(1, 'transparent');
+  bctx.fillStyle = g;
+  bctx.fillRect(0,0,W,H);
+  particles.forEach(p => { p.update(); p.draw(); });
+  requestAnimationFrame(animBg);
+}
+
+resizeBg(); initParticles(); animBg();
+window.addEventListener('resize', () => { resizeBg(); initParticles(); });
+
+/* ── COUNTER ANIMATION ── */
+function countUp(el, target, suffix='') {
+  let cur = 0;
+  const step = target / 60;
+  const iv = setInterval(() => {
+    cur = Math.min(cur + step, target);
+    el.textContent = Math.floor(cur).toLocaleString() + suffix;
+    if (cur >= target) clearInterval(iv);
+  }, 25);
+}
+
+/* ── SCROLL REVEAL ── */
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('visible');
+      // trigger counters when stats come in view
+      if (e.target.closest('#stats')) {
+        countUp(document.getElementById('s1'), 500, '+');
+        countUp(document.getElementById('s2'), 4);
+        countUp(document.getElementById('s3'), 40, '+');
+        countUp(document.getElementById('s4'), 30, '+');
+      }
+      observer.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.1 });
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+/* ── TERMINAL TYPEWRITER ── */
+const lines = [
+  { cls: 't-out',     txt: '  ✓ Scaffolding Next.js 15 project...' },
+  { cls: 't-out',     txt: '  ✓ Installing dependencies (pnpm)...' },
+  { cls: 't-success', txt: '  ✓ Configuring Firebase Hosting...' },
+  { cls: 't-success', txt: '  ✓ Setting up CI/CD pipeline...' },
+  { cls: 't-warn',    txt: '  ⚡ Building production bundle...' },
+  { cls: 't-success', txt: '  🚀 Deployed → https://my-app.web.app' },
+  { cls: 't-success', txt: '  ✓ Done in 4.2s' },
+  { cls: 't-prompt',  txt: 'PS C:\\project> ', cursor: true },
+];
+
+let lineIdx = 0;
+function typeLine() {
+  if (lineIdx >= lines.length) return;
+  const l = lines[lineIdx++];
+  const div = document.createElement('div');
+  div.style.opacity = '0';
+  div.style.transition = 'opacity .3s';
+  const span = document.createElement('span');
+  span.className = l.cls;
+  span.textContent = l.txt;
+  div.appendChild(span);
+  if (l.cursor) { const c = document.createElement('span'); c.className = 't-cursor'; div.appendChild(c); }
+  document.getElementById('term-body').appendChild(div);
+  requestAnimationFrame(() => { div.style.opacity = '1'; });
+  setTimeout(typeLine, 450);
+}
+setTimeout(typeLine, 600);
+
+/* ── CHART ── */
+const gc = document.getElementById('graph');
+gc.width = gc.parentElement.offsetWidth - 64;
+gc.height = 220;
+const gctx = gc.getContext('2d');
+
+const labels = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+const datasets = [
+  { data: [12,28,41,55,80,102,130,170,210,280,350,500], color: '#7c3aed' },
+  { data: [5,14,20,30,44,58,70,90,110,140,180,230],     color: '#06b6d4' },
+  { data: [1,2,3,5,7,10,14,18,25,35,50,80],             color: '#f59e0b' },
+];
+
+function drawGraph() {
+  const W = gc.width, H = gc.height;
+  const pad = { t: 20, r: 20, b: 40, l: 40 };
+  const gW = W - pad.l - pad.r, gH = H - pad.t - pad.b;
+  const maxVal = 500;
+
+  gctx.clearRect(0, 0, W, H);
+
+  // grid
+  for (let i = 0; i <= 5; i++) {
+    const y = pad.t + gH - (i / 5) * gH;
+    gctx.strokeStyle = 'rgba(255,255,255,.05)';
+    gctx.lineWidth = 1;
+    gctx.beginPath(); gctx.moveTo(pad.l, y); gctx.lineTo(pad.l + gW, y); gctx.stroke();
+    gctx.fillStyle = '#334155';
+    gctx.font = '11px Outfit';
+    gctx.fillText((i/5*maxVal)|0, 4, y+4);
+  }
+
+  datasets.forEach(ds => {
+    const pts = ds.data.map((v, i) => ({
+      x: pad.l + (i / (labels.length - 1)) * gW,
+      y: pad.t + gH - (v / maxVal) * gH
+    }));
+
+    // fill
+    const grad = gctx.createLinearGradient(0, pad.t, 0, pad.t + gH);
+    grad.addColorStop(0, ds.color + '44');
+    grad.addColorStop(1, ds.color + '00');
+    gctx.beginPath();
+    gctx.moveTo(pts[0].x, pts[0].y);
+    pts.slice(1).forEach(p => gctx.lineTo(p.x, p.y));
+    gctx.lineTo(pts[pts.length-1].x, pad.t + gH);
+    gctx.lineTo(pts[0].x, pad.t + gH);
+    gctx.closePath();
+    gctx.fillStyle = grad;
+    gctx.fill();
+
+    // line
+    gctx.beginPath();
+    gctx.moveTo(pts[0].x, pts[0].y);
+    pts.slice(1).forEach(p => gctx.lineTo(p.x, p.y));
+    gctx.strokeStyle = ds.color;
+    gctx.lineWidth = 2.5;
+    gctx.stroke();
+
+    // dots
+    pts.forEach(p => {
+      gctx.beginPath();
+      gctx.arc(p.x, p.y, 4, 0, Math.PI*2);
+      gctx.fillStyle = ds.color;
+      gctx.fill();
+    });
+  });
+
+  // x labels
+  labels.forEach((l, i) => {
+    const x = pad.l + (i / (labels.length - 1)) * gW;
+    gctx.fillStyle = '#475569';
+    gctx.font = '11px Outfit';
+    gctx.textAlign = 'center';
+    gctx.fillText(l, x, H - 8);
+  });
+}
+drawGraph();
+
+/* ── RUN DEMO BUTTON ── */
+function runDemo() {
+  const btn = document.querySelector('.btn-primary');
+  btn.textContent = '⚙️ Running…';
+  setTimeout(() => { btn.textContent = '✅ Done!'; }, 2000);
+  setTimeout(() => { btn.textContent = '🚀 Run Live Demo'; }, 4000);
+}
+</script>
+</body>
+</html>

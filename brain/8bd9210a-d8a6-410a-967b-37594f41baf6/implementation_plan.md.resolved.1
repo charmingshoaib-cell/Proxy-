@@ -1,0 +1,24 @@
+# Advanced Dice Strategy (Martingale Hybrid)
+
+The user wants to prioritize a "Dice Bot" strategy. Since the original BetKing script was a site plugin and Gambler.Bot uses a "Programmer JS/Lua" system for strategies, I will create an advanced JS strategy that works with the bot's internal API.
+
+## User Review Required
+
+> [!IMPORTANT]
+> This strategy is designed for **Dice** games. Ensure your balance is sufficient to cover potential losing streaks.
+
+## Proposed Changes
+
+### [NEW] [advanced_dice.js](file:///C:/Users/shoaib/OneDrive/Desktop/advanced_dice.js)
+A smart Martingale hybrid with:
+- **Streak Detection**: Increases/decreases multipliers based on win/loss patterns.
+- **Profit Target**: Automatically stops when a target is reached.
+- **Stop Loss**: Protects the balance.
+- **Randomization**: Slightly varies bet amounts to avoid detection.
+
+## Verification Plan
+
+### Manual Verification
+1. Load the script into Gambler.Bot's **Programmer JS** mode.
+2. Set a small base bet for testing.
+3. Observe the bet patterns in the bot's log.

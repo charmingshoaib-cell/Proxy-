@@ -1,0 +1,74 @@
+<current_dom_explanation>
+This is a temporary snapshot of the current page's DOM structure. The DOM will change if you navigate to or interact with another page. Use a tool like browser_get_dom to capture and preserve the DOM in your trajectory if needed for later reference.
+</current_dom_explanation>
+<current_dom>
+[0] (339,183)<textarea class='form-control border-2 p-4 border-dark ' id='UserInputTextarea' placeholder=' ' />
+Limit
+20000
+characters per week (some voices support unlimited free use), 
+                                                    remaining available
+20000
+characters.
+[1] (335,652)<a class='small' href='https://pro.ttsmaker.com/pricing?from=get-more-chars-tips'>Upgrade to Pro to get more characters. />
+	[2] (517,635)<i  />
+TTSMaker is a free text-to-speech tool that provides speech synthesis services and supports multiple languages, including English, French, German, Spanish, Arabic, Chinese, Japanese, Korean, Vietnamese, etc., as well as various voice styles. You can use it to read text and e-books aloud, or download the audio files for commercial use (it's completely free). As an excellent free TTS tool, TTSMaker can easily convert text to speech online.
+Like TTSMaker? Share it with your friends!
+300k
+Shares
+[3] (174,978)<div  />
+	[4] (174,978)<img  />
+[5] (205,978)<div  />
+	[6] (205,978)<img  />
+[7] (236,978)<div  />
+	[8] (236,978)<img  />
+[9] (267,978)<div  />
+	[10] (267,978)<img  />
+[11] (299,978)<div  />
+	[12] (299,978)<img  />
+[13] (330,978)<div  />
+	[14] (330,978)<img  />
+[15] (361,978)<div  />
+	[16] (361,978)<img  />
+[17] (726,127)<div class='  border-bottom pb-1  shadow-none border-top border-right   border-left p-1 w-100' scrollable='true' />
+	[18] (730,28)<div  />
+		[19] (619,25)<a class=' nav-link  p-0  pt-2 pl-2 m-0  m-auto play-example-btn' href='javascript:;'>Example />
+			[20] (599,30)<i  />
+		[21] (713,32)<a aria-label='Upgrade to TTSMaker Pro for up to 20,000 characters per conversion.' class='badge badge-primary text-dark  px-0 rounded-pill hint--top hint--large'>Limit Per Conversion: 3000 characters />
+			[22] (650,32)<i  />
+	[23] (722,161)<label class='form-control text-left border-2 mb-1  text-capitalize m-auto justify-content-center  center-block m-auto align-self-center ann-label-div  rounded rounded-2 border border-1 border-dark  p-1' />
+		[24] (581,102)<span >2 />
+		[25] (722,171)<div  />
+			[26] (616,145)<span  />
+				[27] (616,147)<img  />
+			[28] (597,127)<input class='form-check-input m-auto' id='RadioUserSelectAnnouncerID310002' />
+			[29] (716,145)<span >310002 - amit-🇮🇳 india male urdu voice />
+			[30] (730,202)<div  />
+				[31] (619,199)<a class=' nav-link  p-0  pt-2 pl-2 m-0  m-auto play-example-btn' href='javascript:;'>Example />
+					[32] (599,205)<i  />
+				[33] (713,207)<a aria-label='Upgrade to TTSMaker Pro for up to 20,000 characters per conversion.' class='badge badge-primary text-dark  px-0 rounded-pill hint--top hint--large'>Limit Per Conversion: 3000 characters />
+					[34] (650,207)<i  />
+	[35] (722,336)<label class='form-control text-left border-2 mb-1  text-capitalize m-auto justify-content-center  center-block m-auto align-self-center ann-label-div  rounded rounded-2 border border-1 border-dark  p-1' />
+		[36] (581,276)<span >3 />
+		[37] (722,346)<div  />
+			[38] (616,320)<span  />
+				[39] (616,322)<img  />
+			[40] (597,302)<input class='form-check-input m-auto' id='RadioUserSelectAnnouncerID310011' />
+			[41] (731,320)<span >310011 - vidya-🇵🇰 pakistan female urdu voice />
+			Example
+			Limit Per Conversion: 3000 characters
+	4
+	310012 - rohan-🇵🇰 pakistan male urdu voice
+	Example
+	Limit Per Conversion: 3000 characters
+Captcha code
+[42] (704,398)<a class='small' href='https://pro.ttsmaker.com/pricing?from=remove-captcha-js-tips'>Upgrade TTSMaker Pro to skip CAPTCHA. />
+	[43] (637,398)<i  />
+[44] (684,466)<textarea aria-label='With textarea' class='form-control border-2 ' id='UserInputCaptcha' />
+[45] (840,466)<a class='border-0' id='reVerify' />
+[46] (622,568)<button class='btn collapsed  col-4 collapse-none' href='#collapseExample' id='tts_order_more_setting' role='button'>More Settings />
+	[47] (591,568)<i  />
+[48] (778,568)<button class='btn  btn-lg btn accent display-block  col-8 ' id='tts_order_submit'>Convert To Speech />
+	[49] (735,568)<i  />
+[50] (988,881)<img  />
+
+</current_dom>

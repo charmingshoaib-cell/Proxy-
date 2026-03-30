@@ -1,0 +1,12 @@
+# Task: Navigate to Stake.com and Identify Core UI Elements
+
+## Checklist
+- [ ] Open https://stake.com
+- [ ] Handle cookie/region banners
+- [ ] Identify login/sign-up buttons
+- [ ] Identify core UI elements (sidebar, search, etc.)
+- [ ] Verify homepage load success
+
+## Notes
+- Stake.com might have region-based restrictions.
+- User has provided an API token in the `user_global` rules.

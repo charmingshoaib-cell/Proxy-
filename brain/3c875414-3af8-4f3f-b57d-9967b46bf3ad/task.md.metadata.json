@@ -1,0 +1,5 @@
+{
+  "artifactType": "ARTIFACT_TYPE_TASK",
+  "summary": "Task list for running GitHub Copilot CLI. I've already checked the PATH for `gh` and `npm -g`, but neither produced a result. Now, I'm searching common installation directories.",
+  "updatedAt": "2026-03-27T04:18:00.224680Z"
+}

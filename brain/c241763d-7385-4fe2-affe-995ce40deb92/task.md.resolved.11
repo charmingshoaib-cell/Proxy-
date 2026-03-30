@@ -1,0 +1,12 @@
+# Task: Add More Gemini Models
+
+- [x] Update `ModelType` enum in [types.ts](file:///c:/Users/shoaib/.gemini/antigravity/scratch/gemini-devtool-suite/types.ts) <!-- id: 0 -->
+- [x] Update model selector in [ChatInterface.tsx](file:///c:/Users/shoaib/.gemini/antigravity/scratch/gemini-devtool-suite/components/ChatInterface.tsx) <!-- id: 1 -->
+- [x] Verify selection works <!-- id: 2 -->
+- [x] Add models to Video Directory [app.js](file:///c:/Users/shoaib/Documents/ai-video-models-directory/app.js) <!-- id: 3 -->
+
+# Task: Increase Agentic Power
+- [x] Research [ProgrammerMode.md](file:///c:/Users/shoaib/Documents/Gambler.Bot/ProgrammerMode.md) and `Gambler.Bot` <!-- id: 4 -->
+- [x] Draft Implementation Plan for "AI Programmer Mode" <!-- id: 5 -->
+- [/] Add Agentic Panel/Terminal to DevTool Suite <!-- id: 6 -->
+- [ ] Integrate with Gambler.Bot logic if applicable <!-- id: 7 -->

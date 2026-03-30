@@ -1,0 +1,15 @@
+- [x] Research and Planning
+    - [x] Analyze project structure
+    - [x] Design "Workspace Explorer" feature
+- [x] Backend Enhancements
+    - [x] Update `server.js` to support folder creation/deletion if needed
+- [x] UI Implementation
+    - [x] Create `WorkspaceExplorer.tsx` component
+    - [x] Update `Sidebar.tsx` to include Workspace view
+    - [x] Update `App.tsx` to handle the new view
+- [x] Integration & Automation
+    - [x] Connect Explorer to `/api/files` and `/api/read`
+    - [x] Enable "Open in Assistant" functionality
+- [x] Verification
+    - [x] Test file navigation
+    - [x] Test file reading into chat context

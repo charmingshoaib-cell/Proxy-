@@ -1,0 +1,7 @@
+- `[ ]` Update `types.ts` with `FILE_EDITOR` view
+- `[ ]` Update `App.tsx` to handle file selection and routing
+- `[ ]` Create `components/FileEditor.tsx`
+- `[ ]` Update `components/WorkspaceExplorer.tsx` to support opening files
+- `[ ]` Update `components/ChatInterface.tsx` to detect terminal commands and show "Run" buttons
+- `[ ]` Update `server.js` with process management (kill endpoint)
+- `[ ]` Final verification and polish

@@ -1,0 +1,57 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="Gambler.Bot.Views.Common.LoginView"
+             xmlns:vm="using:Gambler.Bot.ViewModels.Common"
+             x:DataType="vm:LoginViewModel"
+
+
+             xmlns:actipro="http://schemas.actiprosoftware.com/avaloniaui"
+             >
+
+    <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
+        <ItemsControl IsVisible="{Binding Site.SupportsNormalLogin}" IsEnabled="{Binding CanLogIn}"  Width="300" Padding="5,0,0,0" Margin="5" Grid.Column="2" ItemsSource="{Binding LoginParams}" VerticalAlignment="Center" HorizontalAlignment="Center">
+
+            <ItemsControl.ItemTemplate>
+                <DataTemplate>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="2*"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Grid.Column="0" Text="{Binding Param.Name}"> </TextBlock>
+                        <TextBox Grid.Column="1" Text="{Binding Value}" PasswordChar="{Binding Param.PasswordChar}"></TextBox>
+                    </Grid>
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+        </ItemsControl>
+
+        <Grid  Margin="10,5,5,5">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="2*"/>
+            </Grid.ColumnDefinitions>
+            <TextBlock Grid.Column="0" Text="Mirror"> </TextBlock>
+            <ComboBox ItemsSource="{Binding Mirrors}" SelectedIndex="{Binding SelectedMirror}" Grid.Column="1" ></ComboBox>
+        </Grid>
+
+        <TextBlock HorizontalAlignment="Center" IsVisible="{Binding LoggingIn}" Text="{DynamicResource Localization.Common.LoggingIn}"/>
+
+        <TextBlock HorizontalAlignment="Center"  IsVisible="{Binding ShowError}" Foreground="Red" Text="{Binding Error}"/>
+        <StackPanel  Orientation="Horizontal" HorizontalAlignment="Center" IsEnabled="{Binding CanLogIn}">
+            <Button IsVisible="{Binding Site.SupportsNormalLogin}" Margin="5" Command="{Binding LoginCommand}" >
+                <StackPanel Orientation="Horizontal">
+                    <actipro:RingSpinner Width="24" Height="24" Classes="accent"
+                                         Background="{actipro:ThemeResource Container5BackgroundBrush}"
+                                         LineThickness="3" LineCap="Flat" IsSpinning="True" IsVisible="{Binding LoggingIn}" />
+                    <TextBlock Text="{DynamicResource Localization.InstanceView.Menu.LogIn}"></TextBlock>
+                </StackPanel>
+            </Button>
+          <Button Margin="5" IsVisible="{Binding Site.SupportsBrowserLogin}" Content="{DynamicResource Localization.InstanceView.Menu.BrowserLogin}" Command="{Binding BrowserLoginCommand}" />
+            <Button Margin="5" Content="{DynamicResource Localization.InstanceView.Menu.ChangeSite}" Command="{Binding CancelCommand}" />
+          
+        </StackPanel>
+    </StackPanel>
+</UserControl>

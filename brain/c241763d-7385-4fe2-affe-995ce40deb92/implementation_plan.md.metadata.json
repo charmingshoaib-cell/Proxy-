@@ -1,0 +1,6 @@
+{
+  "artifactType": "ARTIFACT_TYPE_IMPLEMENTATION_PLAN",
+  "summary": "Plan to add a \"Gambler Lab\" feature to the Gemini DevTool Suite:\n- Specialized view for Gambler.Bot strategy generation.\n- Templates for Lua, JS, and C# strategies.\n- \"Auto-Deploy\" functionality to sync scripts with the Gambler.Bot app.\n- Integration with the Action Orchestrator for complex strategy setups.",
+  "updatedAt": "2026-03-26T21:38:36.125348100Z",
+  "version": "3"
+}

@@ -1,0 +1,29 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="Gambler.Bot.Views.MainView"
+             xmlns:views="using:Gambler.Bot.Views"
+             xmlns:vm="using:Gambler.Bot.ViewModels"
+             x:DataType="vm:MainViewModel"
+             xmlns:actipro="http://schemas.actiprosoftware.com/avaloniaui"
+
+             >
+
+    <Grid Name="layoutgrd">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+        </Grid.RowDefinitions>
+
+        <ContentControl Name="instance" Grid.Row="0" Grid.RowSpan="2" Content="{Binding Instance}">
+            <ContentControl.DataTemplates>
+                <DataTemplate DataType="vm:InstanceViewModel">
+                    <views:InstanceView/>
+                </DataTemplate>
+            </ContentControl.DataTemplates>
+        </ContentControl>
+
+    </Grid>
+</UserControl>

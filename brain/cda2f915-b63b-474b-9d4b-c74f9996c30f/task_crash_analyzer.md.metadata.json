@@ -1,0 +1,5 @@
+{
+  "artifactType": "ARTIFACT_TYPE_TASK",
+  "summary": "Current progress on the Stake Crash Analyzer Bot.\nCompleted:\n- Core analyzer script developed.\n- Implementation plan created.\n- Basic UI implemented.\nPending:\n- Martingale/Auto-betting engine.\n- DOM selector verification.\n- User testing.",
+  "updatedAt": "2026-03-16T21:58:51.387368200Z"
+}

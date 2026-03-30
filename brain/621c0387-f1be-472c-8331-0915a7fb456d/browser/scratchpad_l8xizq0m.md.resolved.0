@@ -1,0 +1,7 @@
+# Task Checklist
+- [ ] Open http://localhost:3000
+- [ ] Find and click 'Workspace' button in the sidebar
+- [ ] Verify file list appears
+- [ ] Test 'Search' functionality
+- [ ] Test clicking a file
+- [ ] Evaluate UI look and feel

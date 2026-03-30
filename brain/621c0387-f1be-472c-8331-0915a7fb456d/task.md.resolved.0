@@ -1,0 +1,17 @@
+# Task: Agentic Workspace Integration
+
+- [/] Research and Planning
+    - [x] Analyze project structure
+    - [/] Design "Workspace Explorer" feature
+- [ ] Backend Enhancements
+    - [ ] Update [server.js](file:///c:/Users/shoaib/.gemini/antigravity/scratch/gemini-devtool-suite/server.js) to support folder creation/deletion if needed
+- [ ] UI Implementation
+    - [ ] Create `WorkspaceExplorer.tsx` component
+    - [ ] Update [Sidebar.tsx](file:///c:/Users/shoaib/.gemini/antigravity/scratch/gemini-devtool-suite/components/Sidebar.tsx) to include Workspace view
+    - [ ] Update [App.tsx](file:///c:/Users/shoaib/.gemini/antigravity/scratch/gemini-devtool-suite/App.tsx) to handle the new view
+- [ ] Integration & Automation
+    - [ ] Connect Explorer to `/api/files` and `/api/read`
+    - [ ] Enable "Open in Assistant" functionality
+- [ ] Verification
+    - [ ] Test file navigation
+    - [ ] Test file reading into chat context

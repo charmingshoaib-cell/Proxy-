@@ -1,0 +1,183 @@
+<current_dom_explanation>
+This is a temporary snapshot of the current page's DOM structure. The DOM will change if you navigate to or interact with another page. Use a tool like browser_get_dom to capture and preserve the DOM in your trajectory if needed for later reference.
+</current_dom_explanation>
+<current_dom>
+[0] (500,500)<div  />
+	DevTool
+	Suite v1.0
+	[1] (83,460)<nav class='flex-1 p-4 space-y-2 overflow-y-auto' scrollable='true' />
+		[2] (80,193)<button class='w-full flex items-center space-x-3 px-4 py-3 rounded-xl transition-all duration-200 group text-left text-gray-600 dark:text-gray-400 hover:bg-gray-200 dark:hover:bg-gray-800/50 hover:text-gray-900 dark:hover:text-white' />
+			[3] (71,193)<div  />
+				[4] (71,182)<div >Assistant />
+				[5] (71,208)<div >Code & Strategy />
+		[6] (80,290)<button class='w-full flex items-center space-x-3 px-4 py-3 rounded-xl transition-all duration-200 group text-left text-gray-600 dark:text-gray-400 hover:bg-gray-200 dark:hover:bg-gray-800/50 hover:text-gray-900 dark:hover:text-white' />
+			[7] (81,290)<div  />
+				[8] (81,279)<div >Assets />
+				[9] (81,304)<div >Icons & Placeholders />
+		[10] (80,386)<button class='w-full flex items-center space-x-3 px-4 py-3 rounded-xl transition-all duration-200 group text-left text-gray-600 dark:text-gray-400 hover:bg-gray-200 dark:hover:bg-gray-800/50 hover:text-gray-900 dark:hover:text-white' />
+			[11] (71,386)<div  />
+				[12] (71,375)<div >Regex Lab />
+				[13] (71,400)<div >Explain & Debug />
+		[14] (80,482)<button class='w-full flex items-center space-x-3 px-4 py-3 rounded-xl transition-all duration-200 group text-left text-gray-600 dark:text-gray-400 hover:bg-gray-200 dark:hover:bg-gray-800/50 hover:text-gray-900 dark:hover:text-white' />
+			[15] (79,482)<div  />
+				[16] (79,472)<div >JSON Tools />
+				[17] (79,497)<div >Prettify & Validate />
+		[18] (80,579)<button class='w-full flex items-center space-x-3 px-4 py-3 rounded-xl transition-all duration-200 group text-left text-gray-600 dark:text-gray-400 hover:bg-gray-200 dark:hover:bg-gray-800/50 hover:text-gray-900 dark:hover:text-white' />
+			[19] (71,579)<div  />
+				[20] (71,568)<div >Test Gen />
+				[21] (71,593)<div >Unit Test Suite />
+		[22] (80,675)<button class='w-full flex items-center space-x-3 px-4 py-3 rounded-xl transition-all duration-200 group text-left text-gray-600 dark:text-gray-400 hover:bg-gray-200 dark:hover:bg-gray-800/50 hover:text-gray-900 dark:hover:text-white' />
+			[23] (67,675)<div  />
+				[24] (67,664)<div >Terminal />
+				[25] (67,690)<div >Agentic Shell />
+		[26] (80,773)<button class='w-full flex items-center space-x-3 px-4 py-3 rounded-xl transition-all duration-200 group text-left bg-blue-100 dark:bg-blue-600/10 text-blue-700 dark:text-blue-400 border border-blue-200 dark:border-blue-600/20' />
+			[27] (68,773)<div  />
+				[28] (68,762)<div >Workspace />
+				[29] (68,787)<div >File Explorer />
+	[30] (83,842)<button class='w-full flex items-center justify-between px-3 py-2 rounded-lg text-sm text-gray-600 dark:text-gray-400 hover:bg-gray-200 dark:hover:bg-gray-800 transition-colors' />
+		[31] (48,842)<span >Dark Mode />
+		[32] (137,842)<div  />
+			[33] (143,842)<div  />
+	STATUS
+	GEMINI 2.0 FLASH EXP
+	Workspace
+	Browsing Local Files
+	[34] (973,69)<button class='p-2 hover:bg-blue-50 text-gray-500 hover:text-blue-600 dark:hover:bg-blue-500/10 dark:hover:text-blue-400 rounded-lg transition-all' title='Refresh Workspace' />
+	[35] (583,189)<input class='w-full bg-white dark:bg-[#161b22] border border-gray-200 dark:border-gray-700 rounded-xl pl-10 pr-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500/20 transition-all font-mono' placeholder='Search files...' />
+	[36] (583,620)<div class='flex-1 overflow-y-auto p-4 space-y-6' scrollable='true' />
+		antigravity-demo
+		[37] (309,340)<div  />
+			[38] (309,340)<div  />
+				[39] (212,340)<div  />
+					[40] (196,340)<div  />
+					[41] (226,340)<div  />
+						[42] (226,329)<div >app.js />
+						[43] (226,355)<div >.
+js />
+		[44] (581,340)<div  />
+			[45] (581,340)<div  />
+				[46] (490,340)<div  />
+					[47] (468,340)<div  />
+					[48] (504,340)<div  />
+						[49] (504,329)<div >hero.png />
+						[50] (504,355)<div >.
+png />
+		[51] (852,340)<div  />
+			[52] (852,340)<div  />
+				[53] (765,340)<div  />
+					[54] (739,340)<div  />
+					[55] (779,340)<div  />
+						[56] (779,329)<div >index.html />
+						[57] (779,355)<div >.
+html />
+		[58] (309,445)<div  />
+			[59] (309,445)<div  />
+				[60] (216,445)<div  />
+					[61] (196,445)<div  />
+					[62] (231,445)<div  />
+						[63] (231,434)<div >style.css />
+						[64] (231,459)<div >.
+css />
+		gemini-devtool-suite
+		[65] (309,600)<div  />
+			[66] (309,600)<div  />
+				[67] (208,600)<div  />
+					[68] (196,600)<div  />
+					[69] (223,600)<div  />
+						[70] (223,589)<div >.env />
+						[71] (223,614)<div >.
+env />
+		[72] (581,600)<div  />
+			[73] (581,600)<div  />
+				[74] (487,600)<div  />
+					[75] (468,600)<div  />
+					[76] (501,600)<div  />
+						[77] (501,589)<div >App.tsx />
+						[78] (501,614)<div >.
+tsx />
+		[79] (852,600)<div  />
+			[80] (852,600)<div  />
+				[81] (762,600)<div  />
+					[82] (739,600)<div  />
+					[83] (776,600)<div  />
+						[84] (776,589)<div >index.css />
+						[85] (776,614)<div >.
+css />
+		[86] (309,704)<div  />
+			[87] (309,704)<div  />
+				[88] (222,704)<div  />
+					[89] (196,704)<div  />
+					[90] (236,704)<div  />
+						[91] (236,693)<div >index.html />
+						[92] (236,718)<div >.
+html />
+		[93] (581,704)<div  />
+			[94] (581,704)<div  />
+				[95] (490,704)<div  />
+					[96] (468,704)<div  />
+					[97] (504,704)<div  />
+						[98] (504,693)<div >index.tsx />
+						[99] (504,718)<div >.
+tsx />
+		[100] (852,704)<div  />
+			[101] (852,704)<div  />
+				[102] (772,704)<div  />
+					[103] (739,704)<div  />
+					[104] (787,704)<div  />
+						[105] (787,693)<div >metadata.json />
+						[106] (787,718)<div >.
+json />
+		[107] (309,808)<div  />
+			[108] (309,808)<div  />
+				[109] (237,808)<div  />
+					[110] (196,808)<div  />
+					[111] (251,808)<div  />
+						[112] (251,798)<div >package-lock.json />
+						[113] (251,823)<div >.
+json />
+		[114] (581,808)<div  />
+			[115] (581,808)<div  />
+				[116] (498,808)<div  />
+					[117] (468,808)<div  />
+					[118] (513,808)<div  />
+						[119] (513,798)<div >package.json />
+						[120] (513,823)<div >.
+json />
+		[121] (852,808)<div  />
+			[122] (852,808)<div  />
+				[123] (777,808)<div  />
+					[124] (739,808)<div  />
+					[125] (791,808)<div  />
+						[126] (791,798)<div >postcss.config.js />
+						[127] (791,823)<div >.
+js />
+		[128] (309,913)<div  />
+			[129] (309,913)<div  />
+				[130] (216,913)<div  />
+					[131] (196,913)<div  />
+					[132] (231,913)<div  />
+						[133] (231,902)<div >server.js />
+						[134] (231,927)<div >.
+js />
+		[135] (581,913)<div  />
+			[136] (581,913)<div  />
+				[137] (492,913)<div  />
+					[138] (468,913)<div  />
+					[139] (506,913)<div  />
+						[140] (506,902)<div >SETUP.md />
+						[141] (506,927)<div >.
+md />
+		[142] (852,913)<div  />
+			[143] (852,913)<div  />
+				[144] (778,913)<div  />
+					[145] (739,913)<div  />
+					[146] (792,913)<div  />
+						[147] (792,902)<div >tailwind.config.js />
+						[148] (792,927)<div >.
+js />
+		tsconfig.json
+		tsconfig.node.json
+		types.ts
+[149] (988,881)<img  />
+
+</current_dom>

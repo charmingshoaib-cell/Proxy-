@@ -1,0 +1,32 @@
+# Implementation Plan: Synergizing with Gambler.Bot
+
+The goal is to make the **DevTool Suite** the "Command Center" for **Gambler.Bot**, leveraging its "Ultimate Agentic Power" to generate and sync betting strategies automatically.
+
+## Proposed Changes
+
+### 1. "Gambler Lab" View (Frontend)
+- **New View**: `GamblerLab.tsx`.
+- **Features**:
+    - **Strategy Generator**: A chat-like prompt for specifying betting rules (e.g., "Double on loss, reset on 10 wins").
+    - **Quick Templates**: One-click scripts for Martingale, Paroli, etc.
+    - **Multi-Language Support**: Lua, JS, C#, and Python.
+    - **"Auto-Deploy" Button**: Writes the generated code to the standard `Gambler.Bot` AppData path:
+      `C:\Users\shoaib\AppData\Roaming\Gambler.Bot\default.[ext]`
+
+### 2. Sidebar Integration
+- Add a new "Gambler Lab" icon to the sidebar.
+
+### 3. Agent Persona Update
+- Add specialized knowledge about the `Gambler.Bot` API (Limbo, Crash, Twist, etc.) to the assistant's context within the suite.
+
+### 4. Action Orchestrator Synergy
+- Implement "Bulk Deployment" actions (e.g., "Reset all default scripts to safe-mode templates").
+
+## Verification Plan
+
+### Test Strategy Deploy
+1. Open the "Gambler Lab" in the DevTool Suite.
+2. Generate a "Martingale" Lua script.
+3. Click **"Deploy to Bot"**.
+4. Verify the file at `C:\Users\shoaib\AppData\Roaming\Gambler.Bot\default.lua` is updated.
+5. (Optional) Observe the `Gambler.Bot` UI (if running) and verify it reloads the script automatically.

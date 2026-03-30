@@ -1,0 +1,53 @@
+<current_dom_explanation>
+This is a temporary snapshot of the current page's DOM structure. The DOM will change if you navigate to or interact with another page. Use a tool like browser_get_dom to capture and preserve the DOM in your trajectory if needed for later reference.
+</current_dom_explanation>
+<current_dom>
+[0] (500,500)<div  />
+	DevTool
+	Suite v1.0
+	[1] (83,460)<nav class='flex-1 p-4 space-y-2 overflow-y-auto' scrollable='true' />
+		[2] (80,194)<button class='w-full flex items-center space-x-3 px-4 py-3 rounded-xl transition-all duration-200 group text-left bg-blue-100 dark:bg-blue-600/10 text-blue-700 dark:text-blue-400 border border-blue-200 dark:border-blue-600/20' />
+			[3] (71,194)<div  />
+				[4] (71,184)<div >Assistant />
+				[5] (71,209)<div >Code & Strategy />
+		[6] (80,292)<button class='w-full flex items-center space-x-3 px-4 py-3 rounded-xl transition-all duration-200 group text-left text-gray-600 dark:text-gray-400 hover:bg-gray-200 dark:hover:bg-gray-800/50 hover:text-gray-900 dark:hover:text-white' />
+			[7] (81,292)<div  />
+				[8] (81,281)<div >Assets />
+				[9] (81,306)<div >Icons & Placeholders />
+		[10] (80,388)<button class='w-full flex items-center space-x-3 px-4 py-3 rounded-xl transition-all duration-200 group text-left text-gray-600 dark:text-gray-400 hover:bg-gray-200 dark:hover:bg-gray-800/50 hover:text-gray-900 dark:hover:text-white' />
+			[11] (71,388)<div  />
+				[12] (71,378)<div >Regex Lab />
+				[13] (71,403)<div >Explain & Debug />
+		[14] (80,485)<button class='w-full flex items-center space-x-3 px-4 py-3 rounded-xl transition-all duration-200 group text-left text-gray-600 dark:text-gray-400 hover:bg-gray-200 dark:hover:bg-gray-800/50 hover:text-gray-900 dark:hover:text-white' />
+			[15] (79,485)<div  />
+				[16] (79,474)<div >JSON Tools />
+				[17] (79,499)<div >Prettify & Validate />
+		[18] (80,581)<button class='w-full flex items-center space-x-3 px-4 py-3 rounded-xl transition-all duration-200 group text-left text-gray-600 dark:text-gray-400 hover:bg-gray-200 dark:hover:bg-gray-800/50 hover:text-gray-900 dark:hover:text-white' />
+			[19] (71,581)<div  />
+				[20] (71,570)<div >Test Gen />
+				[21] (71,596)<div >Unit Test Suite />
+		[22] (80,678)<button class='w-full flex items-center space-x-3 px-4 py-3 rounded-xl transition-all duration-200 group text-left text-gray-600 dark:text-gray-400 hover:bg-gray-200 dark:hover:bg-gray-800/50 hover:text-gray-900 dark:hover:text-white' />
+			[23] (67,678)<div  />
+				[24] (67,667)<div >Terminal />
+				[25] (67,692)<div >Agentic Shell />
+		[26] (80,774)<button class='w-full flex items-center space-x-3 px-4 py-3 rounded-xl transition-all duration-200 group text-left text-gray-600 dark:text-gray-400 hover:bg-gray-200 dark:hover:bg-gray-800/50 hover:text-gray-900 dark:hover:text-white' />
+			[27] (67,774)<div  />
+				[28] (67,763)<div >Workspace />
+				[29] (67,788)<div >File Explorer />
+	[30] (83,842)<button class='w-full flex items-center justify-between px-3 py-2 rounded-lg text-sm text-gray-600 dark:text-gray-400 hover:bg-gray-200 dark:hover:bg-gray-800 transition-colors' />
+		[31] (48,842)<span >Dark Mode />
+		[32] (137,842)<div  />
+			[33] (143,842)<div  />
+	STATUS
+	GEMINI 2.0 FLASH EXP
+	Developer Assistant
+	Using
+	gemini-2.0-flash-exp
+	[34] (384,69)<select aria-label='Select Gemini Model' class='appearance-none bg-gray-50 dark:bg-[#161b22] border border-gray-200 dark:border-gray-700 rounded-lg px-4 py-2 pr-10 text-sm font-medium focus:outline-none focus:ring-2 focus:ring-blue-500/50 transition-all cursor-pointer hover:border-blue-400' />
+	[35] (973,69)<button class='p-2 hover:bg-red-50 text-gray-500 hover:text-red-500 dark:hover:bg-red-500/10 dark:hover:text-red-400 rounded-lg transition-colors' title='Reset Chat' />
+	[36] (583,485)<div class='flex-1 overflow-y-auto p-4 md:p-6 space-y-6' scrollable='true' />
+		Ask me about React, patterns, or architecture...
+	[37] (583,912)<textarea class='w-full bg-gray-50 dark:bg-[#161b22] border border-gray-300 dark:border-gray-700 rounded-xl px-4 py-3 pr-12 text-gray-900 dark:text-white placeholder-gray-500 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 resize-none h-[60px] md:h-[80px] transition-colors' placeholder='How do I implement a custom hook for...' />
+[38] (988,881)<img  />
+
+</current_dom>

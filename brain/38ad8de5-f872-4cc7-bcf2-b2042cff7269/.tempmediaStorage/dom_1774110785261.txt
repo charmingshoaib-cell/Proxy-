@@ -1,0 +1,80 @@
+<current_dom_explanation>
+This is a temporary snapshot of the current page's DOM structure. The DOM will change if you navigate to or interact with another page. Use a tool like browser_get_dom to capture and preserve the DOM in your trajectory if needed for later reference.
+</current_dom_explanation>
+<current_dom>
+[0] (194,45)<a aria-label='Front' class='navbar-brand' href='/' />
+	[1] (190,45)<img  />
+Free Text to Speech
+[2] (851,62)<a class='btn btn-ghost-primary  btn-sm p-1 rounded shadow shadow-sm  my-1 small pro-btn-font broder border-2 border-warning ' href='https://pro.ttsmaker.com/pricing?from=navbar-try-pro-btn'>Pro Upgrade />
+	[3] (826,61)<i  />
+[4] (339,163)<label class='form-label text-left d-flex flex-row'>Maximum characters />
+	Maximum characters
+	1000
+	remaining
+	1000
+	available
+	[5] (519,163)<a class=' text-muted  dropdown-toggle strong' href='javascript:void(0);' role='button'>Insert Pause />
+		[6] (485,163)<i  />
+[7] (339,615)<textarea class='form-control border-2 p-4 border-dark ' id='UserInputTextarea' placeholder=' ' />
+[8] (726,163)<label class='form-label'>Language />
+	[9] (767,162)<a class='float-end small text-link ' href='/voice-dialogue-generator/' />
+		[10] (655,161)<i  />
+		[11] (772,161)<span >Multi Speaker Mode (Try new AI Voice Dialogue Generator) />
+[12] (726,226)<button class='btn dropdown-toggle btn-light show' role='combobox' title='English' />
+	[13] (720,226)<div  />
+		[14] (720,226)<div  />
+			[15] (720,226)<div >English />
+[16] (726,310)<input aria-label='Search' class='form-control' role='combobox' />
+[17] (726,657)<div class='inner show' id='bs-select-1' role='listbox' scrollable='true' />
+	[18] (722,380)<a class='dropdown-item p-2 active selected' id='bs-select-1-0' role='option' />
+		[19] (855,371)<span  />
+		[20] (597,380)<span >English />
+	[21] (722,432)<a class='dropdown-item p-2' id='bs-select-1-1' role='option' />
+		[22] (659,432)<span >中文 - Simplified and Traditional Chinese />
+	[23] (722,483)<a class='dropdown-item p-2' id='bs-select-1-2' role='option' />
+		[24] (617,483)<span >Español - Spanish />
+	[25] (722,534)<a class='dropdown-item p-2' id='bs-select-1-3' role='option' />
+		[26] (645,534)<span >Portugues - Brazilian Portuguese />
+	[27] (722,585)<a class='dropdown-item p-2' id='bs-select-1-4' role='option' />
+		[28] (617,585)<span >Deutsch - German />
+	[29] (722,636)<a class='dropdown-item p-2' id='bs-select-1-5' role='option' />
+		[30] (616,636)<span >Français - French />
+	[31] (722,687)<a class='dropdown-item p-2' id='bs-select-1-6' role='option' />
+		[32] (613,687)<span >Italiano - Italian />
+	[33] (722,738)<a class='dropdown-item p-2' id='bs-select-1-7' role='option' />
+		[34] (609,738)<span >Türk - Turkish />
+	[35] (722,789)<a class='dropdown-item p-2' id='bs-select-1-8' role='option' />
+		[36] (618,789)<span >Русский - Russian />
+	[37] (722,840)<a class='dropdown-item p-2' id='bs-select-1-9' role='option' />
+		[38] (613,840)<span >日本 - Japanese />
+	[39] (722,891)<a class='dropdown-item p-2' id='bs-select-1-10' role='option' />
+		[40] (613,891)<span >한국어 - Korean />
+	[41] (722,942)<a class='dropdown-item p-2' id='bs-select-1-11' role='option' />
+		[42] (612,942)<span >Melayu - Malay />
+	ภาษาไทย  - Thai
+Voices
+Selected: 148
+Expand AI Voice Library
+[43] (726,558)<div class='  border-bottom pb-1  shadow-none border-top border-right   border-left p-1 w-100' scrollable='true' />
+	1
+	Unlimited
+	148 - 🔥alayna-🇺🇸united states female (hot + unlimited)
+	Example
+	Limit Per Conversion: 1000 characters
+	2
+	Unlimited
+	149 - 🔥sophia-🇺🇸united states female (hot + unlimited)
+	Example
+	Limit Per Conversion: 2000 characters
+	3
+	Unlimited
+	788 - 🔥alfie-🇺🇸 united states male voice (slow + unlimited)
+	Example
+	Limit Per Conversion: 1000 characters
+	4
+Captcha code
+More Settings
+Convert To Speech
+[44] (988,881)<img  />
+
+</current_dom>

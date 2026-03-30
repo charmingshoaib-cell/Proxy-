@@ -1,0 +1,14 @@
+# Project Continuation: Stake Crash Analyzer Bot
+
+## Current Status
+The base analyzer script `crash_analyzer.js` is on your desktop. It currently monitors multipliers and predicts "Signals" based on red streaks.
+
+## Roadmap
+- [ ] **Martingale Engine**: Add auto-betting functionality with Martingale strategy.
+- [ ] **DOM Verification**: Ensure the script can read the latest Stake.com Crash history.
+- [ ] **UI Polish**: Match the premium look of the Dice Bot (Glassmorphism + Animations).
+- [ ] **Verification**: Final testing and walkthrough update.
+
+## Files
+- [crash_analyzer.js](file:///c:/Users/shoaib/OneDrive/Desktop/crash_analyzer.js)
+- [stake_injection.js](file:///c:/Users/shoaib/OneDrive/Desktop/stake_injection.js) (Reference Dice Bot v3.0)

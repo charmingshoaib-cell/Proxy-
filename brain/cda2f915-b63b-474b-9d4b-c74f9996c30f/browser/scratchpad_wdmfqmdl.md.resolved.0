@@ -1,0 +1,4 @@
+# Task Checklist
+- [ ] Take screenshot of Stake.com dice page (Page ID: 8692F650ACB7A40F63E79DAB3395E6F3)
+- [ ] Run JavaScript in console and capture output
+- [ ] Return screenshot path and JS output to the user

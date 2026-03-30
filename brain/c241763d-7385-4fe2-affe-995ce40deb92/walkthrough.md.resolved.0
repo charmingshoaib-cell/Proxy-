@@ -1,0 +1,33 @@
+# Walkthrough: Chat History Persistence Fix
+
+I have implemented server-side chat history persistence for the Gemini DevTool Suite. This ensures that your chat history is saved to a local file and persists across browser restarts and cache clears.
+
+## Changes Made
+
+### backend
+- **[server.js](file:///c:/Users/shoaib/.gemini/antigravity/scratch/gemini-devtool-suite/server.js)**: Added `/api/history` GET and POST endpoints to manage `chat_history.json`.
+
+### frontend
+- **[ChatInterface.tsx](file:///c:/Users/shoaib/.gemini/antigravity/scratch/gemini-devtool-suite/components/ChatInterface.tsx)**: Updated the component to fetch history from the server on load and save it whenever new messages are sent.
+
+## Verification Results
+
+### Automated API Test
+I created and ran a test script [test_history_api.js](file:///c:/Users/shoaib/.gemini/antigravity/scratch/gemini-devtool-suite/test_history_api.js) which confirmed that the history is correctly read from and written to the server.
+
+```bash
+node test_history_api.js
+--- Testing History API ---
+Initial History: []
+POST Result: { success: true }
+Updated History: [ { role: 'user', text: 'Hello Test', timestamp: ... } ]
+SUCCESS: History persisted correctly!
+```
+
+### File Verification
+The chat history is now saved in `chat_history.json` in your project root.
+
+## How to use
+1. Make sure your backend server is running: `node server.js`
+2. Run your frontend: `npm run dev`
+3. Your chat history will now automatically save and load from `chat_history.json`.

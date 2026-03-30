@@ -1,0 +1,42 @@
+# Implementation Plan: Leveling Up Agentic Power (Ultimate)
+
+The goal is to move from "Single Actions" (Run one command, Save one file) to **"Autonomous Multi-Step Orchestration"**.
+
+## Proposed Changes
+
+### 1. Action Orchestrator (Frontend Logic)
+- **New Feature**: "Planned Tasks" detection.
+- When the bot outputs a JSON block with `{"actions": [...]}`, the UI will render a "Task Suite" component.
+- **Actions supported**:
+    - [run](file:///c:/Users/shoaib/.gemini/antigravity/scratch/gemini-devtool-suite/components/AgentTerminal.tsx#14-39): Execute a shell command.
+    - `write`: Create/Update a file.
+    - `read`: Read a file to context (implied).
+
+### 2. Frontend Component (`TaskOrchestrator.tsx`)
+- Displays a vertical list of steps.
+- Each step shows: status (pending, running, done, error), description, and payload.
+- **Button: "Execute Task Plan"**: Triggers sequential execution of all steps.
+
+### 3. Backend Enhancements ([server.js](file:///c:/Users/shoaib/.gemini/antigravity/scratch/gemini-devtool-suite/server.js))
+- Ensure endpoints handle consecutive calls reliably.
+- Add a "Ping" or "Keep-alive" if needed for long-running commands (already handled by `exec` for now).
+
+### 4. Integration in [ChatInterface.tsx](file:///c:/Users/shoaib/.gemini/antigravity/scratch/gemini-devtool-suite/components/ChatInterface.tsx)
+- Intercept the bot response to check for the action JSON.
+- Render the `TaskOrchestrator` inline in the message list or as a sticky panel.
+
+## Verification Plan
+
+### Test Case: "Scaffold a new project"
+1. Ask the Chat: "Scaffold a small React component folder with `Component.tsx` and `Component.css`."
+2. The bot should output:
+   ```json
+   {
+     "actions": [
+       { "type": "run", "command": "mkdir -p src/components/NewComp" },
+       { "type": "write", "path": "src/components/NewComp/NewComp.tsx", "content": "..." },
+       { "type": "write", "path": "src/components/NewComp/NewComp.css", "content": "..." }
+     ]
+   }
+   ```
+3. Verify the "Execute Task Plan" button appears and successfully creates the folder and files.

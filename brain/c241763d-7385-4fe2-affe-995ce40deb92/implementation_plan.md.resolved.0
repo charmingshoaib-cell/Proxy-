@@ -1,0 +1,39 @@
+# Implementation Plan: Fix Chat History Persistence
+
+The goal is to move chat history storage from `localStorage` to a server-side JSON file (`chat_history.json`) to ensure reliability and persistence across browser sessions.
+
+## User Review Required
+
+> [!IMPORTANT]
+> This change requires the backend server ([server.js](file:///c:/Users/shoaib/.gemini/antigravity/scratch/gemini-devtool-suite/server.js)) to be running. If it's not running, the frontend will fallback to `localStorage` (or show an error if not handled).
+
+## Proposed Changes
+
+### Backend
+
+#### [MODIFY] [server.js](file:///C:/Users/shoaib/.gemini/antigravity/scratch/gemini-devtool-suite/server.js)
+- Add a GET `/api/history` endpoint to read `chat_history.json`.
+- Add a POST `/api/history` endpoint to save the chat history to `chat_history.json`.
+
+---
+
+### Frontend
+
+#### [MODIFY] [ChatInterface.tsx](file:///C:/Users/shoaib/.gemini/antigravity/scratch/gemini-devtool-suite/components/ChatInterface.tsx)
+- Add a `useEffect` to fetch chat history from the server on component mount.
+- Update the existing `useEffect` (that currently saves to `localStorage`) to also send a POST request to `/api/history`.
+- Implement a fallback to `localStorage` in case the server is unreachable.
+
+## Verification Plan
+
+### Automated Tests
+- Create a scratch script `test_history_api.js` to verify the new endpoints in [server.js](file:///c:/Users/shoaib/.gemini/antigravity/scratch/gemini-devtool-suite/server.js).
+- Run the script using `node test_history_api.js`.
+
+### Manual Verification
+1. Start the server: `node server.js`.
+2. Open the Gemini DevTool Suite in the browser.
+3. Send a few messages.
+4. Refresh the page and verify that the messages are still there.
+5. Close the browser tab and re-open it to ensure persistence.
+6. Check if `chat_history.json` is created in the root directory.

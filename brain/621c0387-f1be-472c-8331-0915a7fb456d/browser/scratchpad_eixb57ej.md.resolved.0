@@ -1,0 +1,7 @@
+# Task: Verify Workspace Feature in gemini-devtool-suite
+
+- [ ] Open http://localhost:5173
+- [ ] Find 'Workspace' button in the sidebar
+- [ ] Click 'Workspace' and verify file tree display
+- [ ] Assess if icons and colors look premium
+- [ ] Report results

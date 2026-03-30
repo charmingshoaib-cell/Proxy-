@@ -1,0 +1,43 @@
+# Changes Overview
+
+I have enhanced the **Gemini DevTool Suite** and the **AI Video Models Directory** with persistent storage and the latest Gemini models.
+
+## 1. Gemini DevTool Suite (Persistent History & New Models)
+
+### Backend Enhancements
+- **Modified** [server.js](file:///c:/Users/shoaib/.gemini/antigravity/scratch/gemini-devtool-suite/server.js): Added `/api/history` GET and POST endpoints.
+- **New File**: [chat_history.json](file:///c:/Users/shoaib/.gemini/antigravity/scratch/chat_history.json) created in the root to store your chat data.
+
+### Frontend Enhancements
+- **Modified** [ChatInterface.tsx](file:///c:/Users/shoaib/.gemini/antigravity/scratch/gemini-devtool-suite/components/ChatInterface.tsx):
+    - integrated server-side fetching on load.
+    - Added auto-save to server on every message.
+- **Modified** [types.ts](file:///c:/Users/shoaib/.gemini/antigravity/scratch/gemini-devtool-suite/types.ts): Added Gemini 1.5 Pro/Flash and 2.0 Flash Lite/Pro/Thinking.
+- **Modified** [services/geminiService.ts](file:///c:/Users/shoaib/.gemini/antigravity/scratch/gemini-devtool-suite/services/geminiService.ts): Updated default model.
+- **Fixed**: Moved [vite-env.d.ts](file:///c:/Users/shoaib/.gemini/antigravity/scratch/gemini-devtool-suite/vite-env.d.ts) to the root for correct TypeScript support.
+
+---
+
+## 3. Agentic Power (Ultimate Level)
+
+I have upgraded the suite with **Autonomous Orchestration**:
+
+### Task Orchestrator
+- I can now propose **Multi-Step Plans**. 
+- When I suggest a complex change, you will see a **"Suggested Task Plan"** block with a list of steps.
+- **"Execute Plan" Button**: Click this to have the Assistant run all commands and write all files automatically in sequence.
+
+### New Action Types Supported
+- [run](file:///c:/Users/shoaib/.gemini/antigravity/scratch/gemini-devtool-suite/components/AgentTerminal.tsx#14-39): Automatic terminal commands.
+- `write`: Dynamic file creation/updates.
+- `read`: Automatic file analysis.
+
+---
+
+## Verification
+
+### 1. Ultimate Power Test
+1. Ask the Chat: "Show me your ultimate power: Scaffold a demo 'Gemini-App' folder with a README and a test script."
+2. **Watch**: A Task Plan will appear with 3 steps.
+3. **Action**: Click **"EXECUTE PLAN"**.
+4. **Result**: Observe the progress bars and verify the `Gemini-App` folder is created!

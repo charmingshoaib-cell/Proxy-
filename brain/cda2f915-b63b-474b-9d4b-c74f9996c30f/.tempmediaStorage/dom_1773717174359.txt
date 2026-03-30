@@ -1,0 +1,14 @@
+Sign in
+Use your Microsoft account.
+[0] (410,428)<label class='fui-Label ___9kur9g0 fk6fouc fxc4j92 fkhj508 f1i3iumi fxugw4r f113hnb5 f1ahpp82 f10pi13n f1g0x7ka f7x41pl f1qch9an fruq291'>Email or phone number />
+[1] (500,463)<input class='fui-Input__input r12stul0 ___j4z8wj0 fk8j09s flt1dlf' id='usernameEntry' />
+[2] (417,535)<button class='fui-Link ___4x36e90 f2hkw1w f3rmtva f1ewtqcl fyind8e f1k6fduh f1w7gpdv fk6fouc fkhj508 fl43uef f1s184ao f1mk8lai fnbmjn9 f1o700av f1iuv45f f1cmlufx f9n3di6 f1ids18y f1tx3yz7 f1deo86v f1eh06m1 f1iescvh fhgqx19 f1olyrje f1p93eir f1nev41a f1ern45e f1n71otn f1h8hb77 f1deefiw'>Forgot your username? />
+[3] (500,645)<button class='fui-Button r1alrhcs ___1gltu6d ffp7eso f1p3nwhy f11589ue f1q5o8ev f1pdflbu f1phragk f15wkkf3 f1s2uweq fr80ssc f1ukrpxl fecsdlb f1rq72xc fnp9lpt f1h0usnq fs4ktlq f16h9ulv fx2bmrt f1d6v5y2 f1nz3ub2 fag2qd2 fmvhcg7 f1o3dhpw f14bpyus fqc85l4 f1h3a8gf fkiggi6 f8gmj8i f1ap8nzx f1igan7k fjag8bx f1v3eptx fpelvsg f1r9enuy fdvt4n0 f1l34yyb f1grx941 fqfbdvs f14es27b f5b47ha fhx4nu fjodcmx f1kwiid1 f4db1ww ft85np5 fkhj508 fl43uef f1i3iumi f17t0x8g f194v5ow f1qgg65p fk7jm04 fhgccpy f32wu9k fu5nqqq f13prjl2 f1czftr5 f1nl83rv fixhny3 feygou5 f1b6alqh fk6fouc f22iagw f4d9j23 f6dzj5z'>Next />
+New to Microsoft?
+[4] (546,756)<span class='fui-Link ___qz589u0 f2hkw1w f3rmtva f1ewtqcl fyind8e f1k6fduh f1w7gpdv fk6fouc fkhj508 fl43uef f1s184ao f1mk8lai fnbmjn9 f1o700av f1iuv45f f1cmlufx f9n3di6 f1ids18y f1tx3yz7 f1deo86v f1eh06m1 f1iescvh fhgqx19 f1olyrje f1p93eir f1nev41a' role='button'>Create an account />
+Help and feedback
+Terms of use
+Privacy and cookies
+Use private browsing if this is not your device.
+Learn more
+[5] (985,850)<img  />

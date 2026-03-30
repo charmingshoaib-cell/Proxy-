@@ -1,0 +1,44 @@
+<Application xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             x:Class="Gambler.Bot.App"
+             xmlns:local="using:Gambler.Bot"
+             xmlns:converters="using:Gambler.Bot.Converters"
+             RequestedThemeVariant="Default"
+
+             xmlns:generation="using:ActiproSoftware.UI.Avalonia.Themes.Generation"
+             xmlns:actipro="http://schemas.actiprosoftware.com/avaloniaui"
+             xmlns:img="https://github.com/projektanker/icons.avalonia"
+             >
+    <!-- "Default" ThemeVariant follows system theme variant. "Dark" or "Light" are other available options. -->
+
+    <Application.DataTemplates>
+        <local:ViewLocator/>
+    </Application.DataTemplates>
+    <Application.Styles>
+        <Style Selector="img|Icon.btnIcon">
+            <Setter Property="Margin" Value="0,0,5,0"/>
+        </Style>
+    </Application.Styles>
+    <Application.Resources>
+
+        <ResourceDictionary>
+
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceInclude Source="avares://Gambler.Bot/Assets/Lang/en-US.axaml" />
+            </ResourceDictionary.MergedDictionaries>
+            <converters:BitmapAssetValueConverter x:Key="variableImage"/>
+        </ResourceDictionary>
+
+    </Application.Resources>
+    <Application.Styles>
+        <FluentTheme DensityStyle="Compact" />
+
+        <StyleInclude Source="avares://Avalonia.Controls.DataGrid/Themes/Fluent.xaml"/>
+        <StyleInclude Source="avares://AvaloniaEdit/Themes/Fluent/AvaloniaEdit.xaml" />
+        <actipro:ModernTheme Includes="NativeDataGrid, Pro" >
+            <actipro:ModernTheme.Definition>
+                <generation:ThemeDefinition UserInterfaceDensity="Compact" />
+            </actipro:ModernTheme.Definition>
+        </actipro:ModernTheme>
+    </Application.Styles>
+</Application>
